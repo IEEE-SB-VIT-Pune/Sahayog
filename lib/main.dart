@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ieee_app_project/calendar_page.dart';
-import 'package:ieee_app_project/home_page.dart';
-import 'package:ieee_app_project/news_page.dart';
+import 'package:ieee_app_project/screens/events_page.dart';
+import 'package:ieee_app_project/screens/home_page.dart';
+import 'package:ieee_app_project/screens/news_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentIndex = 0;
-  final screens = [HomePage(), CalendarPage(), NewsPage()];
+  final screens = [HomePage(), EventsPage(), NewsPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
       initialIndex: 1,
       child: Scaffold(
         body: TabBarView(
-          children: <Widget>[HomePage(), CalendarPage(), NewsPage()],
+          children: <Widget>[HomePage(), EventsPage(), NewsPage()],
         ),
         bottomNavigationBar: Container(
           height: 60,
