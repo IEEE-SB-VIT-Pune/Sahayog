@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Widget eventCard(Function()? onTap, querryDocumentSnapshot) {
+Widget EventCard() {
   return InkWell(
-      onTap: onTap,
+      //onTap: onTap,
       child: Container(
         margin: EdgeInsets.all(20.0),
         decoration: BoxDecoration(boxShadow: [
@@ -84,7 +84,7 @@ Widget eventCard(Function()? onTap, querryDocumentSnapshot) {
               child: Text(
                 'About the event:',
                 style: GoogleFonts.openSans(
-                    fontSize: 14, fontWeight: FontWeight.w600),
+                    fontSize: 14, fontWeight: FontWeight.w700),
               ),
             ),
             Padding(
@@ -92,7 +92,7 @@ Widget eventCard(Function()? onTap, querryDocumentSnapshot) {
               child: Text(
                 'Get together with your buddies and enjoy your time with a little competitive spirit. ',
                 style: GoogleFonts.openSans(
-                    fontSize: 14, fontWeight: FontWeight.normal),
+                    fontSize: 14, fontWeight: FontWeight.w500),
               ),
             ),
             Row(

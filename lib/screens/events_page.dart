@@ -8,7 +8,15 @@ import '../widgets/event_card.dart';
 class EventsPage extends StatelessWidget {
   
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: (Center(child: Text('Events', style: TextStyle(fontSize: 60)))),
-      );
+  Widget build(BuildContext context) => ListView(
+  padding: const EdgeInsets.all(8),
+  children: <Widget>[
+    
+    Container(
+      height: 50,
+      color: Colors.amber[100],
+    ),
+    EventCard()
+  ],
+);
 }
