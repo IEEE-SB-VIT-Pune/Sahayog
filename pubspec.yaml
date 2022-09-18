@@ -39,6 +39,8 @@ dependencies:
   google_fonts: ^3.0.1
   carousel_slider: ^4.1.1
   cloud_firestore: ^3.4.8
+  vertical_card_pager: ^1.5.0
+  font_awesome_flutter: ^10.2.1
 
 dev_dependencies:
   flutter_test:
