@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:ieee_app_project/screens/events_page.dart';
+import 'package:flutter/rendering.dart';
 import 'package:ieee_app_project/screens/home_page.dart';
-import 'package:ieee_app_project/screens/news_page.dart';
+import 'package:ieee_app_project/screens/news1.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:vertical_card_pager/vertical_card_pager.dart';
+import 'package:ieee_app_project/screens/listEvent.dart';
+import 'package:ieee_app_project/screens/slider1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +38,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentIndex = 0;
-  final screens = [EventsPage(), HomePage(), NewsPage()];
+
+  final screens = [VerticalSlider(), HomePage(), AnnoucementsPage()];
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,41 +48,42 @@ class _MyHomePageState extends State<MyHomePage> {
       length: 3,
       initialIndex: 1,
       child: Scaffold(
+        //body: VerticalPages(),
         body: TabBarView(
-          children: <Widget>[EventsPage(), HomePage(), NewsPage()],
+
+          children: <Widget>[VerticalSlider(), HomePage(), AnnoucementsPage()];
+
         ),
         bottomNavigationBar: Container(
           height: 60,
           decoration: BoxDecoration(
-            color: Color(0xff112E6A),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30.0),
+              topRight: Radius.circular(30.0),
+            ),
+            color: Colors.white,
           ),
           child: TabBar(
-            labelColor: Colors.white,
-            unselectedLabelColor: Color(0xff87CDFF),
+            labelColor: Colors.black,
+            unselectedLabelColor: Color.fromARGB(255, 6, 6, 6),
             labelStyle: TextStyle(fontSize: 10.0),
             indicator: UnderlineTabIndicator(),
             indicatorColor: Colors.black54,
             tabs: <Widget>[
               Tab(
                 icon: Icon(
-                  Icons.announcement,
-                  size: 24.0,
-                ),
-                text: 'Annoucements',
-              ),
-              Tab(
-                icon: Icon(
-                  Icons.home,
-                  size: 28.0,
-                ),
-                text: 'Home',
-              ),
-              Tab(
-                icon: Icon(
                   Icons.calendar_month,
                   size: 24.0,
                 ),
                 text: 'Calendar',
+              ),
+              Tab(
+                icon: FaIcon(FontAwesomeIcons.house),
+                text: 'Home',
+              ),
+              Tab(
+                icon: FaIcon(FontAwesomeIcons.bullhorn),
+                text: 'Annoucements',
               ),
             ],
           ),

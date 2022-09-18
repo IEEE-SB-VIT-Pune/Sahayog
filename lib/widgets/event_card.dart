@@ -18,28 +18,31 @@ Widget EventCard(String Event, String About, String Location, String Time,
 
       //onTap: onTap,
       child: Container(
-    margin: EdgeInsets.all(20.0),
-    decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 3),
-          )
-        ],
-        color: cardsColor[Colorpick][BorderColor],
-        borderRadius: BorderRadius.circular(10.0)),
+
+    height: 500,
+    margin: EdgeInsets.only(right: 10.0, left: 10.0),
+    decoration: BoxDecoration(boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.5),
+        spreadRadius: 5,
+        blurRadius: 7,
+        offset: Offset(0, 3),
+      )
+    ], color: Color(0XffF9F6DF), borderRadius: BorderRadius.circular(10.0)),
+
+
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
+          height: 50,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(10),
               topRight: Radius.circular(10),
             ),
             color: cardsColor[Colorpick][CardColor],
+
           ),
           width: double.maxFinite,
           child: Padding(
@@ -63,6 +66,7 @@ Widget EventCard(String Event, String About, String Location, String Time,
                   Icon(
                     Icons.access_time,
                     color: Color(0Xff7950F2),
+
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
@@ -73,6 +77,7 @@ Widget EventCard(String Event, String About, String Location, String Time,
                       textDirection: TextDirection.ltr,
                     ),
                   ),
+
                 ],
               ),
             ),
