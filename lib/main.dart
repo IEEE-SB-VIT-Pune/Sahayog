@@ -34,7 +34,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentIndex = 0;
-  final screens = [HomePage(), EventsPage(), NewsPage()];
+  final screens = [EventsPage(), HomePage(), NewsPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
       initialIndex: 1,
       child: Scaffold(
         body: TabBarView(
-          children: <Widget>[HomePage(), EventsPage(), NewsPage()],
+          children: <Widget>[EventsPage(), HomePage(), NewsPage()],
         ),
         bottomNavigationBar: Container(
           height: 60,
