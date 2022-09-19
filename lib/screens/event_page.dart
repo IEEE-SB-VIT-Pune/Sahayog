@@ -6,6 +6,9 @@ import 'package:ieee_app_project/widgets/event_card.dart';
 class VerticalSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var h, w;
+    h = MediaQuery.of(context).size.height;
+    w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -19,7 +22,7 @@ class VerticalSlider extends StatelessWidget {
         children: [
           CarouselSlider(
             options: CarouselOptions(
-              aspectRatio: 0.625,
+              aspectRatio: w / 660,
               enlargeCenterPage: true,
               scrollDirection: Axis.vertical,
               autoPlay: false,

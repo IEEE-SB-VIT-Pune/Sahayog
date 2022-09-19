@@ -8,4 +8,5 @@ final List<Widget> EventCardList = [
   EventCard(),
   EventCard(),
   EventCard(),
+  EventCard()
 ];

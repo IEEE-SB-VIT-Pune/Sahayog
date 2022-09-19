@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 Widget EventCard() {
   return InkWell(
-      //onTap: onTap,
       child: Container(
     height: 500,
     margin: EdgeInsets.only(right: 10.0, left: 10.0),
