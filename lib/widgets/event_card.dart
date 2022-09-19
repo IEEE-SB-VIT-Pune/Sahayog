@@ -15,10 +15,7 @@ Widget EventCard(String Event, String About, String Location, String Time,
   w = MediaQuery.of(context).size.width;
 
   return InkWell(
-
-      //onTap: onTap,
       child: Container(
-
     height: 500,
     margin: EdgeInsets.only(right: 10.0, left: 10.0),
     decoration: BoxDecoration(boxShadow: [
@@ -29,8 +26,6 @@ Widget EventCard(String Event, String About, String Location, String Time,
         offset: Offset(0, 3),
       )
     ], color: Color(0XffF9F6DF), borderRadius: BorderRadius.circular(10.0)),
-
-
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -42,7 +37,6 @@ Widget EventCard(String Event, String About, String Location, String Time,
               topRight: Radius.circular(10),
             ),
             color: cardsColor[Colorpick][CardColor],
-
           ),
           width: double.maxFinite,
           child: Padding(
@@ -66,7 +60,6 @@ Widget EventCard(String Event, String About, String Location, String Time,
                   Icon(
                     Icons.access_time,
                     color: Color(0Xff7950F2),
-
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
@@ -77,7 +70,6 @@ Widget EventCard(String Event, String About, String Location, String Time,
                       textDirection: TextDirection.ltr,
                     ),
                   ),
-
                 ],
               ),
             ),
