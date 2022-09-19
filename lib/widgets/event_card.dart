@@ -1,7 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Widget EventCard() {
+List<List<Color>> cardsColor = [
+  [Colors.red.shade100, Colors.pink.shade200],
+  [Color.fromARGB(255, 158, 211, 160), Color.fromARGB(255, 124, 202, 128)],
+  [Colors.blue.shade100, Colors.blue.shade300],
+];
+
+Widget EventCard(String Event, String About, String Location, String Time,
+    int Colorpick, int BorderColor, int CardColor, context) {
+  var h, w;
+  h = MediaQuery.of(context).size.height;
+  w = MediaQuery.of(context).size.width;
+
   return InkWell(
       child: Container(
     height: 500,
@@ -24,12 +36,12 @@ Widget EventCard() {
               topLeft: Radius.circular(10),
               topRight: Radius.circular(10),
             ),
-            color: Color(0XffFAF4B7),
+            color: cardsColor[Colorpick][CardColor],
           ),
           width: double.maxFinite,
           child: Padding(
             padding: const EdgeInsets.all(6.0),
-            child: Text('Housefull Evening',
+            child: Text(Event,
                 style: GoogleFonts.poppins(
                     fontSize: 20, fontWeight: FontWeight.w600)),
           ),
@@ -50,9 +62,9 @@ Widget EventCard() {
                     color: Color(0Xff7950F2),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 6.0),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Text(
-                      '4:00 PM',
+                      Time,
                       style: GoogleFonts.lato(
                           fontSize: 14, color: Color(0Xff7950F2)),
                       textDirection: TextDirection.ltr,
@@ -71,7 +83,7 @@ Widget EventCard() {
                 children: [
                   Icon(Icons.location_on_sharp, color: Color(0Xff7950F2)),
                   Text(
-                    'Common Area',
+                    Location,
                     style: GoogleFonts.lato(
                         fontSize: 14, color: Color(0Xff7950F2)),
                   )
@@ -91,7 +103,7 @@ Widget EventCard() {
         Padding(
           padding: const EdgeInsets.only(left: 15, bottom: 8),
           child: Text(
-            'Get together with your buddies and enjoy your time with a little competitive spirit. ',
+            About,
             style:
                 GoogleFonts.openSans(fontSize: 14, fontWeight: FontWeight.w500),
           ),
@@ -122,8 +134,8 @@ Widget EventCard() {
                 "Sunita and 22 more are \nattending",
                 style: GoogleFonts.monda(
                     fontWeight: FontWeight.w400,
-                    fontSize: 10,
-                    color: Color(0Xff706666)),
+                    fontSize: 11,
+                    color: Color.fromARGB(255, 0, 0, 0)),
               ),
             )
           ],
