@@ -18,7 +18,7 @@ class EventsPage extends StatelessWidget {
             1,
             0,
             1,
-            context),
+            ),
         EventCard(
             "Karaoke Session",
             'Vibe to the old songs and Live the Kishor Kumar era again.Find your Inner Voice! ',
@@ -27,7 +27,7 @@ class EventsPage extends StatelessWidget {
             0,
             0,
             1,
-            context),
+            ),
         EventCard(
             "Karaoke Session",
             'Vibe to the old songs and Live the Kishor Kumar era again.Find your Inner Voice! ',
@@ -36,6 +36,6 @@ class EventsPage extends StatelessWidget {
             0,
             0,
             1,
-            context),
+            ),
       ]);
 }

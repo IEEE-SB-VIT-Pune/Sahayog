@@ -9,10 +9,10 @@ List<List<Color>> cardsColor = [
 ];
 
 Widget EventCard(String Event, String About, String Location, String Time,
-    int Colorpick, int BorderColor, int CardColor, context) {
+    int Colorpick, int BorderColor, int CardColor, ) {
   var h, w;
-  h = MediaQuery.of(context).size.height;
-  w = MediaQuery.of(context).size.width;
+  // h = MediaQuery.of(context).size.height;
+  // w = MediaQuery.of(context).size.width;
 
   return InkWell(
       child: Container(
