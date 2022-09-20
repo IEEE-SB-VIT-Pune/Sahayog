@@ -22,7 +22,7 @@ class VerticalSlider extends StatelessWidget {
         children: [
           CarouselSlider(
             options: CarouselOptions(
-              aspectRatio: w / 660,
+              // aspectRatio: w / 660,
               enlargeCenterPage: true,
               scrollDirection: Axis.vertical,
               autoPlay: false,
