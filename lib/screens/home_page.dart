@@ -48,12 +48,12 @@ void _showdialogue(context) {
   showDialog(
       context: context,
       builder: (context) {
-        return CupertinoAlertDialog(
+        return AlertDialog(
           title: Text("Logout"),
           content: Text("Are you sure you want to Logout?"),
           actions: [
-            CupertinoDialogAction(onPressed: () => FirebaseAuth.instance.signOut(), child: Text("Yes")),
-            CupertinoDialogAction(onPressed: () {}, child: Text("No")),
+            TextButton(onPressed: () => FirebaseAuth.instance.signOut(), child: Text("Yes")),
+            TextButton(onPressed: () {}, child: Text("No")),
           ],
         );
       });
