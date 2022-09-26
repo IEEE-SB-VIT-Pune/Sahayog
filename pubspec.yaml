@@ -41,6 +41,9 @@ dependencies:
   cloud_firestore: ^3.4.8
   vertical_card_pager: ^1.5.0
   font_awesome_flutter: ^10.2.1
+  firebase_auth: ^3.9.0
+  fluttertoast: ^8.0.9
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
