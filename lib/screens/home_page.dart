@@ -9,45 +9,36 @@ class HomePage extends StatelessWidget {
     var h;
     h = MediaQuery.of(context).size.height;
     return Scaffold(
-        body: (Center(child: Text('Home', style: TextStyle(fontSize: h / 20)))),
-        appBar: AppBar(
-            // title: Text('User Account'),
-            elevation: 20,
-            actions: [
-              PopupMenuButton(
-                icon: Icon(Icons.account_circle_rounded),
-                itemBuilder: (context) {
-                  return [
-                    PopupMenuItem(
-                      value: 1,
-                      child: Text('My Account'),
-                    ),
-                    PopupMenuItem(
-                      value: 2,
-                      child: Text('Logout'),
-                    )
-                  ];
-                },
-                onSelected: (value) {
-                  if (value == 1) {
-                  } else if (value == 2) {
-                    _showdialogue(context);
-                  }
-                },
-                // title: IconButton(
-                //     onPressed: () => {}, icon: Icon(Icons.account_circle_rounded)),
-              ),
-
-              // This trailing comma makes auto-formatting nicer for build methods.
-            ]),
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => PasswordPage()));
-          },
-          label: Text("Settings"),
-          icon: Icon(Icons.add),
-        ));
+      body: (Center(child: Text('Home', style: TextStyle(fontSize: h / 20)))),
+      appBar: AppBar(
+          // title: Text('User Account'),
+          elevation: 20,
+          actions: [
+            PopupMenuButton(
+              icon: Icon(Icons.account_circle_rounded),
+              itemBuilder: (context) {
+                return [
+                  PopupMenuItem(
+                    value: 1,
+                    child: Text('My Account'),
+                  ),
+                  PopupMenuItem(
+                    value: 2,
+                    child: Text('Logout'),
+                  )
+                ];
+              },
+              onSelected: (value) {
+                if (value == 1) {
+                } else if (value == 2) {
+                  _showdialogue(context);
+                }
+              },
+              // title: IconButton(
+              //     onPressed: () => {}, icon: Icon(Icons.account_circle_rounded)),
+            ),
+          ]),
+    );
   }
 }
 
