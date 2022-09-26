@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ieee_app_project/screens/password.dart';
+import 'package:ieee_app_project/screens/settings.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -37,7 +39,15 @@ class HomePage extends StatelessWidget {
               ),
 
               // This trailing comma makes auto-formatting nicer for build methods.
-            ]));
+            ]),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => PasswordPage()));
+          },
+          label: Text("Settings"),
+          icon: Icon(Icons.add),
+        ));
   }
 }
 
