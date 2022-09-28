@@ -44,6 +44,7 @@ dependencies:
   firebase_auth: ^3.9.0
   fluttertoast: ^8.0.9
   shared_preferences: ^2.0.15
+  flutter_svg: ^1.1.5
 
 dev_dependencies:
   flutter_test:
@@ -66,12 +67,13 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
-
+  assets:
+    - assets/login_image.jpg
+    - assets/loginimage.svg
+    - assets/signup_page.svg
+    - assets/login_page.svg
+    - assets/google_icon.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
