@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:ieee_app_project/screens/login_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -52,8 +53,8 @@ void _showdialogue(context) {
           title: Text("Logout"),
           content: Text("Are you sure you want to Logout?"),
           actions: [
-            TextButton(onPressed: () => FirebaseAuth.instance.signOut(), child: Text("Yes")),
-            TextButton(onPressed: () {}, child: Text("No")),
+            TextButton(onPressed: () => FirebaseAuth.instance.signOut().then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: ((context) => LoginPage())))), child: Text("Yes")),
+            TextButton(onPressed: () {},  child: Text("No")),
           ],
         );
       });
