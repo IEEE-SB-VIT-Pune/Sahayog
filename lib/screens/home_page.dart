@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ieee_app_project/screens/profile.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var h;
     h = MediaQuery.of(context).size.height;
+
     return Scaffold(
         body: (Center(child: Text('Home', style: TextStyle(fontSize: h / 20)))),
         appBar: AppBar(
@@ -28,6 +30,7 @@ class HomePage extends StatelessWidget {
                 },
                 onSelected: (value) {
                   if (value == 1) {
+                    ProfilePage();
                   } else if (value == 2) {
                     _showdialogue(context);
                   }
