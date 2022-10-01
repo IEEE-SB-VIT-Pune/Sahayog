@@ -45,6 +45,7 @@ dependencies:
   fluttertoast: ^8.0.9
   shared_preferences: ^2.0.15
   flutter_svg: ^1.1.5
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:

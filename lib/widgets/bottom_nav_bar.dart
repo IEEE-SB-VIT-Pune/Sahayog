@@ -44,17 +44,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
             tabs: <Widget>[
               Tab(
                 icon: Icon(Icons.event_seat,
-                    size: h / 23, color: Color(0xFF7950F2)),
+                    size: h / 23, color: Color(0xFF0C5DAD)),
                 text: 'Events',
               ),
               Tab(
                 icon: FaIcon(FontAwesomeIcons.house,
-                    size: h / 26, color: Color(0xFF7950F2)),
+                    size: h / 26, color: Color(0xFF0C5DAD)),
                 text: 'Home',
               ),
               Tab(
                 icon: FaIcon(FontAwesomeIcons.bullhorn,
-                    size: h / 26, color: Color(0xFF7950F2)),
+                    size: h / 26, color: Color(0xFF0C5DAD)),
                 text: 'Annoucements',
               ),
             ],

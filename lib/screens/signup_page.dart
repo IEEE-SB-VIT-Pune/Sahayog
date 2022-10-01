@@ -60,10 +60,10 @@ class _SignUpPageState extends State<SignUpPage> {
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.mail),
-        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        contentPadding: EdgeInsets.fromLTRB(20* w / 360, 15*h/640, 20* w / 360, 15*h/640),
         hintText: "Email",
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20* w / 360),
         ),
       ),
     );
@@ -100,10 +100,10 @@ class _SignUpPageState extends State<SignUpPage> {
             });
           },
         ),
-        contentPadding: EdgeInsets.fromLTRB(15, 20, 15, 20),
+        contentPadding: EdgeInsets.fromLTRB(15* w / 360, 20, 15* w / 360, 20),
         hintText: "Password",
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20* w / 360),
         ),
       ),
     );
@@ -263,7 +263,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Future signUp(String email, String password) async {
     try{
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailSignupController.text.trim(), password: passwordSignupController.text.trim(),);
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailSignupController.text, password: passwordSignupController.text,);
     
     }on FirebaseAuthException catch (e){
       Fluttertoast.showToast(msg: e.message.toString());
