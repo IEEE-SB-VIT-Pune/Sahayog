@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:ieee_app_project/screens/profile.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/login_page.dart';
 import 'package:ieee_app_project/screens/password.dart';
@@ -62,6 +63,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 onSelected: (value) {
                   if (value == 1) {
+                    ProfilePage();
                   } else if (value == 2) {
                     _showdialogue(context);
                   }
