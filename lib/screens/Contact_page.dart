@@ -5,9 +5,9 @@ import 'package:ieee_app_project/widgets/Contact_Card.dart';
 class ContactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var h, w;
+    var h;
     h = MediaQuery.of(context).size.height;
-    w = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Emergency Contacts',

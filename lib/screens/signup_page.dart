@@ -1,12 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/login_page.dart';
-import '../models/user_model.dart';
 import '../widgets/login_signup_widgets/confirm_password_field.dart';
 import '../widgets/login_signup_widgets/email_field.dart';
 import '../widgets/login_signup_widgets/name_field.dart';
@@ -60,10 +57,11 @@ class _SignUpPageState extends State<SignUpPage> {
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.mail),
-        contentPadding: EdgeInsets.fromLTRB(20* w / 360, 15*h/640, 20* w / 360, 15*h/640),
+        contentPadding: EdgeInsets.fromLTRB(
+            20 * w / 360, 15 * h / 640, 20 * w / 360, 15 * h / 640),
         hintText: "Email",
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20* w / 360),
+          borderRadius: BorderRadius.circular(20 * w / 360),
         ),
       ),
     );
@@ -100,10 +98,10 @@ class _SignUpPageState extends State<SignUpPage> {
             });
           },
         ),
-        contentPadding: EdgeInsets.fromLTRB(15* w / 360, 20, 15* w / 360, 20),
+        contentPadding: EdgeInsets.fromLTRB(15 * w / 360, 20, 15 * w / 360, 20),
         hintText: "Password",
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20* w / 360),
+          borderRadius: BorderRadius.circular(20 * w / 360),
         ),
       ),
     );
@@ -171,19 +169,25 @@ class _SignUpPageState extends State<SignUpPage> {
           SizedBox(
             height: 9 * h / 640,
           ),
-          SizedBox(width: w / 1.36, height: 38 * h / 640, child: passwordSignupField),
+          SizedBox(
+              width: w / 1.36,
+              height: 38 * h / 640,
+              child: passwordSignupField),
           SizedBox(
             height: 9 * h / 640,
           ),
           SizedBox(
-              width: w / 1.36, height: 38 * h / 640, child: ConfirmPasswordField()),
+              width: w / 1.36,
+              height: 38 * h / 640,
+              child: ConfirmPasswordField()),
           SizedBox(
             height: 9 * h / 640,
           ),
           InkWell(
             onTap: (() {
-          signUp(emailSignupController.text.trim(), passwordSignupController.text.trim());
-        }),
+              signUp(emailSignupController.text.trim(),
+                  passwordSignupController.text.trim());
+            }),
             child: Container(
               height: 33 * h / 640,
               width: w * 185 / 360,
@@ -262,10 +266,12 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Future signUp(String email, String password) async {
-    try{
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailSignupController.text, password: passwordSignupController.text,);
-    
-    }on FirebaseAuthException catch (e){
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailSignupController.text,
+        password: passwordSignupController.text,
+      );
+    } on FirebaseAuthException catch (e) {
       Fluttertoast.showToast(msg: e.message.toString());
     }
   }
