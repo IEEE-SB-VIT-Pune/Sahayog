@@ -19,8 +19,6 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
-DateTime date = DateTime.now();
-String finalDate = date.toString();
 
 class _ProfilePageState extends State<ProfilePage> {
   List<String> menuItems = ['Gender', 'Male', 'Female', 'Other'];

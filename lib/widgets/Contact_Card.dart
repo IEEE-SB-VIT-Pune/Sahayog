@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactCard extends StatefulWidget {
   String Name = '';
@@ -71,12 +72,16 @@ class ContactCardState extends State<ContactCard> {
                     Icons.phone,
                     color: Colors.blue.shade900,
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(5),
-                    child: Text(
-                      widget.Number,
-                      style: GoogleFonts.lato(
-                          fontSize: 18 * w / 360, fontWeight: FontWeight.w500),
+                  InkWell(
+                    onTap: phoneCall,
+                    child: Padding(
+                      padding: EdgeInsets.all(5),
+                      child: Text(
+                        widget.Number,
+                        style: GoogleFonts.lato(
+                            fontSize: 18 * w / 360,
+                            fontWeight: FontWeight.w500),
+                      ),
                     ),
                   ),
                   Padding(padding: EdgeInsets.only(right: w / 30)),
@@ -97,9 +102,13 @@ class ContactCardState extends State<ContactCard> {
       ),
     );
   }
+
+  phoneCall() async {
+    var url = Uri.parse("tel:"+widget.Number);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 }
-
-
-// Widget ContactCard(String Name, String Number, String Relation,) {
-  
-  
