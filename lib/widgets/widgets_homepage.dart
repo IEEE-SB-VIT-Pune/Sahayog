@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class QuoteCard extends StatefulWidget {
   String quote;
   String author;
-   QuoteCard( this.quote,this.author);
+  QuoteCard(this.quote, this.author);
 
   @override
   State<QuoteCard> createState() => _QuoteCardState();
@@ -29,20 +29,21 @@ class _QuoteCardState extends State<QuoteCard> {
         child: Padding(
           padding: EdgeInsets.only(
               right: 16 * w / 360, left: 16 * w / 360, top: 8 * h / 640),
-          child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
                 // "“You always pass failure on the way to success.”",
-                widget.quote,textAlign: TextAlign.justify,
+                widget.quote, textAlign: TextAlign.justify,
                 style: GoogleFonts.montserrat(
                     fontSize: 18 * w / 360, fontWeight: FontWeight.w500),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    widget.author,textAlign: TextAlign.justify,
-                    // "~Mickey Rooney",
+                  Text(widget.author,
+                      textAlign: TextAlign.justify,
+                      // "~Mickey Rooney",
                       style: GoogleFonts.montserrat(
                           fontSize: 18 * w / 360, fontWeight: FontWeight.w500)),
                 ],
@@ -56,14 +57,13 @@ class _QuoteCardState extends State<QuoteCard> {
 }
 
 class EventCardHome extends StatefulWidget {
-      String eventText;
-      String timing;
-String Location;
-String description;
-   EventCardHome(this.Location,this.eventText,this.timing, this.description);
+  String eventText;
+  String timing;
+  String Location;
+  String description;
+  EventCardHome(this.Location, this.eventText, this.timing, this.description);
 
   @override
-
   State<EventCardHome> createState() => _EventCardHomeState();
 }
 
@@ -86,8 +86,8 @@ class _EventCardHomeState extends State<EventCardHome> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-                widget.eventText,
-                textAlign: TextAlign.center,
+            widget.eventText,
+            textAlign: TextAlign.center,
             style: GoogleFonts.montserrat(
                 fontWeight: FontWeight.w600,
                 color: Colors.black,
@@ -161,7 +161,7 @@ class _EventCardHomeState extends State<EventCardHome> {
 class MedicineCard extends StatefulWidget {
   String medicine;
   String medTime;
-   MedicineCard(this.medicine,this.medTime);
+  MedicineCard(this.medicine, this.medTime);
 
   @override
   State<MedicineCard> createState() => _MedicineCardState();
@@ -179,13 +179,14 @@ class _MedicineCardState extends State<MedicineCard> {
       height: 72 * h / 640,
       width: 150 * w / 360,
       decoration: BoxDecoration(
-          color: Color(0Xff274B89), borderRadius: BorderRadius.circular(10* w / 360)),
+          color: Color(0Xff274B89),
+          borderRadius: BorderRadius.circular(10 * w / 360)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            // "Paracetamol",
-            widget.medicine,
+              // "Paracetamol",
+              widget.medicine,
               style: GoogleFonts.montserrat(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -248,7 +249,8 @@ class _ContactWidgetState extends State<ContactWidget> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(widget.emergencyName,
+          Text(
+            widget.emergencyName,
             // "Prashant Singh",
             style: GoogleFonts.montserrat(
                 color: Colors.black,
