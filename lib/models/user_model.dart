@@ -1,14 +1,17 @@
-import 'package:flutter/material.dart';
-class UserModel extends StatefulWidget {
-  const UserModel({super.key});
+class UserModel {
+  String? name, phone, relation;
 
-  @override
-  State<UserModel> createState() => _UserModelState();
-}
+  UserModel({this.name, this.phone, this.relation});
 
-class _UserModelState extends State<UserModel> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
+  factory UserModel.fromMap(map) {
+    return UserModel(
+      name: map['name'],
+      phone: map['phone'],
+      relation: map['relation'],
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {'name': name, 'phone': phone, 'relation': relation};
   }
 }

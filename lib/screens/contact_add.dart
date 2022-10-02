@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ieee_app_project/models/user_model.dart';
 
 class Contact_Add extends StatefulWidget {
   const Contact_Add({super.key});
@@ -10,6 +13,10 @@ class Contact_Add extends StatefulWidget {
 }
 
 class _Contact_AddState extends State<Contact_Add> {
+  final _auth = FirebaseAuth.instance;
+  TextEditingController nameEditingController = TextEditingController();
+  TextEditingController phoneEditingController = TextEditingController();
+
   List<String> relations = ['Relation', 'Son', 'Daughter', 'Other'];
   String? selected = 'Relation';
 
@@ -46,6 +53,7 @@ class _Contact_AddState extends State<Contact_Add> {
                     height: h / 20,
                     width: h / 3,
                     child: TextFormField(
+                      controller: nameEditingController,
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                         fillColor: Colors.grey.shade100,
@@ -64,6 +72,7 @@ class _Contact_AddState extends State<Contact_Add> {
                     height: h / 20,
                     width: h / 3,
                     child: TextFormField(
+                      controller: phoneEditingController,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                         fillColor: Colors.grey.shade100,
@@ -101,6 +110,43 @@ class _Contact_AddState extends State<Contact_Add> {
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5)),
                           ))),
+                  SizedBox(
+                    height: h / 40,
+                  ),
+                  SizedBox(
+                      height: h / 20,
+                      width: h / 0.5,
+                      child: Center(
+                          child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.deepPurple.shade500,
+                            minimumSize: const Size.fromWidth(200),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20))),
+                        onPressed: (() async {
+                          FirebaseFirestore firebaseFirestore =
+                              FirebaseFirestore.instance;
+                          User? user = _auth.currentUser;
+
+                          UserModel usm = UserModel();
+
+                          usm.name = nameEditingController.text;
+                          usm.phone = phoneEditingController.text;
+
+                          await firebaseFirestore
+                              .collection("users")
+                              .doc(FirebaseAuth.instance.currentUser!.uid)
+                              .collection("Contacts")
+                              .add(usm.toMap())
+                              .then((value) {
+                            Navigator.pop(context);
+                            Fluttertoast.showToast(
+                                msg: "Contact added successfully");
+                          }).catchError((error) =>
+                                  print("Failed to add a new contact $error"));
+                        }),
+                        child: Text("Save"),
+                      ))),
                 ],
               ),
             )
