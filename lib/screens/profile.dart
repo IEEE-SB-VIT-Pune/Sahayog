@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ieee_app_project/screens/Profile_Display.dart';
 
 Map<String, Icon> pairMap = {
   'Gender': Icon(Icons.transgender_sharp, color: Colors.blue.shade900),
@@ -18,7 +19,6 @@ class ProfilePage extends StatefulWidget {
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
-
 
 class _ProfilePageState extends State<ProfilePage> {
   List<String> menuItems = ['Gender', 'Male', 'Female', 'Other'];
@@ -168,7 +168,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                 minimumSize: const Size.fromWidth(200),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20))),
-                            onPressed: (() {}),
+                            onPressed: (() {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProfileDisplay()));
+                            }),
                             child: Text("Save"),
                           ))),
                       SizedBox(height: h / 20),

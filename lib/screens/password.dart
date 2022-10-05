@@ -127,7 +127,7 @@ class _PasswordPageState extends State<PasswordPage> {
             style: GoogleFonts.montserrat(
                 fontSize: w / 17,
                 color: Colors.black,
-                fontWeight: FontWeight.bold)),
+                fontWeight: FontWeight.w700)),
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
