@@ -1,17 +1,26 @@
 class UserModel {
-  String? name, phone, relation;
-
-  UserModel({this.name, this.phone, this.relation});
-
+  String? email, name,  uid;
+  int? color_id;
+  UserModel(
+      {this.email,
+      this.uid,
+      this.name,
+      });
+  //receiving data from server
   factory UserModel.fromMap(map) {
     return UserModel(
+      email: map['email'],
       name: map['name'],
-      phone: map['phone'],
-      relation: map['relation'],
+     
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return {'name': name, 'phone': phone, 'relation': relation};
+  //sending data to server
+ Map<String, dynamic> toMap() {
+    return {
+      'uid': uid,
+      'email': email,
+      'name': name,
+    }  ; 
   }
 }

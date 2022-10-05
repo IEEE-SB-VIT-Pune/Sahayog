@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ieee_app_project/screens/events_page.dart';
+import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 
 class QuoteCard extends StatefulWidget {
   String quote;
@@ -75,84 +77,88 @@ class _EventCardHomeState extends State<EventCardHome> {
     s = MediaQuery.of(context).size;
     h = s.height;
     w = s.width;
-    return Container(
-      height: 170 * h / 640,
-      width: 150 * w / 360,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10 * w / 360),
-          border: Border.all(color: Color(0Xff3780CB), width: 4 * w / 360)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text(
-            widget.eventText,
-            textAlign: TextAlign.center,
-            style: GoogleFonts.montserrat(
-                fontWeight: FontWeight.w600,
-                color: Colors.black,
-                fontSize: 17 * w / 360),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 9 * w / 360,
-              ),
-              Icon(
-                Icons.access_time_filled_outlined,
-                color: Color(
-                  0XffAC6A2C,
+    return InkWell(
+      onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context) => BottomNavBar(0))),
+      child: Container(
+        height: 170 * h / 640,
+        width: 150 * w / 360,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10 * w / 360),
+            border: Border.all(color: Color(0Xff3780CB), width: 4 * w / 360)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+                  widget.eventText,
+                  textAlign: TextAlign.center,
+              style: GoogleFonts.montserrat(
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                  fontSize: 17 * w / 360),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 9 * w / 360,
+
                 ),
-                size: 20 * h / 640,
-              ),
-              SizedBox(
-                width: 6 * w / 360,
-              ),
-              Text(
-                // "04:00 PM",
-                widget.timing,
-                style: GoogleFonts.lato(
-                  fontSize: 14 * w / 360,
+                Icon(
+                  Icons.access_time_filled_outlined,
+                  color: Color(
+                    0XffAC6A2C,
+                  ),
+                  size: 20 * h / 640,
+                ),
+                SizedBox(
+                  width: 6 * w / 360,
+                ),
+                Text(
+                  // "04:00 PM",
+                  widget.timing,
+                  style: GoogleFonts.lato(
+                    fontSize: 14 * w / 360,
+                    fontWeight: FontWeight.w500,
+                  ),
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 9 * w / 360,
+                ),
+                Icon(
+                  Icons.location_on_sharp,
+                  size: 20 * h / 640,
+                  color: Color(0XffAC6A2C),
+                ),
+                SizedBox(
+                  width: 6 * w / 360,
+                ),
+                Text(
+                  // "Common Area",
+                  widget.Location,
+                  style: GoogleFonts.lato(
+                    fontSize: 14 * w / 360,
+                    fontWeight: FontWeight.w500,
+                  ),
+                )
+              ],
+            ),
+            Text(
+              // "Get together with your buddies and enjoy your time...",
+              widget.description,
+              textAlign: TextAlign.center,
+              style: GoogleFonts.montserrat(
+                  fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.w500,
-                ),
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 9 * w / 360,
-              ),
-              Icon(
-                Icons.location_on_sharp,
-                size: 20 * h / 640,
-                color: Color(0XffAC6A2C),
-              ),
-              SizedBox(
-                width: 6 * w / 360,
-              ),
-              Text(
-                // "Common Area",
-                widget.Location,
-                style: GoogleFonts.lato(
-                  fontSize: 14 * w / 360,
-                  fontWeight: FontWeight.w500,
-                ),
-              )
-            ],
-          ),
-          Text(
-            // "Get together with your buddies and enjoy your time...",
-            widget.description,
-            textAlign: TextAlign.center,
-            style: GoogleFonts.montserrat(
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.w500,
-                fontSize: 13 * w / 360),
-          )
-        ],
+                  fontSize: 13 * w / 360),
+            )
+          ],
+        ),
       ),
     );
   }

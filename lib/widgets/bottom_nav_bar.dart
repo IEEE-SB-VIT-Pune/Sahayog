@@ -7,7 +7,8 @@ import 'package:ieee_app_project/screens/profile.dart';
 import 'package:ieee_app_project/screens/settings.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+    int currentIndex;
+   BottomNavBar(this.currentIndex);
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
