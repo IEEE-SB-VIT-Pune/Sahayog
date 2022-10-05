@@ -2,13 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/Profile_Display.dart';
 
-Map<String, Icon> pairMap = {
-  'Gender': Icon(Icons.transgender_sharp, color: Colors.blue.shade900),
-  'Male': Icon(Icons.male_sharp, color: Colors.blue.shade900),
-  'Female': Icon(Icons.female_sharp, color: Colors.blue.shade900),
-  'Other': Icon(Icons.transgender_sharp, color: Colors.blue.shade900),
-};
-
 void main() {
   runApp(ProfilePage());
 }
@@ -29,6 +22,29 @@ class _ProfilePageState extends State<ProfilePage> {
     var h, w;
     h = MediaQuery.of(context).size.height;
     w = MediaQuery.of(context).size.width;
+
+    Map<String, Icon> pairMap = {
+      'Gender': Icon(
+        Icons.transgender_sharp,
+        color: Colors.blue.shade900,
+        size: w / 12,
+      ),
+      'Male': Icon(
+        Icons.male_sharp,
+        color: Colors.blue.shade900,
+        size: w / 12,
+      ),
+      'Female': Icon(
+        Icons.female_sharp,
+        color: Colors.blue.shade900,
+        size: w / 12,
+      ),
+      'Other': Icon(
+        Icons.transgender_sharp,
+        color: Colors.blue.shade900,
+        size: w / 12,
+      ),
+    };
     return Scaffold(
       appBar: AppBar(
         title: Text(
