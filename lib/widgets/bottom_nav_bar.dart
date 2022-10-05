@@ -5,7 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ieee_app_project/screens/event_page.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+    int currentIndex;
+   BottomNavBar(this.currentIndex);
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();

@@ -5,82 +5,91 @@ import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ieee_app_project/screens/home_page.dart';
 import 'package:ieee_app_project/screens/login_page.dart';
+import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import '../models/user_model.dart';
 import '../widgets/login_signup_widgets/confirm_password_field.dart';
 import '../widgets/login_signup_widgets/email_field.dart';
-import '../widgets/login_signup_widgets/name_field.dart';
 import '../widgets/login_signup_widgets/password_field.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+TextEditingController passwordSignupController = TextEditingController();
+TextEditingController emailSignupController = TextEditingController();
+TextEditingController nameController =  TextEditingController();
+  final _auth = FirebaseAuth.instance;
+
+class NameField extends StatefulWidget {
+   NameField({super.key});
+     
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<NameField> createState() => _NameFieldState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
-  @override
-  bool _isObscure1 = true, _isObscure2 = true;
-  var h, s, w;
-  final _formKey = GlobalKey<FormState>();
-  final _auth = FirebaseAuth.instance;
-  final TextEditingController emailSignupController =
-      new TextEditingController();
-  final TextEditingController passwordSignupController =
-      new TextEditingController();
+class _NameFieldState extends State<NameField> {
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailSignupController = new TextEditingController();
-    TextEditingController passwordSignupController =
-        new TextEditingController();
-
-    s = MediaQuery.of(context).size;
-    h = s.height;
-    w = s.width;
-    var _val;
-    var regex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]");
-    final emailSignupField = TextFormField(
+    return TextFormField(
       autofocus: false,
-      controller: emailSignupController,
-      keyboardType: TextInputType.emailAddress,
+      controller: nameController,
+      keyboardType: TextInputType.name,
       validator: (valve) {
-        _val = valve;
-        if (_val!.isEmpty) {
-          return ("Email Required");
+        RegExp regex = new RegExp(r'^.{3,}$');
+        if (valve!.isEmpty) {
+          return ('First Name Required');
         }
-        if (!regex.hasMatch(_val)) {
-          return ("Please Enter a valid Email");
+        if (!regex.hasMatch(valve)) {
+          return ('Enter Valid FirstName(Min. 3 Characters)');
         }
         return null;
       },
       onSaved: (valve) {
-        emailController.text = valve!;
+        nameController.text = valve!;
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.mail),
-        contentPadding: EdgeInsets.fromLTRB(20* w / 360, 15*h/640, 20* w / 360, 15*h/640),
-        hintText: "Email",
+        prefixIcon: Icon(Icons.account_circle),
+        contentPadding: EdgeInsets.fromLTRB(15, 15, 25, 15),
+        labelText: "Name",
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20* w / 360),
+          borderRadius: BorderRadius.circular(20),
         ),
       ),
     );
-    final passwordSignupField = TextFormField(
+  }
+}
+class PasswordSignUpField extends StatefulWidget {
+  const PasswordSignUpField({super.key});
+
+  @override
+  State<PasswordSignUpField> createState() => _PasswordSignUpFieldState();
+}
+
+class _PasswordSignUpFieldState extends State<PasswordSignUpField> {
+  @override
+  Widget build(BuildContext context) {
+    
+    bool _isObscure1 = true, _isObscure2 = true;
+    var h, s, w;
+    var _val;
+    s = MediaQuery.of(context).size;
+    h = s.height;
+    w = s.width;
+    return TextFormField(
       autofocus: false,
       controller: passwordSignupController,
       obscureText: _isObscure1,
-      validator: (valve) {
+      validator: (value) {
         RegExp regex = new RegExp(r'^.{4,}$');
 
         //storing the password to check with confirm password
-        _val = valve;
+        _val = value;
 
-        if (valve!.isEmpty) {
+        if (value!.isEmpty) {
           return ('Password Required');
         }
-        if (!regex.hasMatch(valve)) {
+        if (!regex.hasMatch(value)) {
           return ('Enter Valid Password(Min. 6 Characters)');
         }
       },
@@ -100,13 +109,79 @@ class _SignUpPageState extends State<SignUpPage> {
             });
           },
         ),
-        contentPadding: EdgeInsets.fromLTRB(15* w / 360, 20, 15* w / 360, 20),
+        contentPadding: EdgeInsets.fromLTRB(15 * w / 360, 20, 15 * w / 360, 20),
         hintText: "Password",
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20* w / 360),
+          borderRadius: BorderRadius.circular(20 * w / 360),
         ),
       ),
     );
+  }
+}
+
+class EmailSignUpField extends StatefulWidget {
+  const EmailSignUpField({super.key});
+
+  @override
+  State<EmailSignUpField> createState() => _EmailSignUpFieldState();
+}
+
+class _EmailSignUpFieldState extends State<EmailSignUpField> {
+  @override
+  Widget build(BuildContext context) {
+    var h, s, w;
+    var _val;
+    s = MediaQuery.of(context).size;
+    h = s.height;
+    w = s.width;
+
+    return TextFormField(
+      autofocus: false,
+      controller: emailSignupController,
+      keyboardType: TextInputType.emailAddress,
+      validator: (value) {
+        _val = value;
+        if (_val!.isEmpty) {
+          return ("Email Required");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        emailController.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+        prefixIcon: Icon(Icons.mail),
+        contentPadding: EdgeInsets.fromLTRB(
+            20 * w / 360, 15 * h / 640, 20 * w / 360, 15 * h / 640),
+        hintText: "Email",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20 * w / 360),
+        ),
+      ),
+    );
+  }
+}
+
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  @override
+  bool _isObscure1 = true, _isObscure2 = true;
+  var h, s, w;
+  final _formKey = GlobalKey<FormState>();
+  final _auth = FirebaseAuth.instance;
+  @override
+  Widget build(BuildContext context) {
+    s = MediaQuery.of(context).size;
+    h = s.height;
+    w = s.width;
+    var _val;
 
     return Scaffold(
         body: SingleChildScrollView(
@@ -167,23 +242,30 @@ class _SignUpPageState extends State<SignUpPage> {
             height: 9 * h / 640,
           ),
           SizedBox(
-              width: w / 1.36, height: 38 * h / 640, child: emailSignupField),
-          SizedBox(
-            height: 9 * h / 640,
-          ),
-          SizedBox(width: w / 1.36, height: 38 * h / 640, child: passwordSignupField),
+              width: w / 1.36, height: 38 * h / 640, child: EmailSignUpField()),
           SizedBox(
             height: 9 * h / 640,
           ),
           SizedBox(
-              width: w / 1.36, height: 38 * h / 640, child: ConfirmPasswordField()),
+              width: w / 1.36,
+              height: 38 * h / 640,
+              child: PasswordSignUpField()),
+          SizedBox(
+            height: 9 * h / 640,
+          ),
+          SizedBox(
+              width: w / 1.36,
+              height: 38 * h / 640,
+              child: ConfirmPasswordField()),
           SizedBox(
             height: 9 * h / 640,
           ),
           InkWell(
             onTap: (() {
-          signUp(emailSignupController.text.trim(), passwordSignupController.text.trim());
-        }),
+              signUp(emailSignupController.text.trim(),
+                  passwordSignupController.text.trim());
+
+            }),
             child: Container(
               height: 33 * h / 640,
               width: w * 185 / 360,
@@ -259,47 +341,36 @@ class _SignUpPageState extends State<SignUpPage> {
         ],
       ),
     ));
-  }
+}
+void postDetailsToFirestore() async {
+    //calling firestore
+    //calling usermodel
+    //sending these valves
+    UserModel usm = UserModel();
 
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    User? user = _auth.currentUser;
+    usm.email = user!.email;
+    usm.uid = user.uid;
+    usm.name= nameController.text;
+
+    await firebaseFirestore.collection("users").doc(usm.uid!).set(usm.toMap());
+    Fluttertoast.showToast(msg: "Account created successfully :) ");
+
+    Navigator.pushAndRemoveUntil(
+        (context),
+        MaterialPageRoute(builder: (context) => BottomNavBar(1)),
+        (route) => false);
+  }
   Future signUp(String email, String password) async {
-    try{
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailSignupController.text, password: passwordSignupController.text,);
+  
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailSignupController.text,
+        password: passwordSignupController.text,
+      ).then((value) => {postDetailsToFirestore()}).catchError((e){
+        Fluttertoast.showToast(msg: e!.message);
+      });
     
-    }on FirebaseAuthException catch (e){
-      Fluttertoast.showToast(msg: e.message.toString());
-    }
+    
   }
 }
-      // await _auth
-      //     .createUserWithEmailAndPassword(
-      //         email: emailSignupController.text.trim(),
-      //         password: passwordSignupController.text.trim())
-      //     .then((value) => {
-      //           postDetailsToFirestore(),
-      //         })
-  //         .catchError((e) {
-  //       Fluttertoast.showToast(msg: e!.message);
-  //     });
-  //   }
-  // }
-
-  // void postDetailsToFirestore() async {
-  //   //calling firestore
-  //   //calling usermodel
-  //   //sending these valves
-
-  //   // FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-  //   // User? user = _auth.currentUser;
-
-  //   // UserModel usm = UserModel();
-
-  //   // usm.email = user!.email;
-  //   // usm.uid = user.uid;
-  //   // usm.firstName = nameController.text;
-
-  //   // await firebaseFirestore.collection("Users").doc(usm.uid!).set(usm.toMap());
-  //   // Fluttertoast.showToast(msg: "Account created successfully :) ");
-
-  //   Navigator.pushAndRemoveUntil((context),
-  //       MaterialPageRoute(builder: (context) => LoginPage()), (route) => false);
-  // 
