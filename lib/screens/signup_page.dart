@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,24 +7,24 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/home_page.dart';
 import 'package:ieee_app_project/screens/login_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
+import 'package:ieee_app_project/widgets/login_signup_widgets/confirm_password_field.dart';
+import 'package:ieee_app_project/widgets/login_signup_widgets/password_field.dart';
 import '../models/user_model.dart';
-
+import '../widgets/login_signup_widgets/email_field.dart';
 
 TextEditingController passwordSignupController = TextEditingController();
 TextEditingController emailSignupController = TextEditingController();
-TextEditingController nameController =  TextEditingController();
-  final _auth = FirebaseAuth.instance;
+TextEditingController nameController = TextEditingController();
+final _auth = FirebaseAuth.instance;
 
 class NameField extends StatefulWidget {
-   NameField({super.key});
-     
+  NameField({super.key});
 
   @override
   State<NameField> createState() => _NameFieldState();
 }
 
 class _NameFieldState extends State<NameField> {
-
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -55,6 +56,7 @@ class _NameFieldState extends State<NameField> {
     );
   }
 }
+
 class PasswordSignUpField extends StatefulWidget {
   const PasswordSignUpField({super.key});
 
@@ -65,7 +67,6 @@ class PasswordSignUpField extends StatefulWidget {
 class _PasswordSignUpFieldState extends State<PasswordSignUpField> {
   @override
   Widget build(BuildContext context) {
-    
     bool _isObscure1 = true, _isObscure2 = true;
     var h, s, w;
     var _val;
@@ -153,7 +154,6 @@ class _EmailSignUpFieldState extends State<EmailSignUpField> {
         hintText: "Email",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20 * w / 360),
-
         ),
       ),
     );
@@ -337,8 +337,9 @@ class _SignUpPageState extends State<SignUpPage> {
         ],
       ),
     ));
-}
-void postDetailsToFirestore() async {
+  }
+
+  void postDetailsToFirestore() async {
     //calling firestore
     //calling usermodel
     //sending these valves
@@ -348,7 +349,7 @@ void postDetailsToFirestore() async {
     User? user = _auth.currentUser;
     usm.email = user!.email;
     usm.uid = user.uid;
-    usm.name= nameController.text;
+    usm.name = nameController.text;
 
     await firebaseFirestore.collection("users").doc(usm.uid!).set(usm.toMap());
     Fluttertoast.showToast(msg: "Account created successfully :) ");
@@ -358,12 +359,16 @@ void postDetailsToFirestore() async {
         MaterialPageRoute(builder: (context) => BottomNavBar(1)),
         (route) => false);
   }
+
   Future signUp(String email, String password) async {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailSignupController.text,
-        password: passwordSignupController.text,
-      ).then((value) => {postDetailsToFirestore()}).catchError((e){
-        Fluttertoast.showToast(msg: e!.message);
-      });
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+          email: emailSignupController.text,
+          password: passwordSignupController.text,
+        )
+        .then((value) => {postDetailsToFirestore()})
+        .catchError((e) {
+      Fluttertoast.showToast(msg: e!.message);
+    });
   }
 }
