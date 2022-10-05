@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,30 +27,44 @@ class _PasswordPageState extends State<PasswordPage> {
     w = MediaQuery.of(context).size.width;
 
     final oldpass = Padding(
-      padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+      padding: EdgeInsets.fromLTRB(w / 15, w / 80, w / 15, h / 40),
       child: TextFormField(
         obscureText: _isHidden,
         controller: oldpassEditingController,
         decoration: InputDecoration(
-          suffix: InkWell(
-              onTap: _togglePasswordView,
-              child: Icon(_isHidden ? Icons.visibility : Icons.visibility_off)),
-          contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _isHidden ? Icons.visibility : Icons.visibility_off,
+            ),
+            onPressed: () {
+              setState(() {
+                _isHidden = !_isHidden;
+              });
+            },
+          ),
+          contentPadding: EdgeInsets.fromLTRB(w / 20, w / 30, w / 20, w / 30),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         ),
         onSaved: (String? value) {},
       ),
     );
     final newpass = Padding(
-      padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+      padding: EdgeInsets.fromLTRB(w / 15, w / 80, w / 15, h / 40),
       child: TextFormField(
         obscureText: _isHidden,
         controller: newpassEditingController,
         decoration: InputDecoration(
-          suffix: InkWell(
-              onTap: _togglePasswordView,
-              child: Icon(_isHidden ? Icons.visibility : Icons.visibility_off)),
-          contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _isHidden ? Icons.visibility : Icons.visibility_off,
+            ),
+            onPressed: () {
+              setState(() {
+                _isHidden = !_isHidden;
+              });
+            },
+          ),
+          contentPadding: EdgeInsets.fromLTRB(w / 20, w / 30, w / 20, w / 30),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         ),
         onSaved: (String? value) {},
@@ -64,15 +76,22 @@ class _PasswordPageState extends State<PasswordPage> {
       ),
     );
     final confirmpass = Padding(
-      padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+      padding: EdgeInsets.fromLTRB(w / 15, w / 80, w / 15, h / 40),
       child: TextField(
         obscureText: _isHidden,
         controller: confirmpassEditingController,
         decoration: InputDecoration(
-          suffix: InkWell(
-              onTap: _togglePasswordView,
-              child: Icon(_isHidden ? Icons.visibility : Icons.visibility_off)),
-          contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _isHidden ? Icons.visibility : Icons.visibility_off,
+            ),
+            onPressed: () {
+              setState(() {
+                _isHidden = !_isHidden;
+              });
+            },
+          ),
+          contentPadding: EdgeInsets.fromLTRB(w / 20, w / 30, w / 20, w / 30),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         ),
         //onSaved: (String? value) {},
@@ -86,18 +105,18 @@ class _PasswordPageState extends State<PasswordPage> {
         textInputAction: TextInputAction.next,
       ),
     );
+
     final saveButton = Material(
       elevation: 10,
       borderRadius: BorderRadius.circular(30),
       color: Color(0xFF7FB77E),
       child: MaterialButton(
-          padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           onPressed: () {},
           child: Text(
             "Save",
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+                fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
           )),
     );
     return Scaffold(

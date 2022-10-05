@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ieee_app_project/screens/annoucement.dart';
+import 'package:ieee_app_project/screens/Contact_page.dart';
+import 'package:ieee_app_project/screens/contact_add.dart';
 import 'package:ieee_app_project/screens/home_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ieee_app_project/screens/event_page.dart';
+import 'package:ieee_app_project/screens/profile.dart';
+import 'package:ieee_app_project/screens/settings.dart';
 
 class BottomNavBar extends StatefulWidget {
     int currentIndex;
@@ -14,7 +16,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
-  final screens = [VerticalSlider(), HomePage(), AnnoucementsPage()];
+  final screens = [SettingsPage(), HomePage(), ProfilePage()];
   var h, w;
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       initialIndex: 1,
       child: Scaffold(
         body: TabBarView(
-          children: <Widget>[VerticalSlider(), HomePage(), AnnoucementsPage()],
+          children: <Widget>[SettingsPage(), HomePage(), ProfilePage()],
         ),
         bottomNavigationBar: Container(
           height: h / 12,

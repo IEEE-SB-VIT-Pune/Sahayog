@@ -1,17 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/home_page.dart';
 import 'package:ieee_app_project/screens/login_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import '../models/user_model.dart';
-import '../widgets/login_signup_widgets/confirm_password_field.dart';
-import '../widgets/login_signup_widgets/email_field.dart';
-import '../widgets/login_signup_widgets/password_field.dart';
+
 
 TextEditingController passwordSignupController = TextEditingController();
 TextEditingController emailSignupController = TextEditingController();
@@ -157,6 +153,7 @@ class _EmailSignUpFieldState extends State<EmailSignUpField> {
         hintText: "Email",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20 * w / 360),
+
         ),
       ),
     );
@@ -264,7 +261,6 @@ class _SignUpPageState extends State<SignUpPage> {
             onTap: (() {
               signUp(emailSignupController.text.trim(),
                   passwordSignupController.text.trim());
-
             }),
             child: Container(
               height: 33 * h / 640,
@@ -363,14 +359,11 @@ void postDetailsToFirestore() async {
         (route) => false);
   }
   Future signUp(String email, String password) async {
-  
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailSignupController.text,
         password: passwordSignupController.text,
       ).then((value) => {postDetailsToFirestore()}).catchError((e){
         Fluttertoast.showToast(msg: e!.message);
       });
-    
-    
   }
 }

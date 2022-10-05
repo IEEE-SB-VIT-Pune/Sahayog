@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:ieee_app_project/screens/profile.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/login_page.dart';
 import 'package:ieee_app_project/screens/password.dart';
@@ -21,15 +20,16 @@ class _HomePageState extends State<HomePage> {
     w = s.width;
     final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
+        floatingActionButton: FloatingActionButton.extended(
           backgroundColor: Color(0Xff0C5DAD),
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => PasswordPage()));
           },
           label: Text("Settings"),
-          icon: Icon(Icons.add),),
-      backgroundColor: Colors.white,
+          icon: Icon(Icons.add),
+        ),
+        backgroundColor: Colors.white,
         appBar: AppBar(
             title: Text(
               'Home',
@@ -62,52 +62,54 @@ class _HomePageState extends State<HomePage> {
                 },
                 onSelected: (value) {
                   if (value == 1) {
+                    ProfilePage();
                   } else if (value == 2) {
                     _showdialogue(context);
                   }
                 },
               ),
             ]),
-        body: SingleChildScrollView(child:
-        Column(
-          children: [
-            Padding(
-              padding:  EdgeInsets.only(
-                top: 16.0*h/640,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 16.0 * h / 640,
+                ),
+                child: QuoteCard(
+                    "“You always pass failure on the way to success.”",
+                    "~Samarth Thosar"),
               ),
-              child: QuoteCard("“You always pass failure on the way to success.”","~Samarth Thosar"),
-            ),
-            Padding(
-              padding:  EdgeInsets.only(top: 27.0*h/640,bottom: 27*h/640),
-              child: Row(
+              Padding(
+                padding:
+                    EdgeInsets.only(top: 27.0 * h / 640, bottom: 27 * h / 640),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    EventCardHome("Common Area", "Houseful Evening", "04:00 PM",
+                        "Get together with your buddies and enjoy your time..."),
+                    Column(
+                      children: [
+                        MedicineCard("Milk", "8:00 AM"),
+                        SizedBox(
+                          height: 26 * h / 640,
+                        ),
+                        ContactWidget("Samarth", "9211420420")
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  EventCardHome("Common Area","Houseful Evening","04:00 PM","Get together with your buddies and enjoy your time..."),
-                  Column(
-                    children: [
-                      MedicineCard("Milk","8:00 AM"),
-                      SizedBox(
-                        height: 26*h/640,
-                      ),
-                      ContactWidget("Samarth","9211420420")
-                    ],
-                  )
+                  GradientCard(),
+                  GradientCard(),
                 ],
-              ),
-            ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                GradientCard(),
-                GradientCard(),
-              ],
-            )
-          ],
-        ),)
-  
-          
-    );
+              )
+            ],
+          ),
+        ));
   }
 }
 
