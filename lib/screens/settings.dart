@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/Contact_page.dart';
+import 'package:ieee_app_project/screens/Profile_Display.dart';
 import 'package:ieee_app_project/widgets/setting_card.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -48,11 +49,20 @@ class _SettingsPageState extends State<SettingsPage> {
                             ),
                             Row(
                               children: [
-                                Text("View Profile >",
-                                    style: GoogleFonts.lato(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: h / 60,
-                                        color: Color(0xFF3780CB))),
+                                InkWell(
+                                  child: Text("View Profile >",
+                                      style: GoogleFonts.lato(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: h / 60,
+                                          color: Color(0xFF3780CB))),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ProfileDisplay()));
+                                  },
+                                ),
                               ],
                             ),
                           ],

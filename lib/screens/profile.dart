@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-Map<String, Icon> pairMap = {
-  'Gender': Icon(Icons.transgender_sharp, color: Colors.blue.shade900),
-  'Male': Icon(Icons.male_sharp, color: Colors.blue.shade900),
-  'Female': Icon(Icons.female_sharp, color: Colors.blue.shade900),
-  'Other': Icon(Icons.transgender_sharp, color: Colors.blue.shade900),
-};
+import 'package:ieee_app_project/screens/Profile_Display.dart';
 
 void main() {
   runApp(ProfilePage());
@@ -19,7 +13,6 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
-
 class _ProfilePageState extends State<ProfilePage> {
   List<String> menuItems = ['Gender', 'Male', 'Female', 'Other'];
   String? selectedValue = 'Gender';
@@ -29,6 +22,29 @@ class _ProfilePageState extends State<ProfilePage> {
     var h, w;
     h = MediaQuery.of(context).size.height;
     w = MediaQuery.of(context).size.width;
+
+    Map<String, Icon> pairMap = {
+      'Gender': Icon(
+        Icons.transgender_sharp,
+        color: Colors.blue.shade900,
+        size: w / 12,
+      ),
+      'Male': Icon(
+        Icons.male_sharp,
+        color: Colors.blue.shade900,
+        size: w / 12,
+      ),
+      'Female': Icon(
+        Icons.female_sharp,
+        color: Colors.blue.shade900,
+        size: w / 12,
+      ),
+      'Other': Icon(
+        Icons.transgender_sharp,
+        color: Colors.blue.shade900,
+        size: w / 12,
+      ),
+    };
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -168,7 +184,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                 minimumSize: const Size.fromWidth(200),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20))),
-                            onPressed: (() {}),
+                            onPressed: (() {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProfileDisplay()));
+                            }),
                             child: Text("Save"),
                           ))),
                       SizedBox(height: h / 20),

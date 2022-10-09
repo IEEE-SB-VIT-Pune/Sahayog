@@ -1,5 +1,5 @@
 class UserModel {
-  String? email, name, uid, phone, relation, emergencyName;
+  String? email, name, uid, phone, relation, emergencyName,dob, gender;
   int? color_id;
   UserModel(
       {this.email,
@@ -7,7 +7,7 @@ class UserModel {
       this.name,
       this.phone,
       this.relation,
-      this.emergencyName});
+      this.emergencyName,this.dob, this.gender});
   //receiving data from server
   factory UserModel.fromMap(map) {
     return UserModel(
@@ -15,7 +15,9 @@ class UserModel {
         name: map['name'],
         phone: map['phone'],
         relation: map['relation'],
-        emergencyName: map['emergencyName']);
+        emergencyName: map['emergencyName'],
+        dob: map['dob'],
+        gender: map['gender']);
   }
 
   //sending data to server
@@ -32,7 +34,9 @@ class UserModel {
       'name': name,
       'phone': phone,
       'relation': relation,
-      'emergencyName': emergencyName
+      'emergencyName': emergencyName,
+      'dob': dob,
+      'gender': gender
     };
   }
 }
