@@ -7,8 +7,8 @@ import 'package:ieee_app_project/screens/profile.dart';
 import 'package:ieee_app_project/screens/settings.dart';
 
 class BottomNavBar extends StatefulWidget {
-    int currentIndex;
-   BottomNavBar(this.currentIndex);
+    
+   BottomNavBar();
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -18,6 +18,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
   final screens = [SettingsPage(), HomePage(), ProfilePage()];
   var h, w;
+
   @override
   Widget build(BuildContext context) {
     h = MediaQuery.of(context).size.height;

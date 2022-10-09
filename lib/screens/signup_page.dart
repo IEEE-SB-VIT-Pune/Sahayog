@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/home_page.dart';
 import 'package:ieee_app_project/screens/login_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
+import 'package:ieee_app_project/widgets/login_signup_widgets/confirm_password_field.dart';
 import '../models/user_model.dart';
 
 
@@ -90,7 +92,7 @@ class _PasswordSignUpFieldState extends State<PasswordSignUpField> {
         }
       },
       onSaved: (valve) {
-        passwordController.text = valve!;
+        passwordSignupController.text = valve!;
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
@@ -143,7 +145,7 @@ class _EmailSignUpFieldState extends State<EmailSignUpField> {
         return null;
       },
       onSaved: (value) {
-        emailController.text = value!;
+        emailSignupController.text = value!;
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
@@ -355,7 +357,7 @@ void postDetailsToFirestore() async {
 
     Navigator.pushAndRemoveUntil(
         (context),
-        MaterialPageRoute(builder: (context) => BottomNavBar(1)),
+        MaterialPageRoute(builder: (context) => BottomNavBar()),
         (route) => false);
   }
   Future signUp(String email, String password) async {
