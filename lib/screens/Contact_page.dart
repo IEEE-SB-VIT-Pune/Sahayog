@@ -30,7 +30,7 @@ class _ContactPageState extends State<ContactPage> {
         centerTitle: true,
       ),
       body: ListView(
-        padding: const EdgeInsets.all(10),
+        padding:  EdgeInsets.all(10),
         children: <Widget>[
           Container(
             height: 15 * h / 640,
