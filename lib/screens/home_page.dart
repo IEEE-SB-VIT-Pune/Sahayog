@@ -4,6 +4,7 @@ import 'package:ieee_app_project/screens/profile.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/login_page.dart';
 import 'package:ieee_app_project/screens/password.dart';
+import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:ieee_app_project/widgets/widgets_homepage.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,6 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  
   @override
   var h, s, w;
   Widget build(BuildContext context) {
@@ -76,9 +78,7 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.only(
                   top: 16.0 * h / 640,
                 ),
-                child: QuoteCard(
-                    "“You always pass failure on the way to success.”",
-                    "~Samarth Thosar"),
+                child: QuoteCard(),
               ),
               Padding(
                 padding:
@@ -128,7 +128,10 @@ void _showdialogue(context) {
                         MaterialPageRoute(
                             builder: ((context) => LoginPage())))),
                 child: Text("Yes")),
-            TextButton(onPressed: () {}, child: Text("No")),
+            TextButton(onPressed: () =>Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => BottomNavBar()))), child: Text("No")),
           ],
         );
       });

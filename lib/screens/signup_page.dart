@@ -9,6 +9,7 @@ import 'package:ieee_app_project/screens/login_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:ieee_app_project/widgets/login_signup_widgets/confirm_password_field.dart';
 import 'package:ieee_app_project/widgets/login_signup_widgets/password_field.dart';
+
 import '../models/user_model.dart';
 import '../widgets/login_signup_widgets/email_field.dart';
 
@@ -91,7 +92,7 @@ class _PasswordSignUpFieldState extends State<PasswordSignUpField> {
         }
       },
       onSaved: (valve) {
-        passwordController.text = valve!;
+        passwordSignupController.text = valve!;
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
@@ -144,7 +145,7 @@ class _EmailSignUpFieldState extends State<EmailSignUpField> {
         return null;
       },
       onSaved: (value) {
-        emailController.text = value!;
+        emailSignupController.text = value!;
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
@@ -356,7 +357,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     Navigator.pushAndRemoveUntil(
         (context),
-        MaterialPageRoute(builder: (context) => BottomNavBar(1)),
+        MaterialPageRoute(builder: (context) => BottomNavBar()),
         (route) => false);
   }
 

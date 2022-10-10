@@ -130,7 +130,7 @@ class _Contact_AddState extends State<Contact_Add> {
 
                           UserModel usm = UserModel();
 
-                          usm.name = nameEditingController.text;
+                          usm.emergencyName = nameEditingController.text;
                           usm.phone = phoneEditingController.text;
 
                           await firebaseFirestore

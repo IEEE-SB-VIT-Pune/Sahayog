@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ieee_app_project/screens/Contact_page.dart';
 import 'package:ieee_app_project/screens/contact_add.dart';
+import 'package:ieee_app_project/screens/health_page.dart';
 import 'package:ieee_app_project/screens/home_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ieee_app_project/screens/profile.dart';
 import 'package:ieee_app_project/screens/settings.dart';
 
 class BottomNavBar extends StatefulWidget {
-    int currentIndex;
-   BottomNavBar(this.currentIndex);
+    
+   BottomNavBar();
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -16,8 +17,9 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
-  final screens = [SettingsPage(), HomePage(), ProfilePage()];
+  final screens = [HealthPage(), HomePage(), ProfilePage()];
   var h, w;
+
   @override
   Widget build(BuildContext context) {
     h = MediaQuery.of(context).size.height;
@@ -27,11 +29,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
       initialIndex: 1,
       child: Scaffold(
         body: TabBarView(
-          children: <Widget>[SettingsPage(), HomePage(), ProfilePage()],
+          children: <Widget>[HealthPage(), HomePage(), ProfilePage()],
         ),
         bottomNavigationBar: Container(
           height: h / 12,
           decoration: BoxDecoration(
+            boxShadow:  [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5 * w / 360,
+                      blurRadius: 2 * w / 360,
+                      offset: Offset(0, 3),
+                    ),],
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(w / 15),
               topRight: Radius.circular(w / 15),
