@@ -5,15 +5,12 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ContactCard extends StatefulWidget {
   final QueryDocumentSnapshot doc;
-  String name = '';
-  String phone = '';
-  String relation = '';
+  // String name = '';
+  // String phone = '';
+  // String relation = '';
 
   // ignore: non_constant_identifier_names
-  ContactCard(this.doc
-
-      // {required this.Name, required this.Number, required this.Relation}
-      );
+  ContactCard(this.doc);
 
   @override
   State<ContactCard> createState() => ContactCardState();
@@ -53,8 +50,7 @@ class ContactCardState extends State<ContactCard> {
                             child: Padding(
                               padding: EdgeInsets.only(
                                   left: w / 20, right: w / 40, top: h / 70),
-                              child: Text(
-                                widget.name,
+                              child: Text(widget.doc["name"],
                                 style: GoogleFonts.lato(
                                     fontSize: 20 * w / 360,
                                     fontWeight: FontWeight.w700),
@@ -83,7 +79,7 @@ class ContactCardState extends State<ContactCard> {
                         child: Padding(
                           padding: EdgeInsets.all(5),
                           child: Text(
-                            widget.phone,
+                            widget.doc["phone"],
                             style: GoogleFonts.lato(
                                 fontSize: 18 * w / 360,
                                 fontWeight: FontWeight.w500),
@@ -95,7 +91,7 @@ class ContactCardState extends State<ContactCard> {
                       Padding(
                         padding: EdgeInsets.all(10),
                         child: Text(
-                          widget.relation,
+                          widget.doc["relation"],
                           style: GoogleFonts.lato(
                               fontSize: 18 * w / 360,
                               fontWeight: FontWeight.w500),
@@ -114,7 +110,7 @@ class ContactCardState extends State<ContactCard> {
   }
 
   phoneCall() async {
-    var url = Uri.parse("tel:" + widget.phone);
+    var url = Uri.parse("tel:" + widget.doc["phone"]);
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
     } else {

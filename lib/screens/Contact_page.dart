@@ -1,24 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/contact_add.dart';
 import 'package:ieee_app_project/widgets/Contact_Card.dart';
 
-class ContactPage extends StatefulWidget {
-  final QuerySnapshot Emergency;
-  ContactPage(this.Emergency);
+class ContactsPage extends StatefulWidget {
+  final db = FirebaseFirestore.instance;
+
+  ContactsPage({super.key});
+
   @override
-  State<ContactPage> createState() => _ContactPageState();
+  State<ContactsPage> createState() => _ContactsPageState();
 }
 
-List<QueryDocumentSnapshot> docsListG = [];
-
-class _ContactPageState extends State<ContactPage> {
+class _ContactsPageState extends State<ContactsPage> {
   @override
   Widget build(BuildContext context) {
-    docsListG = widget.Emergency.docs.toList();
-    var h;
-    h = MediaQuery.of(context).size.height;
+    final db = FirebaseFirestore.instance;
 
     return Scaffold(
       appBar: AppBar(
@@ -29,45 +28,27 @@ class _ContactPageState extends State<ContactPage> {
         elevation: 0,
         centerTitle: true,
       ),
-      body: ListView(
-        padding:  EdgeInsets.all(10),
-        children: <Widget>[
-          Container(
-            height: 15 * h / 640,
-          ),
-          for (int i = 0; i < docsListG.length; i++) ContactCard(docsListG[i]),
-          // StreamBuilder<QuerySnapshot>(
-          //     stream: FirebaseFirestore.instance
-          //         .collection("users")
-          //         .doc("fWjEFL0FaJQDGaf9rF4xVmC1RRr2")
-          //         .collection("Contacts")
-          //         .snapshots(),
-          //     builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          //       if (snapshot.hasData) {
-          //         return GridView(
-          //             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          //                 crossAxisCount: 1),
-          //             children: snapshot.data!.docs
-          //                 .map((Contacts) => ContactCard(Contacts))
-          //                 .toList());
-          //       }
-
-          //   return Text(
-          //     "There are no notes",
-          //     style: GoogleFonts.nunito(color: Colors.white),
-          //   );
-          // }),
-          // ContactCard(
-          //     Name: "Ahana Singh", Number: "1234567890", Relation: "Daughter"),
-          // SizedBox(height: 20 * h / 640),
-          // ContactCard(
-          //     Name: "Ahana Singh", Number: "1234567890", Relation: "Daughter"),
-          SizedBox(
-            height: 20 * h / 640,
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
+      body: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection("Users")
+              .doc(FirebaseAuth.instance.currentUser!.uid)
+              .collection("Contacts")
+              .snapshots(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (!snapshot.hasData) {
+              return ListView(
+                children: snapshot.data!.docs
+                    .map((Contacts) => ContactCard(Contacts))
+                    .toList(),
+              );
+            } 
+              return Text(
+                "There are no notes",
+                style: GoogleFonts.nunito(color: Colors.white),
+              );
+            
+          }),
+          floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => Contact_Add()));

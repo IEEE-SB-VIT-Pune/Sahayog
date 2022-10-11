@@ -352,7 +352,10 @@ class _SignUpPageState extends State<SignUpPage> {
     usm.uid = user.uid;
     usm.name = nameController.text;
 
-    await firebaseFirestore.collection("users").doc(usm.uid!).set(usm.toMap());
+    await firebaseFirestore
+        .collection("users")
+        .doc(usm.uid!)
+        .set(usm.thisMap());
     Fluttertoast.showToast(msg: "Account created successfully :) ");
 
     Navigator.pushAndRemoveUntil(

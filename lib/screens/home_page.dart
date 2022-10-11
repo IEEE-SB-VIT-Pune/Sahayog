@@ -4,6 +4,7 @@ import 'package:ieee_app_project/screens/profile.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/login_page.dart';
 import 'package:ieee_app_project/screens/password.dart';
+import 'package:ieee_app_project/screens/settings.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:ieee_app_project/widgets/widgets_homepage.dart';
 
@@ -26,7 +27,7 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Color(0Xff0C5DAD),
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => PasswordPage()));
+                MaterialPageRoute(builder: (context) => SettingsPage()));
           },
           label: Text("Settings"),
           icon: Icon(Icons.add),
