@@ -1,13 +1,35 @@
 class UserModel {
-  String? email, name, uid, phone, relation, emergencyName,dob, gender;
+  String? email,
+      name,
+      uid,
+      phone,
+      relation,
+      emergencyName,
+      dob,
+      gender,
+      medicineName,
+      timeOfIntake,
+      instructions,
+      Dosage1,
+      Dosage2,
+      Dosage3;
   int? color_id;
-  UserModel(
-      {this.email,
-      this.uid,
-      this.name,
-      this.phone,
-      this.relation,
-      this.emergencyName,this.dob, this.gender});
+  UserModel({
+    this.email,
+    this.uid,
+    this.name,
+    this.phone,
+    this.relation,
+    this.emergencyName,
+    this.dob,
+    this.gender,
+    this.medicineName,
+    this.timeOfIntake,
+    this.instructions,
+    this.Dosage1,
+    this.Dosage2,
+    this.Dosage3,
+  });
   //receiving data from server
   factory UserModel.fromMap(map) {
     return UserModel(
@@ -21,11 +43,11 @@ class UserModel {
   }
 
   //sending data to server
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> contact() {
     return {
-      'uid': uid,
-      'email': email,
-      'name': name,
+      'emergencyName': emergencyName,
+      'phone': phone,
+      'relation': relation,
     };
   }
 
@@ -34,9 +56,19 @@ class UserModel {
       'name': name,
       'phone': phone,
       'relation': relation,
-      'emergencyName': emergencyName,
       'dob': dob,
-      'gender': gender
+      'gender': gender,
+    };
+  }
+
+  Map<String, dynamic> HealthMap() {
+    return {
+      'medicineName': medicineName,
+      'timeOfIntake': timeOfIntake,
+      'Dosage1': Dosage1,
+      'Dosage2': Dosage2,
+      'Dosage3': Dosage3,
+      'instructions': instructions
     };
   }
 }
