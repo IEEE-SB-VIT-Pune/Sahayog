@@ -14,6 +14,11 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController dobController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
+
   List<String> menuItems = ['Gender', 'Male', 'Female', 'Other'];
   String? selectedValue = 'Gender';
 
@@ -27,22 +32,18 @@ class _ProfilePageState extends State<ProfilePage> {
       'Gender': Icon(
         Icons.transgender_sharp,
         color: Colors.blue.shade900,
-        size: w / 12,
       ),
       'Male': Icon(
         Icons.male_sharp,
         color: Colors.blue.shade900,
-        size: w / 12,
       ),
       'Female': Icon(
         Icons.female_sharp,
         color: Colors.blue.shade900,
-        size: w / 12,
       ),
       'Other': Icon(
         Icons.transgender_sharp,
         color: Colors.blue.shade900,
-        size: w / 12,
       ),
     };
     return Scaffold(
@@ -65,15 +66,33 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           SingleChildScrollView(
             child: Container(
-                padding:
-                    EdgeInsets.only(left: w / 15, right: w / 8, top: h / 3),
+                padding: EdgeInsets.only(left: w / 15, right: w / 8),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      Row(
+                        children: [
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  top: h / 8, left: w / 4, bottom: h / 10)),
+                          CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                'https://picsum.photos/id/237/200/300'),
+                            radius: 60 * w / 360,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: h / 20,
+                      ),
+                      SizedBox(
+                        height: h / 20,
+                      ),
                       SizedBox(
                           height: h / 20,
                           child: TextFormField(
+                            controller: nameController,
                             keyboardType: TextInputType.name,
                             decoration: InputDecoration(
                                 icon: Icon(Icons.person,
@@ -110,6 +129,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       SizedBox(
                           height: h / 20,
                           child: TextFormField(
+                            controller: phoneController,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
                                 icon: Icon(Icons.phone,
@@ -123,22 +143,126 @@ class _ProfilePageState extends State<ProfilePage> {
                                 focusColor: Colors.blue.shade900),
                           )),
                       SizedBox(height: h / 40),
-                      SizedBox(
-                        height: h / 22,
-                        width: w / 2,
-                        child: TextFormField(
-                          keyboardType: TextInputType.text,
-                          decoration: InputDecoration(
-                              icon: Icon(Icons.calendar_month,
-                                  color: Colors.blue.shade900),
-                              fillColor: Colors.grey.shade100,
-                              filled: true,
-                              hintText: "Enter Date Of Birth",
-                              contentPadding: EdgeInsets.all(10),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5)),
-                              focusColor: Colors.blue.shade900),
-                        ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            height: h / 22,
+                            width: w / 4.5,
+                            child: TextFormField(
+                              controller: dobController,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                  icon: Icon(Icons.calendar_month,
+                                      color: Colors.blue.shade900),
+                                  fillColor: Colors.grey.shade100,
+                                  filled: true,
+                                  hintText: "DD",
+                                  contentPadding: EdgeInsets.only(left: w / 32),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                  focusColor: Colors.blue.shade900),
+                            ),
+                          ),
+                          Padding(padding: EdgeInsets.only(left: w / 50)),
+                          SizedBox(
+                            height: h / 22,
+                            width: w / 20,
+                            child: Text(
+                              '-',
+                              style: TextStyle(
+                                  fontSize: h / 25,
+                                  color: Colors.grey.shade600),
+                            ),
+                          ),
+                          SizedBox(
+                            height: h / 22,
+                            width: w / 8,
+                            child: TextFormField(
+                              controller: dobController,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                  fillColor: Colors.grey.shade100,
+                                  filled: true,
+                                  hintText: "MM",
+                                  contentPadding: EdgeInsets.only(left: w / 38),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5))),
+                            ),
+                          ),
+                          Padding(padding: EdgeInsets.only(left: w / 50)),
+                          SizedBox(
+                            height: h / 22,
+                            width: w / 20,
+                            child: Text(
+                              '-',
+                              style: TextStyle(
+                                  fontSize: h / 25,
+                                  color: Colors.grey.shade600),
+                            ),
+                          ),
+                          SizedBox(
+                            height: h / 22,
+                            width: w / 7,
+                            child: TextFormField(
+                              controller: dobController,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                  fillColor: Colors.grey.shade100,
+                                  filled: true,
+                                  hintText: "YYYY",
+                                  contentPadding: EdgeInsets.only(left: w / 40),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5))),
+                            ),
+                          )
+                          // SizedBox(
+                          //   height: h / 22,
+                          //   width: w / 5,
+                          //   child: TextFormField(
+                          //     keyboardType: TextInputType.text,
+                          //     decoration: InputDecoration(
+                          //         icon: Icon(Icons.calendar_month,
+                          //             color: Colors.blue.shade900),
+                          //         fillColor: Colors.grey.shade100,
+                          //         filled: true,
+                          //         hintText: "DD",
+                          //         contentPadding: EdgeInsets.only(left: w / 38),
+                          //         border: OutlineInputBorder(
+                          //             borderRadius: BorderRadius.circular(5)),
+                          //         focusColor: Colors.blue.shade900),
+                          //   ),
+                          // ),
+                          // Padding(padding: EdgeInsets.only(left: w / 50)),
+                          // SizedBox(
+                          //   height: h / 22,
+                          //   width: w / 2,
+                          //   child: Text(
+                          //     '/',
+                          //     style: TextStyle(
+                          //         fontSize: h / 25,
+                          //         color: Colors.grey.shade600),
+                          //   ),
+                          // ),
+                          // SizedBox(
+                          //   height: h / 22,
+                          //   width: w / 5,
+                          //   child: TextFormField(
+                          //     keyboardType: TextInputType.text,
+                          //     decoration: InputDecoration(
+                          //         icon: Icon(Icons.calendar_month,
+                          //             color: Colors.blue.shade900),
+                          //         fillColor: Colors.grey.shade100,
+                          //         filled: true,
+                          //         hintText: "DD",
+                          //         contentPadding: EdgeInsets.only(left: w / 38),
+                          //         border: OutlineInputBorder(
+                          //             borderRadius: BorderRadius.circular(5)),
+                          //         focusColor: Colors.blue.shade900),
+                          //   ),
+                          // ),
+                          // Padding(padding: EdgeInsets.only(left: w / 50)),
+                          // // SizedBox(height: h/22,width: w/2,child: Text('/',style: TextStyle(fontSize: h/25,color: Colors.grey.shade600),),)
+                        ],
                       ),
                       SizedBox(height: h / 40),
                       Row(
@@ -153,6 +277,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               width: w / 2.5,
                               child: DropdownButtonFormField(
                                   value: selectedValue,
+                                  
                                   onChanged: (item) =>
                                       setState(() => selectedValue = item),
                                   items: menuItems
