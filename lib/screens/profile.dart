@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ieee_app_project/models/user_model.dart';
 import 'package:ieee_app_project/screens/Profile_Display.dart';
 
 void main() {
@@ -17,8 +21,10 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController dobController = TextEditingController();
+  TextEditingController mobController = TextEditingController();
+  TextEditingController yobController = TextEditingController();
   TextEditingController genderController = TextEditingController();
-
+  final _auth = FirebaseAuth.instance;
   List<String> menuItems = ['Gender', 'Male', 'Female', 'Other'];
   String? selectedValue = 'Gender';
 
@@ -178,7 +184,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             height: h / 22,
                             width: w / 8,
                             child: TextFormField(
-                              controller: dobController,
+                              controller: mobController,
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
@@ -204,7 +210,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             height: h / 22,
                             width: w / 7,
                             child: TextFormField(
-                              controller: dobController,
+                              controller: yobController,
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
@@ -277,7 +283,6 @@ class _ProfilePageState extends State<ProfilePage> {
                               width: w / 2.5,
                               child: DropdownButtonFormField(
                                   value: selectedValue,
-                                  
                                   onChanged: (item) =>
                                       setState(() => selectedValue = item),
                                   items: menuItems
@@ -306,16 +311,48 @@ class _ProfilePageState extends State<ProfilePage> {
                               child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.deepPurple.shade500,
-                                minimumSize: const Size.fromWidth(200),
+                                minimumSize: const Size.fromWidth(100),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20))),
-                            onPressed: (() {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ProfileDisplay()));
+                                    borderRadius: BorderRadius.circular(10))),
+                            onPressed: (() async {
+                              FirebaseFirestore firebaseFirestore =
+                                  FirebaseFirestore.instance;
+                              User? user = _auth.currentUser;
+
+                              UserModel usm = UserModel();
+
+                              usm.name = nameController.text;
+                              usm.phone = phoneController.text;
+                              usm.dob = dobController.text;
+                              usm.mob = mobController.text;
+                              usm.yob = yobController.text;
+                              usm.gender = genderController.text;
+
+                              await firebaseFirestore
+                                  .collection("users")
+                                  // .doc(usm.uid!)
+                                  .doc(FirebaseAuth.instance.currentUser!.uid)
+                                  .collection("user_Details")
+                                  // .doc(FirebaseAuth.instance.currentUser!.uid)
+                                  // .collection("Health")
+                                  .add(usm.thisMap())
+                                  .then((value) {
+                                // Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ProfileDisplay()));
+                                Fluttertoast.showToast(
+                                    msg:
+                                        "Profile Information added successfully");
+                              }).catchError((error) => print(
+                                      "Failed to add Health Information $error"));
                             }),
-                            child: Text("Save"),
+                            child: Text(
+                              "Save",
+                              style: GoogleFonts.montserrat(),
+                            ),
                           ))),
                       SizedBox(height: h / 20),
                     ])),

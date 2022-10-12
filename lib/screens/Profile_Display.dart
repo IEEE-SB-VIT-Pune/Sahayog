@@ -27,8 +27,9 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
 
   void getdata() async {
     await FirebaseFirestore.instance
-        .collection("users")
+        .collection("user_Details")
         .doc(user!.uid)
+        // .doc(FirebaseAuth.instance.currentUser!.uid)
         .get()
         .then((value) {
       setState(() {
@@ -162,7 +163,8 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                               size: w / 12,
                             ),
                             SizedBox(width: w / 24),
-                            Text("${loggedInUser.dob}",
+                            Text(
+                                "${loggedInUser.dob}/${loggedInUser.mob}/${loggedInUser.yob}",
                                 style: GoogleFonts.lato(
                                     color: Colors.black, fontSize: w / 20))
                           ],
