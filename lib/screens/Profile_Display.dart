@@ -190,9 +190,6 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                                     color: Colors.grey.shade500, thickness: 2)),
                           ),
                         ),
-                        // SizedBox(
-                        //   height: h / 20,
-                        // ),
                         InkWell(
                           onTap: () {
                             Navigator.push(
@@ -211,7 +208,9 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                               SizedBox(width: w / 24),
                               Text("Change Password",
                                   style: GoogleFonts.lato(
-                                      color: Colors.blue.shade800, fontWeight: FontWeight.w700,fontSize: w / 24))
+                                      color: Colors.blue.shade800,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: w / 24))
                             ],
                           ),
                         ),
