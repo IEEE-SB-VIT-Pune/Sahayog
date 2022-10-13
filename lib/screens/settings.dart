@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ieee_app_project/models/user_model.dart';
 import 'package:ieee_app_project/screens/Contact_page.dart';
 import 'package:ieee_app_project/screens/Profile_Display.dart';
 import 'package:ieee_app_project/widgets/setting_card.dart';
@@ -14,7 +15,27 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
   @override
+  void initState() {
+    super.initState();
+    getdata();
+  }
+
+  void getdata() async {
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      setState(() {
+        loggedInUser = UserModel.fromMap(value.data());
+      });
+    });
+    setState(() {});
+  }
+
   Widget build(BuildContext context) {
     var h, w;
     h = MediaQuery.of(context).size.height;
@@ -36,14 +57,14 @@ class _SettingsPageState extends State<SettingsPage> {
               padding: EdgeInsets.fromLTRB(h / 32, h / 24, h / 32, h / 30),
               child: Container(
                   child: Padding(
-                    padding: EdgeInsets.all(h / 75),
+                    padding: EdgeInsets.all(h / 95),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Column(
                           children: [
                             Text(
-                              "Aastha",
+                              "${loggedInUser.name}",
                               style: GoogleFonts.poppins(
                                   fontSize: w / 17,
                                   fontWeight: FontWeight.w500),

@@ -6,6 +6,8 @@ class UserModel {
       relation,
       emergencyName,
       dob,
+      mob,
+      yob,
       gender,
       medicineName,
       timeOfIntake,
@@ -22,6 +24,8 @@ class UserModel {
     this.relation,
     this.emergencyName,
     this.dob,
+    this.mob,
+    this.yob,
     this.gender,
     this.medicineName,
     this.timeOfIntake,
@@ -39,6 +43,8 @@ class UserModel {
       // relation: map['relation'],
       emergencyName: map['emergencyName'],
       dob: map['dob'],
+      mob: map['mob'],
+      yob: map['yob'],
       gender: map['gender'],
       medicineName: map['medicineName'],
       timeOfIntake: map['timeOfIntake'],
@@ -47,6 +53,7 @@ class UserModel {
       Dosage3: map['Dosage3'],
       instructions: map['instructions'],
     );
+
   }
 
   //sending data to server
@@ -62,6 +69,8 @@ class UserModel {
       'name': name,
       'phone': phone,
       'dob': dob,
+      'mob': mob,
+      'yob': yob,
       'gender': gender,
     };
   }
