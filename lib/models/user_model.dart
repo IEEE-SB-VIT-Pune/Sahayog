@@ -37,15 +37,23 @@ class UserModel {
   //receiving data from server
   factory UserModel.fromMap(map) {
     return UserModel(
-        email: map['email'],
-        name: map['name'],
-        phone: map['phone'],
-        relation: map['relation'],
-        emergencyName: map['emergencyName'],
-        dob: map['dob'],
-        mob: map['mob'],
-        yob: map['yob'],
-        gender: map['gender']);
+      email: map['email'],
+      name: map['name'],
+      phone: map['phone'],
+      // relation: map['relation'],
+      emergencyName: map['emergencyName'],
+      dob: map['dob'],
+      mob: map['mob'],
+      yob: map['yob'],
+      gender: map['gender'],
+      medicineName: map['medicineName'],
+      timeOfIntake: map['timeOfIntake'],
+      Dosage1: map['Dosage1'],
+      Dosage2: map['Dosage2'],
+      Dosage3: map['Dosage3'],
+      instructions: map['instructions'],
+    );
+
   }
 
   //sending data to server
@@ -53,7 +61,6 @@ class UserModel {
     return {
       'emergencyName': emergencyName,
       'phone': phone,
-      'relation': relation,
     };
   }
 
@@ -61,7 +68,6 @@ class UserModel {
     return {
       'name': name,
       'phone': phone,
-      'relation': relation,
       'dob': dob,
       'mob': mob,
       'yob': yob,

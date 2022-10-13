@@ -5,18 +5,31 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/health_fields.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
+import 'package:ieee_app_project/models/user_model.dart';
 
 class HealthPage extends StatefulWidget {
-  const HealthPage({super.key});
+  final QuerySnapshot HealthRef;
+  const HealthPage({Key? key, required this.HealthRef}) : super(key: key);
+
+  //  HealthPage(this.HealthRef);
 
   @override
   State<HealthPage> createState() => _HealthPageState();
 }
 
+List<QueryDocumentSnapshot> doc = [];
+
 class _HealthPageState extends State<HealthPage> {
+  User? user = FirebaseAuth.instance.currentUser;
+
   @override
   var h, s, w;
   Widget build(BuildContext context) {
+    doc = widget.HealthRef.docs.toList();
+
+    UserModel loggedInUser = UserModel();
+
+
     s = MediaQuery.of(context).size;
     h = s.height;
     w = s.width;
@@ -46,25 +59,12 @@ class _HealthPageState extends State<HealthPage> {
             color: Colors.black,
           ),
         ),
-        body: StreamBuilder(
-            stream: FirebaseFirestore.instance
-                .collection("users")
-                .doc()
-                .collection("Health")
-                .snapshots(),
-            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (snapshot.hasData) {
-                return ListView(
-                  children: snapshot.data!.docs
-                      .map((doc) => MedicineCard(doc))
-                      .toList(),
-                );
-              }
-              return Text(
-                "There is no health info",
-                style: GoogleFonts.nunito(color: Colors.white),
-              );
-            }),
+        body: ListView(
+          physics: BouncingScrollPhysics(),
+          children: [for (int i = 0; i < doc.length; i++) MedicineCard(doc[i])],
+        ),
+
+        
         floatingActionButton: FloatingActionButton(
           backgroundColor: Color(0Xff0C5DAD),
           onPressed: () {
@@ -82,7 +82,7 @@ class _HealthPageState extends State<HealthPage> {
 }
 
 class MedicineCard extends StatefulWidget {
-  QueryDocumentSnapshot doc;
+  final QueryDocumentSnapshot doc;
   MedicineCard(this.doc);
 
   @override
@@ -92,16 +92,17 @@ class MedicineCard extends StatefulWidget {
 class _MedicineCardState extends State<MedicineCard> {
   @override
   var h, s, w;
+
   Widget build(BuildContext context) {
     s = MediaQuery.of(context).size;
     h = s.height;
     w = s.width;
-    if (widget.doc["instructions"] == "") {
+    if (widget.doc['instructions'] == "") {
       return Padding(
           padding: EdgeInsets.only(
               top: 20 * h / 640, right: 20 * h / 640, left: 20 * h / 640),
           child: Container(
-              width: 320 * w / 360,
+              width: 250 * w / 360,
               decoration: BoxDecoration(
                   color: Color(0XffF8F7F7),
                   boxShadow: [
@@ -136,8 +137,7 @@ class _MedicineCardState extends State<MedicineCard> {
                               width: 11 * w / 360,
                             ),
                             Text(
-                              widget.doc["medicineName"],
-                              // "Crocein",
+                              widget.doc['medicineName'],
                               style: GoogleFonts.montserrat(
                                   fontSize: 22 * w / 360,
                                   color: Colors.black,
@@ -165,51 +165,55 @@ class _MedicineCardState extends State<MedicineCard> {
                     SizedBox(
                       height: 8 * h / 640,
                     ),
+                     Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(children: [SizedBox(
+                      width: 9 * w / 360,
+                    ),
+                    Icon(
+                      Icons.access_time_filled_rounded,
+                      size: 21 * w / 360,
+                      color: Color(0Xff0C5DAD),
+                    ),
+                    SizedBox(
+                      width: 11 * w / 360,
+                    ),
+                    Text(
+                      widget.doc['timeOfIntake'],
+                      style: GoogleFonts.lato(
+                          fontSize: 18 * w / 360,
+                          color: Color(0Xff0C5DAD),
+                          fontWeight: FontWeight.bold),
+                    ),],),
+
+                   
                     Row(
                       children: [
-                        SizedBox(
-                          width: 9 * w / 360,
-                        ),
-                        Icon(
-                          Icons.access_time_filled_rounded,
-                          size: 21 * w / 360,
-                          color: Color(0Xff0C5DAD),
-                        ),
-                        SizedBox(
-                          width: 11 * w / 360,
-                        ),
-                        Text(
-                          widget.doc["timeOfIntake"],
-
-                          // "8:00 AM",
-                          style: GoogleFonts.lato(
-                              fontSize: 18 * w / 360,
-                              color: Color(0Xff0C5DAD),
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          width: 130 * w / 360,
-                        ),
-                        Text(widget.doc["Dosage2"],
+                        Text(widget.doc['Dosage1']+"  - ",
                             style: GoogleFonts.lato(
                                 fontSize: 18 * w / 360,
                                 color: Color(0Xff0C5DAD),
                                 fontWeight: FontWeight.bold)),
-                        Text(widget.doc["Dosage2"],
+                                
+                        Text(widget.doc['Dosage2']+"  - ",
                             style: GoogleFonts.lato(
                                 fontSize: 18 * w / 360,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold)),
-                        Text(widget.doc["Dosage2"],
+                                
+                        Text(widget.doc['Dosage3'],
                             style: GoogleFonts.lato(
                                 fontSize: 18 * w / 360,
                                 color: Color(0Xff0C5DAD),
                                 fontWeight: FontWeight.bold)),
-                        SizedBox(
-                          width: 9 * w / 360,
-                        )
+                                SizedBox(
+                      width: 11 * w / 360,
+                    ),
                       ],
                     ),
+                  ],
+                ),
                     SizedBox(
                       height: 10 * h / 640,
                     )
@@ -219,7 +223,7 @@ class _MedicineCardState extends State<MedicineCard> {
         padding: EdgeInsets.only(
             top: 20 * h / 640, right: 20 * h / 640, left: 20 * h / 640),
         child: Container(
-          width: 320 * w / 360,
+          width: 200 * w / 360,
           decoration: BoxDecoration(
               color: Color(0XffF8F7F7),
               boxShadow: [
@@ -254,7 +258,7 @@ class _MedicineCardState extends State<MedicineCard> {
                           width: 11 * w / 360,
                         ),
                         Text(
-                          widget.doc["medicineName"],
+                          widget.doc['medicineName'],
                           // "Crocein",
                           style: GoogleFonts.montserrat(
                               fontSize: 22 * w / 360,
@@ -284,8 +288,9 @@ class _MedicineCardState extends State<MedicineCard> {
                   height: 8 * h / 640,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
+                    Row(children: [SizedBox(
                       width: 9 * w / 360,
                     ),
                     Icon(
@@ -297,35 +302,38 @@ class _MedicineCardState extends State<MedicineCard> {
                       width: 11 * w / 360,
                     ),
                     Text(
-                      widget.doc["timeOfIntake"],
-
-                      // "8:00 AM",
+                      widget.doc['timeOfIntake'],
                       style: GoogleFonts.lato(
                           fontSize: 18 * w / 360,
                           color: Color(0Xff0C5DAD),
                           fontWeight: FontWeight.bold),
+                    ),],),
+
+                   
+                    Row(
+                      children: [
+                        Text(widget.doc['Dosage1']+"  - ",
+                            style: GoogleFonts.lato(
+                                fontSize: 18 * w / 360,
+                                color: Color(0Xff0C5DAD),
+                                fontWeight: FontWeight.bold)),
+                                
+                        Text(widget.doc['Dosage2']+"  - ",
+                            style: GoogleFonts.lato(
+                                fontSize: 18 * w / 360,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold)),
+                                
+                        Text(widget.doc['Dosage3'],
+                            style: GoogleFonts.lato(
+                                fontSize: 18 * w / 360,
+                                color: Color(0Xff0C5DAD),
+                                fontWeight: FontWeight.bold)),
+                                SizedBox(
+                      width: 11 * w / 360,
                     ),
-                    SizedBox(
-                      width: 130 * w / 360,
+                      ],
                     ),
-                    Text(widget.doc["Dosage1"],
-                        style: GoogleFonts.lato(
-                            fontSize: 18 * w / 360,
-                            color: Color(0Xff0C5DAD),
-                            fontWeight: FontWeight.bold)),
-                    Text(widget.doc["Dosage2"],
-                        style: GoogleFonts.lato(
-                            fontSize: 18 * w / 360,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold)),
-                    Text(widget.doc["Dosage3"],
-                        style: GoogleFonts.lato(
-                            fontSize: 18 * w / 360,
-                            color: Color(0Xff0C5DAD),
-                            fontWeight: FontWeight.bold)),
-                    SizedBox(
-                      width: 9 * w / 360,
-                    )
                   ],
                 ),
                 Padding(
@@ -347,7 +355,7 @@ class _MedicineCardState extends State<MedicineCard> {
                           right: 8 * w / 360,
                           left: 8 * w / 360),
                       child: Text(
-                        widget.doc["instructions"],
+                        widget.doc['instructions'],
 
                         // "Take Before Food...",
                         style: GoogleFonts.montserrat(

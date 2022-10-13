@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ieee_app_project/models/user_model.dart';
 import 'package:ieee_app_project/screens/Contact_page.dart';
 import 'package:ieee_app_project/screens/contact_add.dart';
 import 'package:ieee_app_project/screens/health_page.dart';
@@ -6,6 +9,7 @@ import 'package:ieee_app_project/screens/home_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ieee_app_project/screens/profile.dart';
 import 'package:ieee_app_project/screens/settings.dart';
+
 
 class BottomNavBar extends StatefulWidget {
     
@@ -17,11 +21,34 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
-  final screens = [HealthPage(), HomePage(), ProfilePage()];
+  final screens = [SettingsPage(), HomePage(), ProfilePage()];
   var h, w;
+    User? user = FirebaseAuth.instance.currentUser;
+
 
   @override
   Widget build(BuildContext context) {
+        UserModel loggedInUser = UserModel();
+
+     void getdata() async {
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(user!.uid)
+          .collection("Health")
+          .doc("YU5UeBx4OvpaQNdmR7KB")
+          .get()
+          .then((value) {
+        setState(() {
+          loggedInUser = UserModel.fromMap(value.data());
+        });
+      });
+      setState(() {});
+    }
+     void initState() {
+      super.initState();
+      getdata();
+    }
+
     h = MediaQuery.of(context).size.height;
     w = MediaQuery.of(context).size.width;
     return DefaultTabController(
@@ -29,7 +56,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       initialIndex: 1,
       child: Scaffold(
         body: TabBarView(
-          children: <Widget>[HealthPage(), HomePage(), ProfilePage()],
+          children: <Widget>[SettingsPage(), HomePage(), ProfilePage()],
         ),
         bottomNavigationBar: Container(
           height: h / 12,

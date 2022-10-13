@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ieee_app_project/models/user_model.dart';
+import 'package:ieee_app_project/screens/health_page.dart';
 import 'package:ieee_app_project/screens/profile.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/login_page.dart';
@@ -14,9 +17,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
   @override
   var h, s, w;
+
   Widget build(BuildContext context) {
     s = MediaQuery.of(context).size;
     h = s.height;
@@ -26,8 +31,17 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: FloatingActionButton.extended(
           backgroundColor: Color(0Xff0C5DAD),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SettingsPage()));
+            FirebaseFirestore.instance
+                .collection("users")
+                .doc(user.uid)
+                .collection("Health")
+                .get()
+                .then((value) => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HealthPage(
+                              HealthRef: value,
+                            ))));
           },
           label: Text("Settings"),
           icon: Icon(Icons.add),
@@ -91,7 +105,7 @@ class _HomePageState extends State<HomePage> {
                         "Get together with your buddies and enjoy your time..."),
                     Column(
                       children: [
-                        MedicineCard("Milk", "8:00 AM"),
+                        MedicineCardHome("Milk", "8:00 AM"),
                         SizedBox(
                           height: 26 * h / 640,
                         ),
@@ -129,10 +143,10 @@ void _showdialogue(context) {
                         MaterialPageRoute(
                             builder: ((context) => LoginPage())))),
                 child: Text("Yes")),
-            TextButton(onPressed: () =>Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => BottomNavBar()))), child: Text("No")),
+            TextButton(
+                onPressed: () => Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: ((context) => BottomNavBar()))),
+                child: Text("No")),
           ],
         );
       });
