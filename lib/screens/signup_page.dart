@@ -150,8 +150,8 @@ class _EmailSignUpFieldState extends State<EmailSignUpField> {
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.mail),
-        contentPadding: EdgeInsets.fromLTRB(
-            20 * w / 360, 15 * h / 640, 20 * w / 360, 15 * h / 640),
+        contentPadding: EdgeInsets.only(
+            left:20 * w / 360, top:15 * h / 640, right:20 * w / 360, ),
         hintText: "Email",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20 * w / 360),
