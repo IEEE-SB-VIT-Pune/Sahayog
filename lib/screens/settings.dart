@@ -126,7 +126,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     .then((value) => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ContactsPage())));
+                            builder: (context) => ContactsPage(ContactRef: value,))));
               },
             ),
             SettingCard(title: "Language", icon: Icons.language_outlined),

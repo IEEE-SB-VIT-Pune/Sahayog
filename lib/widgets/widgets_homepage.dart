@@ -193,16 +193,16 @@ class _EventCardHomeState extends State<EventCardHome> {
   }
 }
 
-class MedicineCard extends StatefulWidget {
+class MedicineCardHome extends StatefulWidget {
   String medicine;
   String medTime;
-  MedicineCard(this.medicine, this.medTime);
+  MedicineCardHome(this.medicine, this.medTime);
 
   @override
-  State<MedicineCard> createState() => _MedicineCardState();
+  State<MedicineCardHome> createState() => _MedicineCardHomeState();
 }
 
-class _MedicineCardState extends State<MedicineCard> {
+class _MedicineCardHomeState extends State<MedicineCardHome> {
   @override
   var h, s, w;
 
