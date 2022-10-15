@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/models/user_model.dart';
+import 'package:ieee_app_project/screens/Settings/Profile_Create.dart';
 import 'package:ieee_app_project/screens/Settings/password.dart';
 import 'package:ieee_app_project/screens/Settings/profile.dart';
 
@@ -233,7 +234,7 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ProfilePage()));
+                                    builder: (context) => ProfileCreate()));
                           },
                           child: Row(
                             children: [
@@ -253,6 +254,7 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                             ],
                           ),
                         ),
+                        
                       ])),
             )
           ],

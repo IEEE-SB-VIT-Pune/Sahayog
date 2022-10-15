@@ -8,8 +8,16 @@ final List<Widget> EventCardList = [
         'Get together with your buddies and enjoy your time with a little competitive spirit. ',
     Location: "Common Area ",
     Time: "4:00 pm",
-    Colorpick: 1,
-    BorderColor: 0,
+    
+    CardColor: 0,
+  ),
+  EventCard(
+    Event: "Karaoke Session",
+    About:
+        'Vibe to the old songs and Live the Kishor Kumar era again.Find your Inner Voice! ',
+    Location: "Inox ",
+    Time: "7:00 pm",
+    
     CardColor: 1,
   ),
   EventCard(
@@ -18,18 +26,7 @@ final List<Widget> EventCardList = [
         'Vibe to the old songs and Live the Kishor Kumar era again.Find your Inner Voice! ',
     Location: "Inox ",
     Time: "7:00 pm",
-    Colorpick: 0,
-    BorderColor: 0,
-    CardColor: 1,
-  ),
-  EventCard(
-    Event: "Karaoke Session",
-    About:
-        'Vibe to the old songs and Live the Kishor Kumar era again.Find your Inner Voice! ',
-    Location: "Inox ",
-    Time: "7:00 pm",
-    Colorpick: 0,
-    BorderColor: 0,
+    
     CardColor: 1,
   ),
 ];
