@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ieee_app_project/screens/listEvent.dart';
+import 'package:ieee_app_project/screens/Events/listEvent.dart';
 
 class VerticalSlider extends StatelessWidget {
   @override
@@ -24,6 +24,8 @@ class VerticalSlider extends StatelessWidget {
             );
           });
     }
+
+    var h = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: AppBar(
@@ -48,7 +50,8 @@ class VerticalSlider extends StatelessWidget {
         children: [
           CarouselSlider(
             options: CarouselOptions(
-              aspectRatio: 20 / 9,
+              height: h / 1.19,
+              viewportFraction: 0.449,
               enlargeCenterPage: true,
               scrollDirection: Axis.vertical,
               autoPlay: false,

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:ieee_app_project/screens/login_page.dart';
+import 'package:ieee_app_project/screens/UserAuth/login_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -30,19 +30,15 @@ class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
   @override
-  Widget build(BuildContext context)  =>Scaffold(
-    
-    body:StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData){
-          return BottomNavBar();
-        }
-        else{
-          return LoginPage();
-        } 
-      }
-    ),
-  );
-    
-  }
+  Widget build(BuildContext context) => Scaffold(
+        body: StreamBuilder<User?>(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return BottomNavBar();
+              } else {
+                return LoginPage();
+              }
+            }),
+      );
+}

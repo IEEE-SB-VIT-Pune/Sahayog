@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/models/user_model.dart';
-import 'package:ieee_app_project/screens/contact_add.dart';
+import 'package:ieee_app_project/screens/Settings/add_contact.dart';
 import 'package:ieee_app_project/widgets/Contact_Card.dart';
 
 class ContactsPage extends StatefulWidget {
@@ -13,18 +13,19 @@ class ContactsPage extends StatefulWidget {
   @override
   State<ContactsPage> createState() => _ContactsPageState();
 }
-  List<QueryDocumentSnapshot> docE = [];
+
+List<QueryDocumentSnapshot> docE = [];
 
 class _ContactsPageState extends State<ContactsPage> {
   User? user = FirebaseAuth.instance.currentUser;
 
   @override
-  var s,h,w;
+  var s, h, w;
   Widget build(BuildContext context) {
     docE = widget.ContactRef.docs.toList();
 
     UserModel loggedInUser = UserModel();
-     s = MediaQuery.of(context).size;
+    s = MediaQuery.of(context).size;
     h = s.height;
     w = s.width;
 
@@ -40,7 +41,6 @@ class _ContactsPageState extends State<ContactsPage> {
       body: ListView(children: [
         for (int i = 0; i < docE.length; i++) ContactCard(docE[i])
       ]),
-     
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(

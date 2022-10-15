@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ieee_app_project/screens/health_fields.dart';
+import 'package:ieee_app_project/screens/Health/health_fields.dart';
+
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:ieee_app_project/models/user_model.dart';
 
@@ -28,7 +29,6 @@ class _HealthPageState extends State<HealthPage> {
     doc = widget.HealthRef.docs.toList();
 
     UserModel loggedInUser = UserModel();
-
 
     s = MediaQuery.of(context).size;
     h = s.height;
@@ -63,8 +63,6 @@ class _HealthPageState extends State<HealthPage> {
           physics: BouncingScrollPhysics(),
           children: [for (int i = 0; i < doc.length; i++) MedicineCard(doc[i])],
         ),
-
-        
         floatingActionButton: FloatingActionButton(
           backgroundColor: Color(0Xff0C5DAD),
           onPressed: () {
@@ -165,55 +163,55 @@ class _MedicineCardState extends State<MedicineCard> {
                     SizedBox(
                       height: 8 * h / 640,
                     ),
-                     Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(children: [SizedBox(
-                      width: 9 * w / 360,
-                    ),
-                    Icon(
-                      Icons.access_time_filled_rounded,
-                      size: 21 * w / 360,
-                      color: Color(0Xff0C5DAD),
-                    ),
-                    SizedBox(
-                      width: 11 * w / 360,
-                    ),
-                    Text(
-                      widget.doc['timeOfIntake'],
-                      style: GoogleFonts.lato(
-                          fontSize: 18 * w / 360,
-                          color: Color(0Xff0C5DAD),
-                          fontWeight: FontWeight.bold),
-                    ),],),
-
-                   
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(widget.doc['Dosage1']+"  - ",
-                            style: GoogleFonts.lato(
-                                fontSize: 18 * w / 360,
-                                color: Color(0Xff0C5DAD),
-                                fontWeight: FontWeight.bold)),
-                                
-                        Text(widget.doc['Dosage2']+"  - ",
-                            style: GoogleFonts.lato(
-                                fontSize: 18 * w / 360,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold)),
-                                
-                        Text(widget.doc['Dosage3'],
-                            style: GoogleFonts.lato(
-                                fontSize: 18 * w / 360,
-                                color: Color(0Xff0C5DAD),
-                                fontWeight: FontWeight.bold)),
-                                SizedBox(
-                      width: 11 * w / 360,
-                    ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 9 * w / 360,
+                            ),
+                            Icon(
+                              Icons.access_time_filled_rounded,
+                              size: 21 * w / 360,
+                              color: Color(0Xff0C5DAD),
+                            ),
+                            SizedBox(
+                              width: 11 * w / 360,
+                            ),
+                            Text(
+                              widget.doc['timeOfIntake'],
+                              style: GoogleFonts.lato(
+                                  fontSize: 18 * w / 360,
+                                  color: Color(0Xff0C5DAD),
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(widget.doc['Dosage1'] + "  - ",
+                                style: GoogleFonts.lato(
+                                    fontSize: 18 * w / 360,
+                                    color: Color(0Xff0C5DAD),
+                                    fontWeight: FontWeight.bold)),
+                            Text(widget.doc['Dosage2'] + "  - ",
+                                style: GoogleFonts.lato(
+                                    fontSize: 18 * w / 360,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold)),
+                            Text(widget.doc['Dosage3'],
+                                style: GoogleFonts.lato(
+                                    fontSize: 18 * w / 360,
+                                    color: Color(0Xff0C5DAD),
+                                    fontWeight: FontWeight.bold)),
+                            SizedBox(
+                              width: 11 * w / 360,
+                            ),
+                          ],
+                        ),
                       ],
                     ),
-                  ],
-                ),
                     SizedBox(
                       height: 10 * h / 640,
                     )
@@ -290,48 +288,48 @@ class _MedicineCardState extends State<MedicineCard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(children: [SizedBox(
-                      width: 9 * w / 360,
-                    ),
-                    Icon(
-                      Icons.access_time_filled_rounded,
-                      size: 21 * w / 360,
-                      color: Color(0Xff0C5DAD),
-                    ),
-                    SizedBox(
-                      width: 11 * w / 360,
-                    ),
-                    Text(
-                      widget.doc['timeOfIntake'],
-                      style: GoogleFonts.lato(
-                          fontSize: 18 * w / 360,
-                          color: Color(0Xff0C5DAD),
-                          fontWeight: FontWeight.bold),
-                    ),],),
-
-                   
                     Row(
                       children: [
-                        Text(widget.doc['Dosage1']+"  - ",
+                        SizedBox(
+                          width: 9 * w / 360,
+                        ),
+                        Icon(
+                          Icons.access_time_filled_rounded,
+                          size: 21 * w / 360,
+                          color: Color(0Xff0C5DAD),
+                        ),
+                        SizedBox(
+                          width: 11 * w / 360,
+                        ),
+                        Text(
+                          widget.doc['timeOfIntake'],
+                          style: GoogleFonts.lato(
+                              fontSize: 18 * w / 360,
+                              color: Color(0Xff0C5DAD),
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(widget.doc['Dosage1'] + "  - ",
                             style: GoogleFonts.lato(
                                 fontSize: 18 * w / 360,
                                 color: Color(0Xff0C5DAD),
                                 fontWeight: FontWeight.bold)),
-                                
-                        Text(widget.doc['Dosage2']+"  - ",
+                        Text(widget.doc['Dosage2'] + "  - ",
                             style: GoogleFonts.lato(
                                 fontSize: 18 * w / 360,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold)),
-                                
                         Text(widget.doc['Dosage3'],
                             style: GoogleFonts.lato(
                                 fontSize: 18 * w / 360,
                                 color: Color(0Xff0C5DAD),
                                 fontWeight: FontWeight.bold)),
-                                SizedBox(
-                      width: 11 * w / 360,
-                    ),
+                        SizedBox(
+                          width: 11 * w / 360,
+                        ),
                       ],
                     ),
                   ],
