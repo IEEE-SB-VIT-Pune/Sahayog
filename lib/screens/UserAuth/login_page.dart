@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ieee_app_project/screens/signup_page.dart';
+import 'package:ieee_app_project/screens/UserAuth/signup_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
-import 'package:ieee_app_project/widgets/login_signup_widgets/email_field.dart';
-import 'package:ieee_app_project/widgets/login_signup_widgets/password_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../widgets/UserAuthWidgets/email_field.dart';
+import '../../widgets/UserAuthWidgets/password_field.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

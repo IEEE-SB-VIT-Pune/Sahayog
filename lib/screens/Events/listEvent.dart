@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:ieee_app_project/widgets/event_card.dart';
 
 final List<Widget> EventCardList = [

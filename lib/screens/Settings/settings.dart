@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/models/user_model.dart';
-import 'package:ieee_app_project/screens/Contact_page.dart';
-import 'package:ieee_app_project/screens/Profile_Display.dart';
-import 'package:ieee_app_project/screens/login_page.dart';
-import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
+import 'package:ieee_app_project/screens/Settings/Contact_page.dart';
+import 'package:ieee_app_project/screens/Settings/Profile_Display.dart';
+import 'package:ieee_app_project/screens/UserAuth/login_page.dart';
 import 'package:ieee_app_project/widgets/setting_card.dart';
 
 class SettingsPage extends StatefulWidget {
