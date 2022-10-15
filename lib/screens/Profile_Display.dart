@@ -28,9 +28,9 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
   void getdata() async {
     await FirebaseFirestore.instance
         .collection("users")
-        .doc(user!.uid).collection("User Details")
-        .doc("xPmynCl7OUYUoQUfDKFV")
-
+        .doc(user!.uid)
+        .collection("User Details")
+        .doc(user!.uid)
         .get()
         .then((value) {
       setState(() {

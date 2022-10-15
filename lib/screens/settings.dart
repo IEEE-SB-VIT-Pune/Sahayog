@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/models/user_model.dart';
 import 'package:ieee_app_project/screens/Contact_page.dart';
 import 'package:ieee_app_project/screens/Profile_Display.dart';
+import 'package:ieee_app_project/screens/login_page.dart';
+import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:ieee_app_project/widgets/setting_card.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -27,7 +30,7 @@ class _SettingsPageState extends State<SettingsPage> {
     await FirebaseFirestore.instance
         .collection("users")
         .doc(user!.uid)
-        .get()
+        .get() //reads document
         .then((value) {
       setState(() {
         loggedInUser = UserModel.fromMap(value.data());
@@ -41,7 +44,9 @@ class _SettingsPageState extends State<SettingsPage> {
     h = MediaQuery.of(context).size.height;
     w = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Color(0xFFFFFFFF),
       appBar: AppBar(
+        elevation: 0,
         title: Text('Settings',
             style: GoogleFonts.montserrat(
                 fontSize: w / 17,
@@ -54,20 +59,24 @@ class _SettingsPageState extends State<SettingsPage> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.fromLTRB(h / 32, h / 24, h / 32, h / 30),
+              padding: EdgeInsets.fromLTRB(h / 32, h / 30, h / 32, h / 38),
               child: Container(
                   child: Padding(
                     padding: EdgeInsets.all(h / 95),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text(
-                              "${loggedInUser.name}",
-                              style: GoogleFonts.poppins(
-                                  fontSize: w / 17,
-                                  fontWeight: FontWeight.w500),
+                            Container(
+                              width: w / 2.8,
+                              child: Text(
+                                "${loggedInUser.name}", //fetches name of logged in user
+                                style: GoogleFonts.poppins(
+                                    fontSize: w / 23,
+                                    fontWeight: FontWeight.w500),
+                              ),
                             ),
                             Row(
                               children: [
@@ -82,15 +91,12 @@ class _SettingsPageState extends State<SettingsPage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                ProfileDisplay()));
+                                                ProfileDisplay())); //navigates to profile details page
                                   },
                                 ),
                               ],
                             ),
                           ],
-                        ),
-                        SizedBox(
-                          width: 60 * w / 360,
                         ),
                         CircleAvatar(
                           backgroundImage: NetworkImage(
@@ -103,6 +109,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   width: w / 1.65,
                   height: w / 4.6,
                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5 * w / 360),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.5),
@@ -126,7 +133,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     .then((value) => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ContactsPage(ContactRef: value,))));
+                            builder: (context) => ContactsPage(
+                                  ContactRef: value,
+                                ))));
               },
             ),
             SettingCard(title: "Language", icon: Icons.language_outlined),
@@ -134,18 +143,40 @@ class _SettingsPageState extends State<SettingsPage> {
             SettingCard(title: "Privacy Policy", icon: Icons.book_online),
             SettingCard(title: "Terms of Service", icon: Icons.policy_rounded),
             Padding(
-              padding: EdgeInsets.fromLTRB(h / 32, h / 55, h / 32, h / 30),
-              child: Column(
-                children: [
-                  Divider(color: Colors.grey.shade500, thickness: 2),
-                  Container(
+              padding: EdgeInsets.only(
+                  right: 13 * w / 360,
+                  left: 13 * w / 360,
+                  bottom: 10 * h / 640),
+              child: Divider(
+                color: Color(0xFFC3BFBF),
+                thickness: 2 * h / 640,
+              ),
+            ),
+            Column(
+              children: [
+                InkWell(
+                  onTap: () => _showdialogue(context),
+                  child: Container(
                       alignment: Alignment.center,
-                      child: Text("Log out",
-                          style: GoogleFonts.poppins(
-                              fontSize: w / 24, fontWeight: FontWeight.w500)),
+                      child: Row(
+                        children: [
+                          SizedBox(width: 40 * w / 360),
+                          FaIcon(
+                            FontAwesomeIcons.rightFromBracket,
+                            color: Color(0xFFFFFFFF),
+                          ),
+                          SizedBox(width: 27 * w / 360),
+                          Text("Log out",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: w / 24,
+                                  fontWeight: FontWeight.w500)),
+                        ],
+                      ),
                       height: h / 19,
                       width: w / 1.15,
                       decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5 * w / 360),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
@@ -154,14 +185,38 @@ class _SettingsPageState extends State<SettingsPage> {
                             offset: Offset(0, w / 150),
                           )
                         ],
-                        color: Colors.red,
+                        color: Color(0xFFD82828),
                       )),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
       ),
     );
   }
+}
+
+void _showdialogue(context) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Logout"),
+          content: Text("Are you sure you want to Logout?"),
+          actions: [
+            TextButton(
+                onPressed: () => FirebaseAuth.instance.signOut().then((value) =>
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => LoginPage())))),
+                child: Text("Yes")),
+            TextButton(
+                onPressed: () => Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: ((context) => SettingsPage()))),
+                child: Text("No")),
+          ],
+        );
+      });
 }

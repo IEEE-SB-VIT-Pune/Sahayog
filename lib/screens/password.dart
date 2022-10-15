@@ -38,7 +38,7 @@ class _PasswordPageState extends State<PasswordPage> {
             ),
             onPressed: () {
               setState(() {
-                _isHidden = !_isHidden;
+                _isHidden = !_isHidden; //show or hide password
               });
             },
           ),
@@ -60,7 +60,7 @@ class _PasswordPageState extends State<PasswordPage> {
             ),
             onPressed: () {
               setState(() {
-                _isHidden = !_isHidden;
+                _isHidden = !_isHidden; //show or hide password
               });
             },
           ),
@@ -87,21 +87,13 @@ class _PasswordPageState extends State<PasswordPage> {
             ),
             onPressed: () {
               setState(() {
-                _isHidden = !_isHidden;
+                _isHidden = !_isHidden; //show or hide password
               });
             },
           ),
           contentPadding: EdgeInsets.fromLTRB(w / 20, w / 30, w / 20, w / 30),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         ),
-        //onSaved: (String? value) {},
-        // validator: (value) {
-        //   if (confirmpassEditingController.text !=
-        //       newpassEditingController.text) {
-        //     return "Password don't match";
-        //   }
-        //   return null;
-        // },
         textInputAction: TextInputAction.next,
       ),
     );
@@ -138,52 +130,57 @@ class _PasswordPageState extends State<PasswordPage> {
           color: Colors.black,
         ),
       ),
-      body: Column(children: <Widget>[
-        SizedBox(height: h / 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(h / 30, 0, 0, 0),
-              child: Text(
-                'Old Password',
-                style: GoogleFonts.lato(fontSize: h / 42, color: Colors.black),
+      body: SingleChildScrollView(
+        child: Column(children: <Widget>[
+          SizedBox(height: h / 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(h / 30, 0, 0, 0),
+                child: Text(
+                  'Old Password',
+                  style:
+                      GoogleFonts.lato(fontSize: h / 42, color: Colors.black),
+                ),
               ),
-            ),
-          ],
-        ),
-        oldpass,
-        SizedBox(height: h / 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(h / 30, 0, 0, 0),
-              child: Text(
-                'New Password',
-                style: GoogleFonts.lato(fontSize: h / 42, color: Colors.black),
+            ],
+          ),
+          oldpass,
+          SizedBox(height: h / 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(h / 30, 0, 0, 0),
+                child: Text(
+                  'New Password',
+                  style:
+                      GoogleFonts.lato(fontSize: h / 42, color: Colors.black),
+                ),
               ),
-            ),
-          ],
-        ),
-        newpass,
-        SizedBox(height: h / 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(h / 30, 0, 0, 0),
-              child: Text(
-                'Confirm New Password',
-                style: GoogleFonts.lato(fontSize: h / 42, color: Colors.black),
+            ],
+          ),
+          newpass,
+          SizedBox(height: h / 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(h / 30, 0, 0, 0),
+                child: Text(
+                  'Confirm New Password',
+                  style:
+                      GoogleFonts.lato(fontSize: h / 42, color: Colors.black),
+                ),
               ),
-            ),
-          ],
-        ),
-        confirmpass,
-        SizedBox(height: h / 40),
-        saveButton
-      ]),
+            ],
+          ),
+          confirmpass,
+          SizedBox(height: h / 40),
+          saveButton
+        ]),
+      ),
     );
   }
 }

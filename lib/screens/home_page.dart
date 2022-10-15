@@ -20,6 +20,25 @@ class _HomePageState extends State<HomePage> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
   @override
+  void initState() {
+    super.initState();
+    getdata();
+  }
+
+  void getdata() async {
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get() //reads document
+        .then((value) {
+      setState(() {
+        loggedInUser = UserModel.fromMap(value.data());
+      });
+    });
+    setState(() {});
+  }
+
+  @override
   var h, s, w;
 
   Widget build(BuildContext context) {
@@ -109,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           height: 26 * h / 640,
                         ),
-                        ContactWidget("Samarth", "9211420420")
+                        ContactWidget("${loggedInUser.name}", "9211420420")
                       ],
                     )
                   ],
