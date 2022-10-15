@@ -1,24 +1,32 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ieee_app_project/models/user_model.dart';
 import 'package:ieee_app_project/screens/contact_add.dart';
 import 'package:ieee_app_project/widgets/Contact_Card.dart';
 
-class ContactPage extends StatefulWidget {
-  final QuerySnapshot Emergency;
-  ContactPage(this.Emergency);
+class ContactsPage extends StatefulWidget {
+  final QuerySnapshot ContactRef;
+  const ContactsPage({Key? key, required this.ContactRef}) : super(key: key);
+
   @override
-  State<ContactPage> createState() => _ContactPageState();
+  State<ContactsPage> createState() => _ContactsPageState();
 }
+  List<QueryDocumentSnapshot> docE = [];
 
-List<QueryDocumentSnapshot> docsListG = [];
+class _ContactsPageState extends State<ContactsPage> {
+  User? user = FirebaseAuth.instance.currentUser;
 
-class _ContactPageState extends State<ContactPage> {
   @override
+  var s,h,w;
   Widget build(BuildContext context) {
-    docsListG = widget.Emergency.docs.toList();
-    var h;
-    h = MediaQuery.of(context).size.height;
+    docE = widget.ContactRef.docs.toList();
+
+    UserModel loggedInUser = UserModel();
+     s = MediaQuery.of(context).size;
+    h = s.height;
+    w = s.width;
 
     return Scaffold(
       appBar: AppBar(
@@ -29,51 +37,18 @@ class _ContactPageState extends State<ContactPage> {
         elevation: 0,
         centerTitle: true,
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(10),
-        children: <Widget>[
-          Container(
-            height: 15 * h / 640,
-          ),
-          for (int i = 0; i < docsListG.length; i++) ContactCard(docsListG[i]),
-          // StreamBuilder<QuerySnapshot>(
-          //     stream: FirebaseFirestore.instance
-          //         .collection("users")
-          //         .doc("fWjEFL0FaJQDGaf9rF4xVmC1RRr2")
-          //         .collection("Contacts")
-          //         .snapshots(),
-          //     builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          //       if (snapshot.hasData) {
-          //         return GridView(
-          //             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          //                 crossAxisCount: 1),
-          //             children: snapshot.data!.docs
-          //                 .map((Contacts) => ContactCard(Contacts))
-          //                 .toList());
-          //       }
-
-          //   return Text(
-          //     "There are no notes",
-          //     style: GoogleFonts.nunito(color: Colors.white),
-          //   );
-          // }),
-          // ContactCard(
-          //     Name: "Ahana Singh", Number: "1234567890", Relation: "Daughter"),
-          // SizedBox(height: 20 * h / 640),
-          // ContactCard(
-          //     Name: "Ahana Singh", Number: "1234567890", Relation: "Daughter"),
-          SizedBox(
-            height: 20 * h / 640,
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
+      body: ListView(children: [
+        for (int i = 0; i < docE.length; i++) ContactCard(docE[i])
+      ]),
+     
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => Contact_Add()));
         },
-        backgroundColor: Colors.white,
-        child: Icon(
+        backgroundColor: Colors.black,
+        label: Text("Add Contacts"),
+        icon: Icon(
           Icons.add,
           color: Colors.blue.shade900,
         ),

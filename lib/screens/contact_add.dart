@@ -130,14 +130,14 @@ class _Contact_AddState extends State<Contact_Add> {
 
                           UserModel usm = UserModel();
 
-                          usm.name = nameEditingController.text;
+                          usm.emergencyName = nameEditingController.text;
                           usm.phone = phoneEditingController.text;
 
                           await firebaseFirestore
                               .collection("users")
                               .doc(FirebaseAuth.instance.currentUser!.uid)
-                              .collection("Contacts")
-                              .add(usm.toMap())
+                              .collection("Contacts").doc()
+                              .set(usm.contact())
                               .then((value) {
                             Navigator.pop(context);
                             Fluttertoast.showToast(

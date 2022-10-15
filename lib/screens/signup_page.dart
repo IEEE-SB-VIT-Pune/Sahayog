@@ -9,6 +9,7 @@ import 'package:ieee_app_project/screens/login_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:ieee_app_project/widgets/login_signup_widgets/confirm_password_field.dart';
 import 'package:ieee_app_project/widgets/login_signup_widgets/password_field.dart';
+
 import '../models/user_model.dart';
 import '../widgets/login_signup_widgets/email_field.dart';
 
@@ -91,7 +92,7 @@ class _PasswordSignUpFieldState extends State<PasswordSignUpField> {
         }
       },
       onSaved: (valve) {
-        passwordController.text = valve!;
+        passwordSignupController.text = valve!;
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
@@ -144,13 +145,13 @@ class _EmailSignUpFieldState extends State<EmailSignUpField> {
         return null;
       },
       onSaved: (value) {
-        emailController.text = value!;
+        emailSignupController.text = value!;
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.mail),
-        contentPadding: EdgeInsets.fromLTRB(
-            20 * w / 360, 15 * h / 640, 20 * w / 360, 15 * h / 640),
+        contentPadding: EdgeInsets.only(
+            left:20 * w / 360, top:15 * h / 640, right:20 * w / 360, ),
         hintText: "Email",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20 * w / 360),
@@ -351,12 +352,15 @@ class _SignUpPageState extends State<SignUpPage> {
     usm.uid = user.uid;
     usm.name = nameController.text;
 
-    await firebaseFirestore.collection("users").doc(usm.uid!).set(usm.toMap());
+    await firebaseFirestore
+        .collection("users")
+        .doc(usm.uid!)
+        .set(usm.thisMap());
     Fluttertoast.showToast(msg: "Account created successfully :) ");
 
     Navigator.pushAndRemoveUntil(
         (context),
-        MaterialPageRoute(builder: (context) => BottomNavBar(1)),
+        MaterialPageRoute(builder: (context) => BottomNavBar()),
         (route) => false);
   }
 
