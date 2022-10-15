@@ -221,53 +221,6 @@ class _ProfilePageState extends State<ProfilePage> {
                                       borderRadius: BorderRadius.circular(5))),
                             ),
                           )
-                          // SizedBox(
-                          //   height: h / 22,
-                          //   width: w / 5,
-                          //   child: TextFormField(
-                          //     keyboardType: TextInputType.text,
-                          //     decoration: InputDecoration(
-                          //         icon: Icon(Icons.calendar_month,
-                          //             color: Colors.blue.shade900),
-                          //         fillColor: Colors.grey.shade100,
-                          //         filled: true,
-                          //         hintText: "DD",
-                          //         contentPadding: EdgeInsets.only(left: w / 38),
-                          //         border: OutlineInputBorder(
-                          //             borderRadius: BorderRadius.circular(5)),
-                          //         focusColor: Colors.blue.shade900),
-                          //   ),
-                          // ),
-                          // Padding(padding: EdgeInsets.only(left: w / 50)),
-                          // SizedBox(
-                          //   height: h / 22,
-                          //   width: w / 2,
-                          //   child: Text(
-                          //     '/',
-                          //     style: TextStyle(
-                          //         fontSize: h / 25,
-                          //         color: Colors.grey.shade600),
-                          //   ),
-                          // ),
-                          // SizedBox(
-                          //   height: h / 22,
-                          //   width: w / 5,
-                          //   child: TextFormField(
-                          //     keyboardType: TextInputType.text,
-                          //     decoration: InputDecoration(
-                          //         icon: Icon(Icons.calendar_month,
-                          //             color: Colors.blue.shade900),
-                          //         fillColor: Colors.grey.shade100,
-                          //         filled: true,
-                          //         hintText: "DD",
-                          //         contentPadding: EdgeInsets.only(left: w / 38),
-                          //         border: OutlineInputBorder(
-                          //             borderRadius: BorderRadius.circular(5)),
-                          //         focusColor: Colors.blue.shade900),
-                          //   ),
-                          // ),
-                          // Padding(padding: EdgeInsets.only(left: w / 50)),
-                          // // SizedBox(height: h/22,width: w/2,child: Text('/',style: TextStyle(fontSize: h/25,color: Colors.grey.shade600),),)
                         ],
                       ),
                       SizedBox(height: h / 40),
@@ -330,14 +283,11 @@ class _ProfilePageState extends State<ProfilePage> {
 
                               await firebaseFirestore
                                   .collection("users")
-                                  // .doc(usm.uid!)
-                                  .doc(FirebaseAuth.instance.currentUser!.uid)
-                                  .collection("user_Details")
-                                  // .doc(FirebaseAuth.instance.currentUser!.uid)
-                                  // .collection("Health")
-                                  .add(usm.thisMap())
+                                  .doc(user!.uid)
+                                  .collection("User Details")
+                                  .doc(user.uid)
+                                  .set(usm.userMap())
                                   .then((value) {
-                                // Navigator.pop(context);
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(

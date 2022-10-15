@@ -4,7 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 class SettingCard extends StatelessWidget {
   String title = "";
   final IconData icon;
-  SettingCard({required this.title, required this.icon});
+  SettingCard(
+      {required this.title, required this.icon}); //parameterised icon and title
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class SettingCard extends StatelessWidget {
     h = MediaQuery.of(context).size.height;
     w = MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.fromLTRB(h / 22, h / 35, h / 22, h / 35),
+      padding: EdgeInsets.fromLTRB(h / 22, h / 40, h / 22, h / 40),
       child: Container(
           alignment: Alignment.center,
           child: Row(
@@ -44,6 +45,7 @@ class SettingCard extends StatelessWidget {
           ),
           height: h / 17,
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5 * w / 360),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),

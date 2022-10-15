@@ -53,7 +53,6 @@ class UserModel {
       Dosage3: map['Dosage3'],
       instructions: map['instructions'],
     );
-
   }
 
   //sending data to server
@@ -64,7 +63,7 @@ class UserModel {
     };
   }
 
-  Map<String, dynamic> thisMap() {
+  Map<String, dynamic> userMap() {
     return {
       'name': name,
       'phone': phone,

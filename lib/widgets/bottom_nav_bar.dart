@@ -2,18 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ieee_app_project/models/user_model.dart';
-import 'package:ieee_app_project/screens/Contact_page.dart';
-import 'package:ieee_app_project/screens/contact_add.dart';
-import 'package:ieee_app_project/screens/health_page.dart';
 import 'package:ieee_app_project/screens/home_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ieee_app_project/screens/profile.dart';
 import 'package:ieee_app_project/screens/settings.dart';
 
-
 class BottomNavBar extends StatefulWidget {
-    
-   BottomNavBar();
+  BottomNavBar();
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -23,14 +18,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
   final screens = [SettingsPage(), HomePage(), ProfilePage()];
   var h, w;
-    User? user = FirebaseAuth.instance.currentUser;
-
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
-        UserModel loggedInUser = UserModel();
+    UserModel loggedInUser = UserModel();
 
-     void getdata() async {
+    void getdata() async {
       await FirebaseFirestore.instance
           .collection("users")
           .doc(user!.uid)
@@ -44,7 +38,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
       });
       setState(() {});
     }
-     void initState() {
+
+    void initState() {
       super.initState();
       getdata();
     }
@@ -52,7 +47,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     h = MediaQuery.of(context).size.height;
     w = MediaQuery.of(context).size.width;
     return DefaultTabController(
-      length: 3,
+      length: 3, // number of tabs
       initialIndex: 1,
       child: Scaffold(
         body: TabBarView(
@@ -61,13 +56,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
         bottomNavigationBar: Container(
           height: h / 12,
           decoration: BoxDecoration(
-            boxShadow:  [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5 * w / 360,
-                      blurRadius: 2 * w / 360,
-                      offset: Offset(0, 3),
-                    ),],
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5 * w / 360,
+                blurRadius: 2 * w / 360,
+                offset: Offset(0, 3),
+              ),
+            ],
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(w / 15),
               topRight: Radius.circular(w / 15),
