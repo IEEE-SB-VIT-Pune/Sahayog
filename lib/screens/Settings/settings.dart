@@ -48,11 +48,18 @@ class _SettingsPageState extends State<SettingsPage> {
       backgroundColor: Color(0xFFFFFFFF),
       appBar: AppBar(
         elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: FaIcon(FontAwesomeIcons.angleLeft),
+          color: Colors.black,
+        ),
         title: Text('Settings',
             style: GoogleFonts.montserrat(
-                fontSize: w / 17,
+                fontSize: 22 * w / 360,
                 color: Colors.black,
-                fontWeight: FontWeight.bold)),
+                fontWeight: FontWeight.w600)),
         backgroundColor: Colors.white,
         centerTitle: true,
       ),
@@ -144,9 +151,7 @@ class _SettingsPageState extends State<SettingsPage> {
           SettingCard(title: "Terms of Service", icon: Icons.policy_rounded),
           Padding(
             padding: EdgeInsets.only(
-                right: 13 * w / 360,
-                left: 13 * w / 360,
-                bottom: 10 * h / 640),
+                right: 13 * w / 360, left: 13 * w / 360, bottom: 10 * h / 640),
             child: Divider(
               color: Color(0xFFC3BFBF),
               thickness: 2 * h / 640,
