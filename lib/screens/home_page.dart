@@ -10,9 +10,13 @@ import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:ieee_app_project/widgets/widgets_homepage.dart';
 
 class HomePage extends StatefulWidget {
+    // final QuerySnapshot HomePageRef;
+
+  const HomePage({Key? key, }) : super(key: key);
   @override
   State<HomePage> createState() => _HomePageState();
 }
+List<QueryDocumentSnapshot> docHomepage = [];
 
 class _HomePageState extends State<HomePage> {
   User? user = FirebaseAuth.instance.currentUser;
@@ -20,10 +24,26 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    getdata();
+    getcontactdata();
+    gethealthdata();
+
   }
 
-  void getdata() async {
+  void getcontactdata() async {
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .collection("Contacts")
+        .doc()
+        .get() //reads document
+        .then((value) {
+      setState(() {
+        loggedInUser = UserModel.fromMap(value.data());
+      });
+    });
+    setState(() {});
+  }
+  void gethealthdata() async {
     await FirebaseFirestore.instance
         .collection("users")
         .doc(user!.uid)
@@ -126,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           height: 26 * h / 640,
                         ),
-                        ContactWidget("${loggedInUser.name}", "9211420420")
+                        ContactWidget()
                       ],
                     )
                   ],

@@ -1,4 +1,5 @@
 class UserModel {
+  int? contactIndex;
   String? email,
       name,
       uid,
@@ -17,6 +18,7 @@ class UserModel {
       Dosage3;
   int? color_id;
   UserModel({
+    this.contactIndex,
     this.email,
     this.uid,
     this.name,
@@ -40,7 +42,6 @@ class UserModel {
       email: map['email'],
       name: map['name'],
       phone: map['phone'],
-      // relation: map['relation'],
       emergencyName: map['emergencyName'],
       dob: map['dob'],
       mob: map['mob'],
@@ -60,6 +61,7 @@ class UserModel {
     return {
       'emergencyName': emergencyName,
       'phone': phone,
+      'contactIndex':contactIndex,
     };
   }
 
