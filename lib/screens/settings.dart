@@ -7,6 +7,8 @@ import 'package:ieee_app_project/screens/Contact_page.dart';
 import 'package:ieee_app_project/screens/Profile_Display.dart';
 import 'package:ieee_app_project/widgets/setting_card.dart';
 
+import 'login_page.dart';
+
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
@@ -126,7 +128,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     .then((value) => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ContactsPage(ContactRef: value,))));
+                            builder: (context) => ContactsPage(
+                                  ContactRef: value,
+                                ))));
               },
             ),
             SettingCard(title: "Language", icon: Icons.language_outlined),
@@ -138,24 +142,31 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Column(
                 children: [
                   Divider(color: Colors.grey.shade500, thickness: 2),
-                  Container(
-                      alignment: Alignment.center,
-                      child: Text("Log out",
-                          style: GoogleFonts.poppins(
-                              fontSize: w / 24, fontWeight: FontWeight.w500)),
-                      height: h / 19,
-                      width: w / 1.15,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: w / 90,
-                            blurRadius: w / 110,
-                            offset: Offset(0, w / 150),
-                          )
-                        ],
-                        color: Colors.red,
-                      )),
+                  InkWell(
+                    onTap: () => FirebaseAuth.instance.signOut().then((value) =>
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => LoginPage())))),
+                    child: Container(
+                        alignment: Alignment.center,
+                        child: Text("Log out",
+                            style: GoogleFonts.poppins(
+                                fontSize: w / 24, fontWeight: FontWeight.w500)),
+                        height: h / 19,
+                        width: w / 1.15,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: w / 90,
+                              blurRadius: w / 110,
+                              offset: Offset(0, w / 150),
+                            )
+                          ],
+                          color: Colors.red,
+                        )),
+                  )
                 ],
               ),
             ),

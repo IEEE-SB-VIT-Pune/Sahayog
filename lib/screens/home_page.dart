@@ -6,8 +6,6 @@ import 'package:ieee_app_project/screens/health_page.dart';
 import 'package:ieee_app_project/screens/profile.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/login_page.dart';
-import 'package:ieee_app_project/screens/password.dart';
-import 'package:ieee_app_project/screens/settings.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:ieee_app_project/widgets/widgets_homepage.dart';
 
