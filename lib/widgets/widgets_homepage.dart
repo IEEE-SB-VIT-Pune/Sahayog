@@ -4,11 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
-import 'package:ieee_app_project/screens/events_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 
 class QuoteCard extends StatefulWidget {
-  
   QuoteCard();
 
   @override
@@ -42,7 +40,6 @@ class _QuoteCardState extends State<QuoteCard> {
           } else {
             return Center(
               child: Container(
-                
                 width: 330 * w / 360,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10 * w / 360),
@@ -56,8 +53,9 @@ class _QuoteCardState extends State<QuoteCard> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text( snapshot.data[0].q,
-                      textAlign: TextAlign.justify,
+                      Text(
+                        snapshot.data[0].q,
+                        textAlign: TextAlign.justify,
                         style: GoogleFonts.montserrat(
                             fontSize: 15 * w / 360,
                             fontWeight: FontWeight.w500),
@@ -72,7 +70,9 @@ class _QuoteCardState extends State<QuoteCard> {
                                   fontWeight: FontWeight.w500)),
                         ],
                       ),
-                      SizedBox(height: h/70,)
+                      SizedBox(
+                        height: h / 70,
+                      )
                     ],
                   ),
                 ),

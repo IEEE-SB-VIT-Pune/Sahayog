@@ -4,19 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ieee_app_project/screens/home_page.dart';
-import 'package:ieee_app_project/screens/login_page.dart';
+import 'package:ieee_app_project/models/user_model.dart';
+import 'package:ieee_app_project/screens/UserAuth/login_page.dart';
+import 'package:ieee_app_project/widgets/UserAuthWidgets/confirm_password_field.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
-import 'package:ieee_app_project/widgets/login_signup_widgets/confirm_password_field.dart';
-import 'package:ieee_app_project/widgets/login_signup_widgets/password_field.dart';
-import '../models/user_model.dart';
-import '../widgets/login_signup_widgets/email_field.dart';
 
 TextEditingController passwordSignupController = TextEditingController();
 TextEditingController emailSignupController = TextEditingController();
 TextEditingController nameController = TextEditingController();
 final _auth = FirebaseAuth.instance;
-  
+
 class NameField extends StatefulWidget {
   NameField({super.key});
 
@@ -362,10 +359,8 @@ class _SignUpPageState extends State<SignUpPage> {
         .set(usm.userMap());
     Fluttertoast.showToast(msg: "Account created successfully :) ");
 
-    Navigator.pushAndRemoveUntil(
-        (context),
-        MaterialPageRoute(builder: (context) => BottomNavBar()),
-        (route) => false);
+    Navigator.pushAndRemoveUntil((context),
+        MaterialPageRoute(builder: (context) => LoginPage()), (route) => false);
   }
 
   Future signUp(String email, String password) async {
