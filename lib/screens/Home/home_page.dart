@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:ieee_app_project/models/user_model.dart';
 import 'package:ieee_app_project/screens/Health/health_page.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ieee_app_project/screens/Settings/profile.dart';
 import 'package:ieee_app_project/screens/UserAuth/login_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:ieee_app_project/widgets/widgets_homepage.dart';
+
+import '../Settings/profile.dart';
 
 class HomePage extends StatefulWidget {
   @override

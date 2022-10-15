@@ -26,8 +26,14 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController yobController = TextEditingController();
   TextEditingController genderController = TextEditingController();
   final _auth = FirebaseAuth.instance;
-  List<String> menuItems = ['Gender', 'Male', 'Female', 'Other'];
-  String? selectedValue = 'Gender';
+  List<String> menuItems = [
+    'Gender',
+    'Male',
+    'Female',
+    'Other'
+  ]; // List of the dropdown menu items
+  String? selectedValue =
+      'Gender'; // By default value displayed on the dropdown
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +42,9 @@ class _ProfilePageState extends State<ProfilePage> {
     w = MediaQuery.of(context).size.width;
 
     Map<String, Icon> pairMap = {
+      // The given map pairs string and icon
       'Gender': Icon(
+        // it changes the icon according to the string choosen
         Icons.transgender_sharp,
         color: Colors.blue.shade900,
       ),
@@ -99,6 +107,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       SizedBox(
                           height: h / 20,
                           child: TextFormField(
+                            //Field to enter name
                             controller: nameController,
                             keyboardType: TextInputType.name,
                             decoration: InputDecoration(
@@ -117,6 +126,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       SizedBox(
                         height: h / 20,
                         child: TextFormField(
+                          //Field to enter email
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             icon: Icon(
@@ -136,6 +146,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       SizedBox(
                           height: h / 20,
                           child: TextFormField(
+                            //Field to enter phone number
                             controller: phoneController,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
@@ -156,6 +167,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             height: h / 22,
                             width: w / 4.5,
                             child: TextFormField(
+                              //Field to enter date of birth
                               controller: dobController,
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
@@ -185,6 +197,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             height: h / 22,
                             width: w / 8,
                             child: TextFormField(
+                              //Field to enter month of birth
                               controller: mobController,
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
@@ -211,6 +224,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             height: h / 22,
                             width: w / 7,
                             child: TextFormField(
+                              //Field to enter year of birth
                               controller: yobController,
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
@@ -236,6 +250,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               height: h / 22,
                               width: w / 2.5,
                               child: DropdownButtonFormField(
+                                  //Dropdown box to select gender
                                   value: selectedValue,
                                   onChanged: (item) =>
                                       setState(() => selectedValue = item),

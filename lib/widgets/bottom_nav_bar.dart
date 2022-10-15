@@ -53,7 +53,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       initialIndex: 1,
       child: Scaffold(
         body: TabBarView(
-          children: <Widget>[SettingsPage(), HomePage(), ProfilePage()],
+          children: <Widget>[VerticalSlider(), HomePage(), ProfilePage()],
         ),
         bottomNavigationBar: Container(
           height: h / 12,
@@ -80,19 +80,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
             indicatorColor: Colors.black54,
             tabs: <Widget>[
               Tab(
-                icon: Icon(Icons.event_seat,
-                    size: h / 23, color: Color(0xFF0C5DAD)),
-                text: 'Events',
+                icon: FaIcon(FontAwesomeIcons.heartPulse,
+                    size: h / 28, color: Color(0xFF0C5DAD)),
+                text: 'Health',
               ),
               Tab(
                 icon: FaIcon(FontAwesomeIcons.house,
-                    size: h / 26, color: Color(0xFF0C5DAD)),
+                    size: h / 28, color: Color(0xFF0C5DAD)),
                 text: 'Home',
               ),
               Tab(
-                icon: FaIcon(FontAwesomeIcons.bullhorn,
-                    size: h / 26, color: Color(0xFF0C5DAD)),
-                text: 'Annoucements',
+                icon: FaIcon(FontAwesomeIcons.calendarDay,
+                    size: h / 28, color: Color(0xFF0C5DAD)),
+                text: 'Events',
               ),
             ],
           ),
