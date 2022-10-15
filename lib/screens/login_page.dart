@@ -186,7 +186,7 @@ class _LoginPageState extends State<LoginPage> {
             password: passwordController.text.trim(),
           )
           .then((uid) => {
-                Fluttertoast.showToast(msg: 'Login Successfull'),
+                Fluttertoast.showToast(msg: 'Login Successfully'),
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => BottomNavBar()))
               })

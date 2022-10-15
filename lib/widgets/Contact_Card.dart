@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
 class ContactCard extends StatefulWidget {
   final QueryDocumentSnapshot docE;
   ContactCard(this.docE);
@@ -46,7 +45,8 @@ class ContactCardState extends State<ContactCard> {
                             child: Padding(
                               padding: EdgeInsets.only(
                                   left: w / 20, right: w / 40, top: h / 70),
-                              child: Text(widget.docE["name"],
+                              child: Text(
+                                widget.docE["name"],
                                 style: GoogleFonts.lato(
                                     fontSize: 20 * w / 360,
                                     fontWeight: FontWeight.w700),
@@ -55,12 +55,14 @@ class ContactCardState extends State<ContactCard> {
                         Padding(padding: EdgeInsets.only(left: w / 3)),
                         Icon(
                           Icons.edit,
-                          color: Colors.red.shade900,
+                          color: Colors.red
+                              .shade900, // Helps edit the contact information
                         ),
                         Padding(padding: EdgeInsets.all(3)),
                         Icon(
                           Icons.delete,
-                          color: Colors.red.shade900,
+                          color: Colors.red
+                              .shade900, //Helps delete the contact information
                         ),
                       ],
                     ),
@@ -71,7 +73,8 @@ class ContactCardState extends State<ContactCard> {
                         color: Colors.blue.shade900,
                       ),
                       InkWell(
-                        onTap: phoneCall,
+                        onTap:
+                            phoneCall, // Calls the function to make a phone call
                         child: Padding(
                           padding: EdgeInsets.all(5),
                           child: Text(
@@ -87,7 +90,8 @@ class ContactCardState extends State<ContactCard> {
                       Padding(
                         padding: EdgeInsets.all(10),
                         child: Text(
-                          widget.docE["relation"],
+                          widget.docE[
+                              "relation"], //Displays the relation of mentioned contact
                           style: GoogleFonts.lato(
                               fontSize: 18 * w / 360,
                               fontWeight: FontWeight.w500),
@@ -106,6 +110,7 @@ class ContactCardState extends State<ContactCard> {
   }
 
   phoneCall() async {
+    // Function to make a phone when pressed on the contact number
     var url = Uri.parse("tel:" + widget.docE["phone"]);
     if (await canLaunchUrl(url)) {
       await launchUrl(url);

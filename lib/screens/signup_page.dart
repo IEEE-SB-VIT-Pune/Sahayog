@@ -150,7 +150,10 @@ class _EmailSignUpFieldState extends State<EmailSignUpField> {
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.mail),
         contentPadding: EdgeInsets.only(
-            left:20 * w / 360, top:15 * h / 640, right:20 * w / 360, ),
+          left: 20 * w / 360,
+          top: 15 * h / 640,
+          right: 20 * w / 360,
+        ),
         hintText: "Email",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20 * w / 360),
@@ -354,7 +357,9 @@ class _SignUpPageState extends State<SignUpPage> {
     await firebaseFirestore
         .collection("users")
         .doc(usm.uid!)
-        .set(usm.thisMap());
+        .collection("User Details")
+        .doc(user.uid)
+        .set(usm.userMap());
     Fluttertoast.showToast(msg: "Account created successfully :) ");
 
     Navigator.pushAndRemoveUntil(

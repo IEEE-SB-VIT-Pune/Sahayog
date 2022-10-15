@@ -6,8 +6,6 @@ import 'package:ieee_app_project/screens/health_page.dart';
 import 'package:ieee_app_project/screens/profile.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/login_page.dart';
-import 'package:ieee_app_project/screens/password.dart';
-import 'package:ieee_app_project/screens/settings.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:ieee_app_project/widgets/widgets_homepage.dart';
 
@@ -19,6 +17,25 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
+  @override
+  void initState() {
+    super.initState();
+    getdata();
+  }
+
+  void getdata() async {
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get() //reads document
+        .then((value) {
+      setState(() {
+        loggedInUser = UserModel.fromMap(value.data());
+      });
+    });
+    setState(() {});
+  }
+
   @override
   var h, s, w;
 
@@ -109,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           height: 26 * h / 640,
                         ),
-                        ContactWidget("Samarth", "9211420420")
+                        ContactWidget("${loggedInUser.name}", "9211420420")
                       ],
                     )
                   ],

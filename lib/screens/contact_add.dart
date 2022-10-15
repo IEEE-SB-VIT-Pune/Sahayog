@@ -17,8 +17,13 @@ class _Contact_AddState extends State<Contact_Add> {
   TextEditingController nameEditingController = TextEditingController();
   TextEditingController phoneEditingController = TextEditingController();
 
-  List<String> relations = ['Relation', 'Son', 'Daughter', 'Other'];
-  String? selected = 'Relation';
+  List<String> relations = [
+    'Relation',
+    'Son',
+    'Daughter',
+    'Other'
+  ]; // List with dropdown for relations
+  String? selected = 'Relation'; //Default value for dropdown display
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +58,7 @@ class _Contact_AddState extends State<Contact_Add> {
                     height: h / 20,
                     width: h / 3,
                     child: TextFormField(
+                      // Field to enter name
                       controller: nameEditingController,
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
@@ -72,6 +78,7 @@ class _Contact_AddState extends State<Contact_Add> {
                     height: h / 20,
                     width: h / 3,
                     child: TextFormField(
+                      //Field to enter phone number
                       controller: phoneEditingController,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
@@ -93,6 +100,7 @@ class _Contact_AddState extends State<Contact_Add> {
                       height: h / 20,
                       width: w / 2.5,
                       child: DropdownButtonFormField(
+                          //Drop to select relation
                           value: selected,
                           onChanged: (item) => setState(() => selected = item),
                           items: relations
@@ -136,7 +144,8 @@ class _Contact_AddState extends State<Contact_Add> {
                           await firebaseFirestore
                               .collection("users")
                               .doc(FirebaseAuth.instance.currentUser!.uid)
-                              .collection("Contacts").doc()
+                              .collection("Contacts")
+                              .doc()
                               .set(usm.contact())
                               .then((value) {
                             Navigator.pop(context);
