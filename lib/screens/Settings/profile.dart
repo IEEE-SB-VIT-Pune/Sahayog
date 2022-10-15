@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/models/user_model.dart';
 
@@ -66,13 +67,20 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text(
           'Profile',
           style: GoogleFonts.montserrat(
+              fontSize: 22 * w / 360,
               color: Colors.black,
-              fontSize: w / 15,
-              fontWeight: FontWeight.w300),
+              fontWeight: FontWeight.w600),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: FaIcon(FontAwesomeIcons.angleLeft),
+          color: Colors.black,
+        ),
       ),
       body: Stack(
         children: [
@@ -279,7 +287,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Center(
                               child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.deepPurple.shade500,
+                                backgroundColor: Color(0xFF7FB77E),
                                 minimumSize: const Size.fromWidth(100),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10))),
@@ -317,7 +325,11 @@ class _ProfilePageState extends State<ProfilePage> {
                             }),
                             child: Text(
                               "Save",
-                              style: GoogleFonts.montserrat(),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ))),
                       SizedBox(height: h / 20),

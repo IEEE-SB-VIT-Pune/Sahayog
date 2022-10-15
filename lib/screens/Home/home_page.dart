@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ieee_app_project/models/user_model.dart';
 import 'package:ieee_app_project/screens/Health/health_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ieee_app_project/screens/Settings/settings.dart';
 import 'package:ieee_app_project/screens/UserAuth/login_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:ieee_app_project/widgets/widgets_homepage.dart';
@@ -54,56 +55,25 @@ class _HomePageState extends State<HomePage> {
                 .doc(user.uid)
                 .collection("Health")
                 .get()
-                .then((value) => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => HealthPage(
-                              HealthRef: value,
-                            ))));
+                .then((value) => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SettingsPage())));
           },
           label: Text("Settings"),
-          icon: Icon(Icons.add),
+          icon: Icon(Icons.settings),
         ),
         backgroundColor: Colors.white,
         appBar: AppBar(
-            title: Text(
-              'Home',
-              style: GoogleFonts.montserrat(
-                  fontSize: 22 * w / 360,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600),
-            ),
-            centerTitle: true,
-            elevation: 0,
-            backgroundColor: Colors.white,
-            actions: [
-              PopupMenuButton(
-                icon: Icon(
-                  Icons.account_circle_rounded,
-                  color: Colors.black,
-                  size: 28 * w / 360,
-                ),
-                itemBuilder: (context) {
-                  return [
-                    PopupMenuItem(
-                      value: 1,
-                      child: Text('My Account'),
-                    ),
-                    PopupMenuItem(
-                      value: 2,
-                      child: Text('Logout'),
-                    )
-                  ];
-                },
-                onSelected: (value) {
-                  if (value == 1) {
-                    ProfilePage();
-                  } else if (value == 2) {
-                    _showdialogue(context);
-                  }
-                },
-              ),
-            ]),
+          title: Text(
+            'Home',
+            style: GoogleFonts.montserrat(
+                fontSize: 22 * w / 360,
+                color: Colors.black,
+                fontWeight: FontWeight.w600),
+          ),
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: Colors.white,
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [

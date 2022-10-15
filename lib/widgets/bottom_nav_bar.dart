@@ -3,10 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ieee_app_project/models/user_model.dart';
 import 'package:ieee_app_project/screens/Events/event_page.dart';
+import 'package:ieee_app_project/screens/Health/health_page.dart';
 import 'package:ieee_app_project/screens/Home/home_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ieee_app_project/screens/Settings/settings.dart';
-
 import '../screens/Settings/profile.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -18,7 +18,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
-  final screens = [VerticalSlider(), HomePage(), ProfilePage()];
+  final screens = [SettingsPage(), HomePage(), VerticalSlider()];
   var h, w;
   User? user = FirebaseAuth.instance.currentUser;
 
@@ -53,7 +53,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       initialIndex: 1,
       child: Scaffold(
         body: TabBarView(
-          children: <Widget>[VerticalSlider(), HomePage(), ProfilePage()],
+          children: <Widget>[SettingsPage(), HomePage(), VerticalSlider()],
         ),
         bottomNavigationBar: Container(
           height: h / 12,
