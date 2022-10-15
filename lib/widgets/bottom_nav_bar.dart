@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ieee_app_project/models/user_model.dart';
+import 'package:ieee_app_project/screens/events_page.dart';
 import 'package:ieee_app_project/screens/home_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ieee_app_project/screens/profile.dart';
 import 'package:ieee_app_project/screens/settings.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -16,7 +16,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
-  final screens = [SettingsPage(), HomePage(), ProfilePage()];
+  final screens = [SettingsPage(), HomePage(), EventsPage()];
   var h, w;
   User? user = FirebaseAuth.instance.currentUser;
 
@@ -51,7 +51,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       initialIndex: 1,
       child: Scaffold(
         body: TabBarView(
-          children: <Widget>[SettingsPage(), HomePage(), ProfilePage()],
+          children: <Widget>[SettingsPage(), HomePage(), EventsPage()],
         ),
         bottomNavigationBar: Container(
           height: h / 12,
@@ -78,19 +78,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
             indicatorColor: Colors.black54,
             tabs: <Widget>[
               Tab(
-                icon: Icon(Icons.event_seat,
-                    size: h / 23, color: Color(0xFF0C5DAD)),
-                text: 'Events',
+                icon: FaIcon(FontAwesomeIcons.heartPulse,
+                    size: h / 28, color: Color(0xFF0C5DAD)),
+                text: 'Health',
               ),
               Tab(
                 icon: FaIcon(FontAwesomeIcons.house,
-                    size: h / 26, color: Color(0xFF0C5DAD)),
+                    size: h / 28, color: Color(0xFF0C5DAD)),
                 text: 'Home',
               ),
               Tab(
-                icon: FaIcon(FontAwesomeIcons.bullhorn,
-                    size: h / 26, color: Color(0xFF0C5DAD)),
-                text: 'Annoucements',
+                icon: FaIcon(FontAwesomeIcons.calendarDay,
+                    size: h / 28, color: Color(0xFF0C5DAD)),
+                text: 'Events',
               ),
             ],
           ),

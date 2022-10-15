@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/models/user_model.dart';
 import 'package:ieee_app_project/screens/password.dart';
+import 'package:ieee_app_project/screens/profile.dart';
 
 void main() {
   runApp(ProfileDisplay());
@@ -46,7 +47,9 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
     w = MediaQuery.of(context).size.width;
 
     Map<String, Icon> pairMap = {
+      // The given map pairs string and icon
       'Gender': Icon(
+        // it changes the icon according to the string choosen
         Icons.transgender_sharp,
         color: Colors.blue.shade900,
         size: w / 12,
@@ -115,7 +118,7 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                                   color: Colors.blue.shade900, size: w / 12),
                               SizedBox(width: w / 24),
                               Text(
-                                "${loggedInUser.name}",
+                                "${loggedInUser.name}", // Displays Name stored in firebase console
                                 style: GoogleFonts.lato(
                                     color: Colors.black, fontSize: w / 20),
                               ),
@@ -133,7 +136,8 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                             ),
                             SizedBox(width: w / 24),
                             Text(
-                                FirebaseAuth.instance.currentUser!.email
+                                FirebaseAuth.instance.currentUser!
+                                    .email // Displays Email of the current user
                                     .toString(),
                                 style: GoogleFonts.lato(
                                     color: Colors.black, fontSize: w / 20))
@@ -149,7 +153,8 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                               size: w / 12,
                             ),
                             SizedBox(width: w / 24),
-                            Text("${loggedInUser.phone}",
+                            Text(
+                                "${loggedInUser.phone}", // Displays Phone Number stored in firebase console
                                 style: GoogleFonts.lato(
                                     color: Colors.black, fontSize: w / 20))
                           ],
@@ -165,7 +170,7 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                             ),
                             SizedBox(width: w / 24),
                             Text(
-                                "${loggedInUser.dob}/${loggedInUser.mob}/${loggedInUser.yob}",
+                                "${loggedInUser.dob}/${loggedInUser.mob}/${loggedInUser.yob}", // Displays Date Of Birth stored in firebase console
                                 style: GoogleFonts.lato(
                                     color: Colors.black, fontSize: w / 20))
                           ],
@@ -175,12 +180,14 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                           children: [
                             SizedBox(
                               height: h / 20,
-                              child: pairMap["${loggedInUser.gender}"],
+                              child: pairMap[
+                                  "${loggedInUser.gender}"], // Displays Icon according to the gender stored in firebase console
                               // color: Colors.blue.shade900,
                               // size: w / 12,
                             ),
                             SizedBox(width: w / 24),
-                            Text("${loggedInUser.gender}",
+                            Text(
+                                "${loggedInUser.gender}", // Displays Gender stored in firebase console
                                 style: GoogleFonts.lato(
                                     color: Colors.black, fontSize: w / 20))
                           ],
@@ -209,7 +216,34 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                                 size: w / 12,
                               ),
                               SizedBox(width: w / 24),
-                              Text("Change Password",
+                              Text(
+                                  "Change Password", // Navigates to the Change Password Page
+                                  style: GoogleFonts.lato(
+                                      color: Colors.blue.shade800,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: w / 24))
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: h/50,),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ProfilePage()));
+                          },
+                          child: Row(
+                            children: [
+                              SizedBox(height: h / 20),
+                              Icon(
+                                Icons.edit,
+                                color: Colors.blue.shade900,
+                                size: w / 12,
+                              ),
+                              SizedBox(width: w / 24),
+                              Text(
+                                  "Edit Profile", // Navigates to the Change Password Page
                                   style: GoogleFonts.lato(
                                       color: Colors.blue.shade800,
                                       fontWeight: FontWeight.w700,

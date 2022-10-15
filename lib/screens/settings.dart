@@ -10,6 +10,8 @@ import 'package:ieee_app_project/screens/login_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:ieee_app_project/widgets/setting_card.dart';
 
+import 'login_page.dart';
+
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
@@ -142,53 +144,39 @@ class _SettingsPageState extends State<SettingsPage> {
             SettingCard(title: "Feedback", icon: Icons.feedback_rounded),
             SettingCard(title: "Privacy Policy", icon: Icons.book_online),
             SettingCard(title: "Terms of Service", icon: Icons.policy_rounded),
-            Padding(
-              padding: EdgeInsets.only(
-                  right: 13 * w / 360,
-                  left: 13 * w / 360,
-                  bottom: 10 * h / 640),
-              child: Divider(
-                color: Color(0xFFC3BFBF),
-                thickness: 2 * h / 640,
+
+              padding: EdgeInsets.fromLTRB(h / 32, h / 55, h / 32, h / 30),
+              child: Column(
+                children: [
+                  Divider(color: Colors.grey.shade500, thickness: 2),
+                  InkWell(
+                    onTap: () => FirebaseAuth.instance.signOut().then((value) =>
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => LoginPage())))),
+                    child: Container(
+                        alignment: Alignment.center,
+                        child: Text("Log out",
+                            style: GoogleFonts.poppins(
+                                fontSize: w / 24, fontWeight: FontWeight.w500)),
+                        height: h / 19,
+                        width: w / 1.15,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: w / 90,
+                              blurRadius: w / 110,
+                              offset: Offset(0, w / 150),
+                            )
+                          ],
+                          color: Colors.red,
+                        )),
+                  )
+                ],
               ),
-            ),
-            Column(
-              children: [
-                InkWell(
-                  onTap: () => _showdialogue(context),
-                  child: Container(
-                      alignment: Alignment.center,
-                      child: Row(
-                        children: [
-                          SizedBox(width: 40 * w / 360),
-                          FaIcon(
-                            FontAwesomeIcons.rightFromBracket,
-                            color: Color(0xFFFFFFFF),
-                          ),
-                          SizedBox(width: 27 * w / 360),
-                          Text("Log out",
-                              style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: w / 24,
-                                  fontWeight: FontWeight.w500)),
-                        ],
-                      ),
-                      height: h / 19,
-                      width: w / 1.15,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5 * w / 360),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: w / 90,
-                            blurRadius: w / 110,
-                            offset: Offset(0, w / 150),
-                          )
-                        ],
-                        color: Color(0xFFD82828),
-                      )),
-                ),
-              ],
+
             ),
           ],
         ),
