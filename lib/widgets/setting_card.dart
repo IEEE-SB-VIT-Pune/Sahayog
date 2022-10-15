@@ -22,6 +22,7 @@ class SettingCard extends StatelessWidget {
               Icon(
                 icon,
                 size: w / 12.5,
+                color: Color(0xFF0C5DAD),
               ),
               SizedBox(
                 width: w / 20,
