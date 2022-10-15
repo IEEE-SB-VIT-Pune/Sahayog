@@ -113,24 +113,29 @@ class _SettingsPageState extends State<SettingsPage> {
             SettingCard(title: "Terms of Service", icon: Icons.policy_rounded),
             Padding(
               padding: EdgeInsets.fromLTRB(h / 32, h / 55, h / 32, h / 30),
-              child: Container(
-                  alignment: Alignment.center,
-                  child: Text("Log out",
-                      style: GoogleFonts.poppins(
-                          fontSize: w / 24, fontWeight: FontWeight.w500)),
-                  height: h / 19,
-                  width: w / 1.15,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: w / 90,
-                        blurRadius: w / 110,
-                        offset: Offset(0, w / 150),
-                      )
-                    ],
-                    color: Colors.red,
-                  )),
+              child: Column(
+                children: [
+                  Divider(color: Colors.grey.shade500, thickness: 2),
+                  Container(
+                      alignment: Alignment.center,
+                      child: Text("Log out",
+                          style: GoogleFonts.poppins(
+                              fontSize: w / 24, fontWeight: FontWeight.w500)),
+                      height: h / 19,
+                      width: w / 1.15,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: w / 90,
+                            blurRadius: w / 110,
+                            offset: Offset(0, w / 150),
+                          )
+                        ],
+                        color: Colors.red,
+                      )),
+                ],
+              ),
             ),
           ],
         ),
