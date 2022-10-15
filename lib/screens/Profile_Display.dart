@@ -31,7 +31,7 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
         .collection("users")
         .doc(user!.uid)
         .collection("User Details")
-        .doc("xPmynCl7OUYUoQUfDKFV")
+        .doc(user!.uid)
         .get()
         .then((value) {
       setState(() {

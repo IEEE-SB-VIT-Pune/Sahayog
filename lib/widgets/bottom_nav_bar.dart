@@ -47,7 +47,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     h = MediaQuery.of(context).size.height;
     w = MediaQuery.of(context).size.width;
     return DefaultTabController(
-      length: 3,
+      length: 3, // number of tabs
       initialIndex: 1,
       child: Scaffold(
         body: TabBarView(
