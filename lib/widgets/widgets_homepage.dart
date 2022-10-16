@@ -1,9 +1,11 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:ieee_app_project/screens/Health/health_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 
 class QuoteCard extends StatefulWidget {
@@ -333,14 +335,58 @@ class _GradientCardState extends State<GradientCard> {
   var h, s, w;
 
   Widget build(BuildContext context) {
+      User? user = FirebaseAuth.instance.currentUser;
+
     s = MediaQuery.of(context).size;
     h = s.height;
     w = s.width;
     return Container(
+      
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+        
+          Center(child: Text("Health", style: GoogleFonts.montserrat(fontSize:26*w/360,fontWeight: FontWeight.w600,color: Colors.white))),
+          Padding(
+            padding:  EdgeInsets.all(8.0*w/360),
+            child: Text("Manage your Medicinal Intake and schedule important daily reminders.",textAlign: TextAlign.center, style: GoogleFonts.montserrat(fontSize:20*w/360,fontWeight: FontWeight.w400,color: Colors.white)),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {
+            FirebaseFirestore.instance
+                .collection("users")
+                .doc(user!.uid)
+                .collection("Health")
+                .get()
+                .then((value) => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HealthPage(
+                              HealthRef: value,
+                            ))));
+          },
+                child: Text("Click Here!  ",textAlign: TextAlign.center, style: GoogleFonts.montserrat(fontSize:20*w/360,fontWeight: FontWeight.w600,color: Colors.black))),
+              Text("To manage your health",textAlign: TextAlign.center, style: GoogleFonts.montserrat(fontSize:15*w/360,fontWeight: FontWeight.w400,color: Colors.white)),
+            ],
+          ),
+          
+        ],
+      ),
       height: 170 * h / 640,
-      width: 150 * w / 360,
+      width: 320 * w / 360,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5*w/360),
+                      spreadRadius: w / 90,
+                      blurRadius: w / 110,
+                      offset: Offset(0, w / 130),
+                    ),
+                    ],
+        gradient: LinearGradient( 
           colors: [Color(0Xff274B89), Color(0xff6BB2E7)],
           begin: Alignment.bottomCenter,
           end: Alignment.topCenter,
