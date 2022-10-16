@@ -123,13 +123,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  GradientCard(),
-                  GradientCard(),
-                ],
-              )
+              GradientCard()
             ],
           ),
         ));
