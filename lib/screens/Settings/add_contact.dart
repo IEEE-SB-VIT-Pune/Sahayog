@@ -149,7 +149,6 @@ class _Contact_AddState extends State<Contact_Add> {
                               .collection("users")
                               .doc(FirebaseAuth.instance.currentUser!.uid)
                               .collection("Contacts")
-                              
                               // .orderBy('contactIndex', descending: true)
                               .doc(usm.emergencyName)
                               .set(usm.contact())

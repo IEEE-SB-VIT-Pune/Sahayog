@@ -194,7 +194,7 @@ class _HealthFieldsState extends State<HealthFields> {
                 SizedBox(
                   width: 14 * w / 360,
                 ),
-                 Container(
+                Container(
                   decoration: BoxDecoration(
                     color: Color(0XffF9F8F8),
                   ),
@@ -350,7 +350,6 @@ class _HealthFieldsState extends State<HealthFields> {
               onTap: (() async {
                 FirebaseFirestore firebaseFirestore =
                     FirebaseFirestore.instance;
-                User? user = _auth.currentUser;
 
                 UserModel usm = UserModel();
 
