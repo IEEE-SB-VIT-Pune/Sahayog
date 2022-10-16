@@ -18,7 +18,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
-  final screens = [SettingsPage(), HomePage(), VerticalSlider()];
+  final screens = [VerticalSlider(), HomePage(), SettingsPage()];
   var h, w;
   User? user = FirebaseAuth.instance.currentUser;
 
@@ -53,7 +53,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       initialIndex: 1,
       child: Scaffold(
         body: TabBarView(
-          children: <Widget>[SettingsPage(), HomePage(), VerticalSlider()],
+          children: <Widget>[VerticalSlider(), HomePage(), SettingsPage()],
         ),
         bottomNavigationBar: Container(
           height: h / 12,
@@ -80,9 +80,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
             indicatorColor: Colors.black54,
             tabs: <Widget>[
               Tab(
-                icon: FaIcon(FontAwesomeIcons.heartPulse,
+                icon: FaIcon(FontAwesomeIcons.calendarDay,
                     size: h / 28, color: Color(0xFF0C5DAD)),
-                text: 'Health',
+                text: 'Events',
               ),
               Tab(
                 icon: FaIcon(FontAwesomeIcons.house,
@@ -90,9 +90,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 text: 'Home',
               ),
               Tab(
-                icon: FaIcon(FontAwesomeIcons.calendarDay,
+                icon: FaIcon(FontAwesomeIcons.gear,
                     size: h / 28, color: Color(0xFF0C5DAD)),
-                text: 'Events',
+                text: 'Settings',
               ),
             ],
           ),

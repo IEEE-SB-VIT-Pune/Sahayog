@@ -121,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-              Text("Or Login with",
+              Text("Or continue with",
                   style: GoogleFonts.monda(
                     fontSize: 12 * w / 360,
                     color: Color(0Xff959595),

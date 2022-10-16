@@ -56,7 +56,7 @@ class UserModel {
   }
 
   //sending data to server
-  Map<String, dynamic> contact() {
+  Map<String, dynamic> contactMap() {
     return {
       'emergencyName': emergencyName,
       'phone': phone,

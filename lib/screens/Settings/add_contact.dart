@@ -145,8 +145,7 @@ class _Contact_AddState extends State<Contact_Add> {
                               .collection("users")
                               .doc(FirebaseAuth.instance.currentUser!.uid)
                               .collection("Contacts")
-                              .doc()
-                              .set(usm.contact())
+                              .add(usm.contactMap())
                               .then((value) {
                             Navigator.pop(context);
                             Fluttertoast.showToast(
