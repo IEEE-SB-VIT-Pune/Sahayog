@@ -30,7 +30,10 @@ class VerticalSlider extends StatelessWidget {
     var w = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        
+        elevation: 0,
         centerTitle: true,
         title: Text(
           'Events',
@@ -51,18 +54,21 @@ class VerticalSlider extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView(children: [
-        CarouselSlider(
-          options: CarouselOptions(
-            height: h / 1.19,
-            viewportFraction: 0.449,
-            enlargeCenterPage: true,
-            scrollDirection: Axis.vertical,
-            autoPlay: false,
+      body: Padding(
+        padding:  EdgeInsets.only(right:12*w/360,left:12*w/360),
+        child: ListView(children: [
+          CarouselSlider(
+            options: CarouselOptions(
+              height: h / 1.19,
+              viewportFraction: 0.33,
+              enlargeCenterPage: true,
+              scrollDirection: Axis.vertical,
+              autoPlay: false,
+            ),
+            items: EventCardList,
           ),
-          items: EventCardList,
-        ),
-      ]),
+        ]),
+      ),
     );
   }
 }

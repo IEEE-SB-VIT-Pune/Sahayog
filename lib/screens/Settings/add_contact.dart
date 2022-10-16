@@ -27,6 +27,7 @@ class _Contact_AddState extends State<Contact_Add> {
 
   @override
   Widget build(BuildContext context) {
+    int contactIndex = 1;
     var h, w;
     h = MediaQuery.of(context).size.height;
     w = MediaQuery.of(context).size.width;
@@ -135,17 +136,22 @@ class _Contact_AddState extends State<Contact_Add> {
                           FirebaseFirestore firebaseFirestore =
                               FirebaseFirestore.instance;
                           User? user = _auth.currentUser;
-
+                          for (int i = 0; i >= 10; i++) {
+                            contactIndex++;
+                          }
                           UserModel usm = UserModel();
 
                           usm.emergencyName = nameEditingController.text;
                           usm.phone = phoneEditingController.text;
+                          usm.contactIndex = contactIndex;
 
                           await firebaseFirestore
                               .collection("users")
                               .doc(FirebaseAuth.instance.currentUser!.uid)
                               .collection("Contacts")
-                              .add(usm.contactMap())
+                              // .orderBy('contactIndex', descending: true)
+                              .doc(usm.emergencyName)
+                              .set(usm.contact())
                               .then((value) {
                             Navigator.pop(context);
                             Fluttertoast.showToast(

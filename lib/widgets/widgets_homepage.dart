@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -258,10 +259,9 @@ class _MedicineCardHomeState extends State<MedicineCardHome> {
 }
 
 class ContactWidget extends StatefulWidget {
-  String emergencyName;
-  String phone;
-  ContactWidget(this.emergencyName, this.phone);
 
+ 
+  ContactWidget({Key? key, }) : super(key: key);
   @override
   State<ContactWidget> createState() => _ContactWidgetState();
 }
@@ -285,8 +285,7 @@ class _ContactWidgetState extends State<ContactWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            widget.emergencyName,
-            // "Prashant Singh",
+            "Prashant Singh",
             style: GoogleFonts.montserrat(
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
@@ -307,8 +306,8 @@ class _ContactWidgetState extends State<ContactWidget> {
                 width: 6 * w / 360,
               ),
               Text(
-                widget.phone,
-                // "8605194573",
+                // widget.docHomepage['emergencyName'],
+                "8605194573",
                 style: GoogleFonts.lato(
                   fontSize: 14 * w / 360,
                   fontWeight: FontWeight.w600,
