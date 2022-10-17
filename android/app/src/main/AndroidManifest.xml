@@ -2,7 +2,7 @@
     package="com.example.ieee_app_project">
      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
    <application
-        android:label="ieee_app_project"
+        android:label="Sahayog"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
