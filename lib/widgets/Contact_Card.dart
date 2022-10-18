@@ -35,10 +35,14 @@ class ContactCardState extends State<ContactCard> {
             child: Row(
               children: [
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                    SizedBox(
+                      height: 8 * h / 640,
+                    ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                             height: h / 20,
@@ -46,24 +50,35 @@ class ContactCardState extends State<ContactCard> {
                               padding: EdgeInsets.only(
                                   left: w / 20, right: w / 40, top: h / 70),
                               child: Text(
-                                widget.docE["name"],
+                                widget.docE["emergencyName"],
                                 style: GoogleFonts.lato(
                                     fontSize: 20 * w / 360,
                                     fontWeight: FontWeight.w700),
                               ),
                             )),
-                        Padding(padding: EdgeInsets.only(left: w / 3)),
                         Icon(
                           Icons.edit,
-                          color: Colors.red
-                              .shade900, // Helps edit the contact information
+                          color: Color(0XffAC6A2C),
                         ),
-                        Padding(padding: EdgeInsets.all(3)),
-                        Icon(
-                          Icons.delete,
-                          color: Colors.red
-                              .shade900, //Helps delete the contact information
+                        SizedBox(
+                          width: 3 * w / 360,
                         ),
+                        Icon(Icons.delete, color: Color(0XffA01616)),
+                        SizedBox(
+                          width: 9 * w / 360,
+                        )
+                        // Padding(padding: EdgeInsets.only(left: w / 3)),
+                        // Icon(
+                        //   Icons.edit,
+                        //   color: Colors.red
+                        //       .shade900, // Helps edit the contact information
+                        // ),
+                        // Padding(padding: EdgeInsets.all(3)),
+                        // Icon(
+                        //   Icons.delete,
+                        //   color: Colors.red
+                        //       .shade900, //Helps delete the contact information
+                        // ),
                       ],
                     ),
                     Row(children: [
@@ -86,17 +101,6 @@ class ContactCardState extends State<ContactCard> {
                         ),
                       ),
                       Padding(padding: EdgeInsets.only(right: w / 30)),
-                      Icon(Icons.call, color: Colors.blue.shade900),
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          widget.docE[
-                              "relation"], //Displays the relation of mentioned contact
-                          style: GoogleFonts.lato(
-                              fontSize: 18 * w / 360,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      )
                     ]),
                   ],
                 ),

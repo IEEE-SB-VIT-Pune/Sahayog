@@ -12,12 +12,15 @@ import 'package:ieee_app_project/widgets/widgets_homepage.dart';
 import '../Settings/profile.dart';
 
 class HomePage extends StatefulWidget {
-    // final QuerySnapshot HomePageRef;
+  // final QuerySnapshot HomePageRef;
 
-  const HomePage({Key? key, }) : super(key: key);
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
   @override
   State<HomePage> createState() => _HomePageState();
 }
+
 List<QueryDocumentSnapshot> docHomepage = [];
 
 class _HomePageState extends State<HomePage> {
@@ -28,7 +31,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     getcontactdata();
     gethealthdata();
-
   }
 
   void getcontactdata() async {
@@ -45,6 +47,7 @@ class _HomePageState extends State<HomePage> {
     });
     setState(() {});
   }
+
   void gethealthdata() async {
     await FirebaseFirestore.instance
         .collection("users")
@@ -67,20 +70,6 @@ class _HomePageState extends State<HomePage> {
     w = s.width;
     final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
-        floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: Color(0Xff0C5DAD),
-          onPressed: () {
-            FirebaseFirestore.instance
-                .collection("users")
-                .doc(user.uid)
-                .collection("Health")
-                .get()
-                .then((value) => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SettingsPage())));
-          },
-          label: Text("Settings"),
-          icon: Icon(Icons.settings),
-        ),
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(
