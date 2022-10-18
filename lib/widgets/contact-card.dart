@@ -79,12 +79,15 @@ class _ContactCardState extends State<ContactCard> {
                       SizedBox(
                         width: 11 * w / 360,
                       ),
-                      Text(
-                        widget.docE['phone'],
-                        style: GoogleFonts.lato(
-                            fontSize: 20 * w / 360,
-                            color: Color(0Xff0C5DAD),
-                            fontWeight: FontWeight.bold),
+                      InkWell(
+                        onTap: phoneCall,
+                        child: Text(
+                          widget.docE['phone'],
+                          style: GoogleFonts.lato(
+                              fontSize: 20 * w / 360,
+                              color: Color(0Xff0C5DAD),
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ],
                   )
@@ -94,5 +97,15 @@ class _ContactCardState extends State<ContactCard> {
             ],
           )),
     );
+  }
+
+  phoneCall() async {
+    // Function to make a phone when pressed on the contact number
+    var url = Uri.parse("tel:" + widget.docE["phone"]);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/models/user_model.dart';
 import 'package:ieee_app_project/screens/Settings/Profile_Create.dart';
@@ -73,6 +74,7 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
     };
 
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(
             'Profile',
@@ -84,6 +86,13 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
           centerTitle: true,
           backgroundColor: Colors.white,
           elevation: 0,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: FaIcon(FontAwesomeIcons.angleLeft),
+            color: Colors.black,
+          ),
         ),
         body: Stack(
           children: [
@@ -254,7 +263,6 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                             ],
                           ),
                         ),
-                        
                       ])),
             )
           ],

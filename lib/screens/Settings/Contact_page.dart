@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/models/user_model.dart';
 import 'package:ieee_app_project/screens/Settings/add_contact.dart';
@@ -36,6 +37,13 @@ class _ContactsPageState extends State<ContactsPage> {
                 color: Colors.black, fontWeight: FontWeight.w700)),
         backgroundColor: Colors.white,
         elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: FaIcon(FontAwesomeIcons.angleLeft),
+          color: Colors.black,
+        ),
         centerTitle: true,
       ),
       body: ListView(children: [
