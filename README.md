@@ -87,9 +87,9 @@ This repository and its contents fall under the [MIT License](LICENSE.md).
 
 **Ishan Rakte**
 
-- [GitHub Profile](https://github.com/aastha9199)
-- [Email](mailto:aasthaagarwal2121@gmail.com?subject=Hi "Hi!")
-- [LinkedIn](https://github.com/IshanRakte)
+- [GitHub Profile](https://github.com/IshanRakte)
+- [Email](mailto:ishanrakte@gmail.com?subject=Hi "Hi!")
+- [LinkedIn](https://www.linkedin.com/in/ishanrakte/)
 
 
 **Aastha Agarwal**
