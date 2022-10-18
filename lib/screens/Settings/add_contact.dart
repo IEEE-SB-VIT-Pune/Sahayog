@@ -150,8 +150,7 @@ class _Contact_AddState extends State<Contact_Add> {
                               .doc(FirebaseAuth.instance.currentUser!.uid)
                               .collection("Contacts")
                               // .orderBy('contactIndex', descending: true)
-                              .doc(usm.emergencyName)
-                              .set(usm.contactMap())
+                              .add(usm.contactMap())
                               .then((value) {
                             Navigator.pop(context);
                             Fluttertoast.showToast(

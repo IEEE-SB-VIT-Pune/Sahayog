@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/models/user_model.dart';
+import 'package:ieee_app_project/screens/Health/health_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 
 class HealthFields extends StatefulWidget {
@@ -366,7 +367,17 @@ class _HealthFieldsState extends State<HealthFields> {
                     .collection("Health")
                     .add(usm.HealthMap())
                     .then((value) {
-                  Navigator.pop(context);
+                  FirebaseFirestore.instance
+                      .collection("users")
+                      .doc(FirebaseAuth.instance.currentUser!.uid)
+                      .collection("Health")
+                      .get()
+                      .then((value) => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HealthPage(
+                                    HealthRef: value,
+                                  ))));
                   Fluttertoast.showToast(
                       msg: "Health Information added successfully");
                 }).catchError((error) =>
