@@ -7,6 +7,7 @@
 
 #### Please support the project by starring it :) :star:.
 #### Feel free to raise any Issues, or problems you may face in the Issues Section. :question:
+#### If you wish to contribute to the repo, there are pre-existing threads in the Issues Tab. :grey_question:
   
 # **Table Of Contents**
 #### **1) Screenshots**
