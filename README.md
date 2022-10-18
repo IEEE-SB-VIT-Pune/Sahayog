@@ -1,4 +1,3 @@
-# Industry-Project-App_22-23
 <p align="center"> 
 <img width="610" height="320" src="https://user-images.githubusercontent.com/97554096/195991376-052e6bcd-924a-4d6e-b8b6-4edbaba491de.png"?
 </p>
