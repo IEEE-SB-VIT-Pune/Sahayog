@@ -151,7 +151,7 @@ class _Contact_AddState extends State<Contact_Add> {
                               .collection("Contacts")
                               // .orderBy('contactIndex', descending: true)
                               .doc(usm.emergencyName)
-                              .set(usm.contact())
+                              .set(usm.contactMap())
                               .then((value) {
                             Navigator.pop(context);
                             Fluttertoast.showToast(
