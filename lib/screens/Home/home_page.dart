@@ -67,20 +67,7 @@ class _HomePageState extends State<HomePage> {
     w = s.width;
     final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
-        floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: Color(0Xff0C5DAD),
-          onPressed: () {
-            FirebaseFirestore.instance
-                .collection("users")
-                .doc(user.uid)
-                .collection("Health")
-                .get()
-                .then((value) => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SettingsPage())));
-          },
-          label: Text("Settings"),
-          icon: Icon(Icons.settings),
-        ),
+        
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(
