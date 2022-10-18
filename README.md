@@ -85,38 +85,38 @@ This repository and its contents fall under the [MIT License](LICENSE.md).
 
 # **7. Authors**
 
-**Ishan Rakte**
+**Ishan Rakte (Project Head)**
 
 - [GitHub Profile](https://github.com/IshanRakte)
 - [LinkedIn](https://www.linkedin.com/in/ishanrakte/)
 
 
-**Aastha Agarwal**
+**Aastha Agarwal (App Developer)**
 
 - [GitHub Profile](https://github.com/aastha9199)
 - [LinkedIn](https://www.linkedin.com/in/aastha--agarwal/)
 
 
-**Akshata Gile**
+**Akshata Gile (App Developer)**
 
 - [GitHub Profile](https://github.com/akshata-gile)
 - [LinkedIn](https://www.linkedin.com/in/akshata-gile/)
 
 
 
-**Sahil Patil**
+**Sahil Patil (App Developer)**
 
 - [GitHub Profile](https://github.com/B3nzeneKnight)
 - [LinkedIn](https://www.linkedin.com/in/sahil-patil-/)
 
 
-**Siddhi Patil**
+**Siddhi Patil (UI/UX Designer)**
 
 - [GitHub Profile](https://github.com/Siddhi-Patil06)
 - [LinkedIn](https://www.linkedin.com/in/siddhi-patil-19325b245/)
 
 
-**Samarth Thosar**
+**Samarth Thosar (App Developer)**
 
 - [GitHub Profile](https://github.com/samarth-thosar)
 - [LinkedIn](https://github.com/samarth-thosar)
