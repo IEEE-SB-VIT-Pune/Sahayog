@@ -191,9 +191,9 @@ class _ProfileCreateState extends State<ProfileCreate> {
                 width: 250 * w / 360,
                 child: TextField(
                   autofocus: false,
-                  controller: nameController,
+                  controller: dobController,
                   decoration: InputDecoration(
-                    hintText: "Name",
+                    hintText: "Enter Your Date Of Birth",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -207,8 +207,6 @@ class _ProfileCreateState extends State<ProfileCreate> {
               )
             ],
           ),
-         
-          
         ],
       ),
     );
