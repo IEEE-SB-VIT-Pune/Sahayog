@@ -114,6 +114,12 @@ This repository and its contents fall under the [MIT License](LICENSE.md).
 - [LinkedIn](https://github.com/B3nzeneKnight)
 
 
+**Siddhi Patil**
+
+- [GitHub Profile](https://github.com/Siddhi-Patil06)
+- [Email](mailto:siddhimpatill06@gmail.com?subject=Hi "Hi!" )
+- [LinkedIn](https://www.linkedin.com/in/siddhi-patil-19325b245/)
+
 
 **Samarth Thosar**
 
