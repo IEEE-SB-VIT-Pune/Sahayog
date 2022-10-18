@@ -16,6 +16,7 @@
 #### **5) API Reference**
 #### **6) License**
 #### **7) Contributors**
+#### **8) Support**
 
 # **1. Screenshots**
 <table>
