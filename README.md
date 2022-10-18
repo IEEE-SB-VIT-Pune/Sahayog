@@ -50,9 +50,9 @@ Users can freely log in or create their new account using their account credenti
 Upon successful login or account creation, users are redirected to the Home page of Sahayog. Here, a new quote is displayed daily, along with which, the latest upcoming event can be seen. An Emergency Contact is also displayed. The bottom most widget redirects you to the Medicines page upon clicking where users can schedule and edit their medicine intake.
 
 ### 3) Events Page:
-Events Slider is displayed where 3 of the latest events are displayed. A Calendar is also available in the App Bar.
+Events Slider is shown where 3 of the latest events are displayed. A Calendar is also available in the App Bar.
 
-### 4)Settings Page:
+### 4) Settings Page:
 The Settings Page includes a vast majority of options, such as: Profile Page, Emergency Contacts, Feedback, Privacy Policy, and Language selection.
            
       1. Profile Page: Users can edit their personal details regarding their own profile on the app.
