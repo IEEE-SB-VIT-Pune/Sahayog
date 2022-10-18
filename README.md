@@ -6,8 +6,7 @@
  Sahayog is an assistance-based app for the elderly residing in Old-Age Homes.:house_with_garden: It aims to provide the residents with a common platform to interact and use to fulfill their daily needs, and notifications.:bell: Moving forward, we intend to create an Administrator App for Sahayog so that the Old Age Home staff can co-ordinate and use our app to it's fullest capacity.
 
 #### Please support the project by starring it :) :star:.
-#### Feel free to raise any Issues, or problems you may face in the Issues. :question:
-#### If you wish to contribute to the development of the app, you can refer to the Issues section. :grey_question:
+#### Feel free to raise any Issues, or problems you may face in the Issues Section. :question:
   
 # **Table Of Contents**
 #### **1) Screenshots**
@@ -22,15 +21,15 @@
 <table>
   <tr>
     <td><img src = "https://user-images.githubusercontent.com/101483803/196435862-590d2522-c50b-44bd-bb11-653c2bdc8df7.png" alt = "Home Page" width = "216" height = "384"></td>
-    <td><img src = "https://github.com/IshanRakte/covitrack/blob/main/covitrack/screenshots/tracker.jpg" alt = "Tracker" width = "216" height = 384"></td>
-    <td><img src = "https://github.com/IshanRakte/covitrack/blob/main/covitrack/screenshots/indiatracker.jpg" alt = "India Tracker" width = "216" height = "384"></td>
+    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/medicine.jpg" alt = "Tracker" width = "216" height = 384"></td>
+    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/health.jpg" alt = "India Tracker" width = "216" height = "384"></td>
   </tr>
 </table>
 <table>
   <tr>
-    <td><img src = "https://github.com/IshanRakte/covitrack/blob/main/covitrack/screenshots/precautions.jpg" alt = "Precautions" width = "216" height = "384"></td>
-    <td><img src = "https://github.com/IshanRakte/covitrack/blob/main/covitrack/screenshots/emergency.jpg" alt = "Emergency" width = "216" height = "384"></td>
-    <td><img src = "https://github.com/IshanRakte/covitrack/blob/main/covitrack/screenshots/emergencypune.jpg" alt = "Emergency Pune" width = "216" height = "384"></td>
+    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/events.jpg" alt = "Precautions" width = "216" height = "384"></td>
+    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/settings.jpg" alt = "Emergency" width = "216" height = "384"></td>
+    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/login.jpg" alt = "Emergency Pune" width = "216" height = "384"></td>
   </tr>
 </table>
 
