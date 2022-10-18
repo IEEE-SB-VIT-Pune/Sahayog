@@ -89,3 +89,14 @@ This repository and its contents fall under the [MIT License](LICENSE.md).
  - [@Akshata Gile](https://github.com/akshata-gile)
  - [@Sahil Patil](https://github.com/B3nzeneKnight)
  - [@Samarth Thosar](https://github.com/samarth-thosar)
+
+
+## ✍️Authors
+
+  
+**Aastha Agarwal**
+
+- [GitHub Profile](https://github.com/aastha9199)
+- [Email](mailto:aasthaagarwal2121@gmail.com?subject=Hi "Hi!")
+- [LinkedIn](https://www.linkedin.com/in/aastha--agarwal/)
+  
