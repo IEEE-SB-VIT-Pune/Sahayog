@@ -120,7 +120,7 @@ This repository and its contents fall under the [MIT License](LICENSE.md).
 **Samarth Thosar**
 
 - [GitHub Profile](https://github.com/samarth-thosar)
-- [LinkedIn](https://github.com/samarth-thosar)
+- [LinkedIn](https://www.linkedin.com/in/samarth-thosar/)
 
 
 ## **8. Support**
