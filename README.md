@@ -99,7 +99,7 @@ This repository and its contents fall under the [MIT License](LICENSE.md).
 
 **Akshata Gile**
 
-- [GitHub Profile](https://github.com/aastha9199)
+- [GitHub Profile](https://github.com/akshata-gile)
 - [LinkedIn](https://www.linkedin.com/in/akshata-gile/)
 
 
@@ -118,5 +118,5 @@ This repository and its contents fall under the [MIT License](LICENSE.md).
 
 **Samarth Thosar**
 
-- [GitHub Profile](https://github.com/aastha9199)
+- [GitHub Profile](https://github.com/samarth-thosar)
 - [LinkedIn](https://github.com/samarth-thosar)
