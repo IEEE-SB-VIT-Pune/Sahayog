@@ -125,6 +125,6 @@ This repository and its contents fall under the [MIT License](LICENSE.md).
 
 ## **8. Support**
 
-Contributions, issues, and feature requests are welcome!
+**Contributions, issues, and feature requests are welcome!
 
-Give a ⭐️ if you like this project!
+**Give a ⭐️ if you like this project!
