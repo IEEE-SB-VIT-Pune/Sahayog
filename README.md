@@ -20,7 +20,7 @@
 # **1. Screenshots**
 <table>
   <tr>
-    <td><img src = "https://user-images.githubusercontent.com/101483803/196435862-590d2522-c50b-44bd-bb11-653c2bdc8df7.png" alt = "Home Page" width = "216" height = "384"></td>
+    <td><img src = "https://user-images.githubusercontent.com/101483803/196435862-590d2522-c50b-44bd-bb11-653c2bdc8df7.png" alt = "Home Page" width = "360" height = "640"></td>
     <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/medicine.jpg" alt = "Tracker" width = "216" height = 384"></td>
     <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/health.jpg" alt = "India Tracker" width = "216" height = "384"></td>
   </tr>
