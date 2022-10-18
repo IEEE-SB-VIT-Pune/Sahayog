@@ -88,41 +88,35 @@ This repository and its contents fall under the [MIT License](LICENSE.md).
 **Ishan Rakte**
 
 - [GitHub Profile](https://github.com/IshanRakte)
-- [Email](mailto:ishanrakte@gmail.com?subject=Hi "Hi!")
 - [LinkedIn](https://www.linkedin.com/in/ishanrakte/)
 
 
 **Aastha Agarwal**
 
 - [GitHub Profile](https://github.com/aastha9199)
-- [Email](mailto:aasthaagarwal2121@gmail.com?subject=Hi "Hi!")
 - [LinkedIn](https://www.linkedin.com/in/aastha--agarwal/)
 
 
 **Akshata Gile**
 
 - [GitHub Profile](https://github.com/aastha9199)
-- [Email](mailto:aasthaagarwal2121@gmail.com?subject=Hi "Hi!")
-- [LinkedIn](https://github.com/akshata-gile)
+- [LinkedIn](https://www.linkedin.com/in/akshata-gile/)
 
 
 
 **Sahil Patil**
 
-- [GitHub Profile](https://github.com/aastha9199)
-- [Email](mailto:aasthaagarwal2121@gmail.com?subject=Hi "Hi!")
-- [LinkedIn](https://github.com/B3nzeneKnight)
+- [GitHub Profile](https://github.com/B3nzeneKnight)
+- [LinkedIn](https://www.linkedin.com/in/sahil-patil-/)
 
 
 **Siddhi Patil**
 
 - [GitHub Profile](https://github.com/Siddhi-Patil06)
-- [Email](mailto:siddhimpatill06@gmail.com?subject=Hi "Hi!" )
 - [LinkedIn](https://www.linkedin.com/in/siddhi-patil-19325b245/)
 
 
 **Samarth Thosar**
 
 - [GitHub Profile](https://github.com/aastha9199)
-- [Email](mailto:aasthaagarwal2121@gmail.com?subject=Hi "Hi!")
 - [LinkedIn](https://github.com/samarth-thosar)
