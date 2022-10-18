@@ -6,9 +6,9 @@
  Sahayog is an assistance-based app for the elderly residing in Old-Age Homes.:house_with_garden: It aims to provide the residents with a common platform to interact and use to fulfill their daily needs, and notifications.:bell: Moving forward, we intend to create an Administrator App for Sahayog so that the Old Age Home staff can co-ordinate and use our app to it's fullest capacity.
 
 #### Please support the project by starring it :) :star:.
-#### If you wish to contribute to the repo, there are pre-existing threads in the Issues Tab. :grey_question:
 #### Feel free to raise any Issues, or problems you may face in the Issues Section. :question:
- 
+#### If you wish to contribute to the repo, there are pre-existing threads in the Issues Tab. :grey_question:
+  
 # **Table Of Contents**
 #### **1) Screenshots**
 #### **2) Installation**
@@ -121,3 +121,10 @@ This repository and its contents fall under the [MIT License](LICENSE.md).
 
 - [GitHub Profile](https://github.com/samarth-thosar)
 - [LinkedIn](https://github.com/samarth-thosar)
+
+
+## **8. Support**
+
+Contributions, issues, and feature requests are welcome!
+
+Give a ⭐️ if you like this project!
