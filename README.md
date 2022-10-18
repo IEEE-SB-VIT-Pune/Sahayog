@@ -83,20 +83,40 @@ All of the above features are open to contributions from all open-source contrib
 # **6. License**
 This repository and its contents fall under the [MIT License](LICENSE.md).
 
-# **7. Contributors**
- - [@Ishan Rakte](https://github.com/IshanRakte)
- - [@Aastha Agarwal](https://github.com/aastha9199)
- - [@Akshata Gile](https://github.com/akshata-gile)
- - [@Sahil Patil](https://github.com/B3nzeneKnight)
- - [@Samarth Thosar](https://github.com/samarth-thosar)
+# **7. Authors**
+
+**Ishan Rakte**
+
+- [GitHub Profile](https://github.com/aastha9199)
+- [Email](mailto:aasthaagarwal2121@gmail.com?subject=Hi "Hi!")
+- [LinkedIn](https://github.com/IshanRakte)
 
 
-## ✍️Authors
-
-  
 **Aastha Agarwal**
 
 - [GitHub Profile](https://github.com/aastha9199)
 - [Email](mailto:aasthaagarwal2121@gmail.com?subject=Hi "Hi!")
 - [LinkedIn](https://www.linkedin.com/in/aastha--agarwal/)
-  
+
+
+**Akshata Gile**
+
+- [GitHub Profile](https://github.com/aastha9199)
+- [Email](mailto:aasthaagarwal2121@gmail.com?subject=Hi "Hi!")
+- [LinkedIn](https://github.com/akshata-gile)
+
+
+
+**Sahil Patil**
+
+- [GitHub Profile](https://github.com/aastha9199)
+- [Email](mailto:aasthaagarwal2121@gmail.com?subject=Hi "Hi!")
+- [LinkedIn](https://github.com/B3nzeneKnight)
+
+
+
+**Samarth Thosar**
+
+- [GitHub Profile](https://github.com/aastha9199)
+- [Email](mailto:aasthaagarwal2121@gmail.com?subject=Hi "Hi!")
+- [LinkedIn](https://github.com/samarth-thosar)
