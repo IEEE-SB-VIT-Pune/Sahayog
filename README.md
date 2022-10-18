@@ -17,7 +17,21 @@
 #### **6) License**
 #### **7) Contributors**
 
-# **1. Screenshots** 
+# **1. Screenshots**
+<table>
+  <tr>
+    <td><img src = "https://github.com/IshanRakte/covitrack/blob/main/covitrack/screenshots/homepage.jpg" alt = "Home Page" width = "216" height = "384"></td>
+    <td><img src = "https://github.com/IshanRakte/covitrack/blob/main/covitrack/screenshots/tracker.jpg" alt = "Tracker" width = "216" height = 384"></td>
+    <td><img src = "https://github.com/IshanRakte/covitrack/blob/main/covitrack/screenshots/indiatracker.jpg" alt = "India Tracker" width = "216" height = "384"></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td><img src = "https://github.com/IshanRakte/covitrack/blob/main/covitrack/screenshots/precautions.jpg" alt = "Precautions" width = "216" height = "384"></td>
+    <td><img src = "https://github.com/IshanRakte/covitrack/blob/main/covitrack/screenshots/emergency.jpg" alt = "Emergency" width = "216" height = "384"></td>
+    <td><img src = "https://github.com/IshanRakte/covitrack/blob/main/covitrack/screenshots/emergencypune.jpg" alt = "Emergency Pune" width = "216" height = "384"></td>
+  </tr>
+</table>
 
 # **2. Installation**
  
