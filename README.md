@@ -38,7 +38,7 @@
 **Note:** As a Pre-requisite, you must have the latest version of Flutter installed. You can download Flutter from [here.](https://docs.flutter.dev/get-started/install) 
  
 * Fork this repository to your Account. Learn how to Fork [here.](https://docs.github.com/en/get-started/quickstart/fork-a-repo) 
-* Clone the repository on your system by using `git clone https://github.com/IEEE-SB-VIT-Pune/Industry-Project-App_22-23.git`
+* Clone the repository on your system by using `git clone https://github.com/IEEE-SB-VIT-Pune/Sahayog.git`
 * Run `flutter pub get` command.
 * Run the application.
 
@@ -85,38 +85,38 @@ This repository and its contents fall under the [MIT License](LICENSE.md).
 
 # **7. Authors**
 
-**Ishan Rakte (Project Head)**
+**Ishan Rakte**
 
 - [GitHub Profile](https://github.com/IshanRakte)
 - [LinkedIn](https://www.linkedin.com/in/ishanrakte/)
 
 
-**Aastha Agarwal (App Developer)**
+**Aastha Agarwal**
 
 - [GitHub Profile](https://github.com/aastha9199)
 - [LinkedIn](https://www.linkedin.com/in/aastha--agarwal/)
 
 
-**Akshata Gile (App Developer)**
+**Akshata Gile**
 
 - [GitHub Profile](https://github.com/akshata-gile)
 - [LinkedIn](https://www.linkedin.com/in/akshata-gile/)
 
 
 
-**Sahil Patil (App Developer)**
+**Sahil Patil**
 
 - [GitHub Profile](https://github.com/B3nzeneKnight)
 - [LinkedIn](https://www.linkedin.com/in/sahil-patil-/)
 
 
-**Siddhi Patil (UI/UX Designer)**
+**Siddhi Patil**
 
 - [GitHub Profile](https://github.com/Siddhi-Patil06)
 - [LinkedIn](https://www.linkedin.com/in/siddhi-patil-19325b245/)
 
 
-**Samarth Thosar (App Developer)**
+**Samarth Thosar**
 
 - [GitHub Profile](https://github.com/samarth-thosar)
 - [LinkedIn](https://github.com/samarth-thosar)
