@@ -20,16 +20,16 @@
 # **1. Screenshots**
 <table>
   <tr>
-    <td><img src = "https://user-images.githubusercontent.com/101483803/196435862-590d2522-c50b-44bd-bb11-653c2bdc8df7.png" alt = "Home Page" width = "360" height = "640"></td>
-    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/medicine.jpg" alt = "Tracker" width = "360" height = "640"></td>
-    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/health.jpg" alt = "India Tracker" width = "360" height = "640"></td>
+    <td><img src = "https://user-images.githubusercontent.com/101483803/196435862-590d2522-c50b-44bd-bb11-653c2bdc8df7.png" alt = "Home Page" width = "288" height = "512"></td>
+    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/medicine.jpg" alt = "Tracker" width = "288" height = "512"></td>
+    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/health.jpg" alt = "India Tracker" width = "288" height = "512"></td>
   </tr>
 </table>
 <table>
   <tr>
-    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/events.jpg" alt = "Precautions" width = "360" height = "640"></td>
-    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/settings.jpg" alt = "Emergency" width = "360" height = "640"></td>
-    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/login.jpg" alt = "Emergency Pune" width = "360" height = "640"></td>
+    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/events.jpg" alt = "Precautions" width = "288" height = "512"></td>
+    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/settings.jpg" alt = "Emergency" width = "288" height = "512"></td>
+    <td><img src = "https://github.com/IEEE-SB-VIT-Pune/Sahayog/blob/dev/screenshots/login.jpg" alt = "Emergency Pune" width = "288" height = "512"></td>
   </tr>
 </table>
 
