@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(const Duration(seconds: 1), () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainPage())));
+    Timer(const Duration(seconds: 3), () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainPage())));
   }
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,8 +30,8 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Image.asset(
               "assets/one.png",
-              height: 275,
-              width: 300,
+              height: MediaQuery.of(context).size.height*0.4,
+              width: MediaQuery.of(context).size.height*0.4,
               
             ),
             Text("Sahayog",style: GoogleFonts.oswald(fontSize: 38,fontWeight: FontWeight.w300,color: Colors.black)),
