@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/screens/UserAuth/signup_page.dart';
 import 'package:ieee_app_project/widgets/bottom_nav_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
 import '../../widgets/UserAuthWidgets/email_field.dart';
 import '../../widgets/UserAuthWidgets/password_field.dart';
 
@@ -131,27 +131,32 @@ class _LoginPageState extends State<LoginPage> {
           SizedBox(
             height: 17 * h / 640,
           ),
-          Container(
-            height: 33 * h / 640,
-            width: w * 185 / 360,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset('assets/google_icon.svg'),
-                // FaIcon(FontAwesomeIcons.google),
-                SizedBox(
-                  width: 8 * w / 360,
-                ),
-                Text(
-                  "Google",
-                  style: GoogleFonts.poppins(
-                      fontSize: 15 * w / 360, color: Color(0Xff000000)),
-                )
-              ],
+          GestureDetector(
+            onTap: () async {
+              await signInWithGoogle();
+            },
+            child: Container(
+              height: 33 * h / 640,
+              width: w * 185 / 360,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset('assets/google_icon.svg'),
+                  // FaIcon(FontAwesomeIcons.google),
+                  SizedBox(
+                    width: 8 * w / 360,
+                  ),
+                  Text(
+                    "Google",
+                    style: GoogleFonts.poppins(
+                        fontSize: 15 * w / 360, color: Color(0Xff000000)),
+                  )
+                ],
+              ),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(8)),
             ),
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(8)),
           ),
           SizedBox(
             height: 22 * h / 640,
@@ -197,4 +202,22 @@ class _LoginPageState extends State<LoginPage> {
       // navigatorKey.currentState!.popUntil((route)=>route.isFirst);
     }
   }
+}
+
+Future<UserCredential> signInWithGoogle() async {
+  // Trigger the authentication flow
+  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+  // Obtain the auth details from the request
+  final GoogleSignInAuthentication? googleAuth =
+      await googleUser?.authentication;
+
+  // Create a new credential
+  final credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth?.accessToken,
+    idToken: googleAuth?.idToken,
+  );
+
+  // Once signed in, return the UserCredential
+  return await FirebaseAuth.instance.signInWithCredential(credential);
 }

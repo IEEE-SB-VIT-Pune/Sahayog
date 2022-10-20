@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ieee_app_project/models/user_model.dart';
 import 'package:ieee_app_project/screens/UserAuth/login_page.dart';
 import 'package:ieee_app_project/widgets/UserAuthWidgets/confirm_password_field.dart';
@@ -293,27 +294,32 @@ class _SignUpPageState extends State<SignUpPage> {
           SizedBox(
             height: 7 * h / 640,
           ),
-          Container(
-            height: 33 * h / 640,
-            width: w * 185 / 360,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset('assets/google_icon.svg'),
-                // FaIcon(FontAwesomeIcons.google),
-                SizedBox(
-                  width: 8 * w / 360,
-                ),
-                Text(
-                  "Google",
-                  style: GoogleFonts.poppins(
-                      fontSize: 15 * w / 360, color: Color(0Xff000000)),
-                )
-              ],
+          GestureDetector(
+            onTap: () async {
+              await signInWithGoogle();
+            },
+            child: Container(
+              height: 33 * h / 640,
+              width: w * 185 / 360,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset('assets/google_icon.svg'),
+                  // FaIcon(FontAwesomeIcons.google),
+                  SizedBox(
+                    width: 8 * w / 360,
+                  ),
+                  Text(
+                    "Google",
+                    style: GoogleFonts.poppins(
+                        fontSize: 15 * w / 360, color: Color(0Xff000000)),
+                  )
+                ],
+              ),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(8 * w / 360)),
             ),
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(8 * w / 360)),
           ),
           SizedBox(
             height: 13 * h / 640,
@@ -374,4 +380,22 @@ class _SignUpPageState extends State<SignUpPage> {
       Fluttertoast.showToast(msg: e!.message);
     });
   }
+}
+
+Future<UserCredential> signInWithGoogle() async {
+  // Trigger the authentication flow
+  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+  // Obtain the auth details from the request
+  final GoogleSignInAuthentication? googleAuth =
+      await googleUser?.authentication;
+
+  // Create a new credential
+  final credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth?.accessToken,
+    idToken: googleAuth?.idToken,
+  );
+
+  // Once signed in, return the UserCredential
+  return await FirebaseAuth.instance.signInWithCredential(credential);
 }
