@@ -51,7 +51,7 @@ class _ContactsPageState extends State<ContactsPage> {
       ]),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.push(
+          Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => Contact_Add()));
         },
         backgroundColor: Colors.black,
