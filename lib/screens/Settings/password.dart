@@ -1,9 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ieee_app_project/screens/UserAuth/login_page.dart';
 
 class PasswordPage extends StatefulWidget {
   const PasswordPage({super.key});
@@ -16,8 +13,6 @@ class _PasswordPageState extends State<PasswordPage> {
   TextEditingController newpassEditingController = TextEditingController();
   TextEditingController oldpassEditingController = TextEditingController();
   TextEditingController confirmpassEditingController = TextEditingController();
-  var _formKey = GlobalKey<FormState>();
-  bool _checkCurrentPasswordValid = true;
   bool _isHidden = true;
   @override
   Widget build(BuildContext context) {
@@ -37,21 +32,19 @@ class _PasswordPageState extends State<PasswordPage> {
         obscureText: _isHidden,
         controller: oldpassEditingController,
         decoration: InputDecoration(
-            suffixIcon: IconButton(
-              icon: Icon(
-                _isHidden ? Icons.visibility : Icons.visibility_off,
-              ),
-              onPressed: () {
-                setState(() {
-                  _isHidden = !_isHidden; //show or hide password
-                });
-              },
+          suffixIcon: IconButton(
+            icon: Icon(
+              _isHidden ? Icons.visibility : Icons.visibility_off,
             ),
-            contentPadding: EdgeInsets.fromLTRB(w / 20, w / 30, w / 20, w / 30),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-            errorText: _checkCurrentPasswordValid
-                ? null
-                : "Please check your current password"),
+            onPressed: () {
+              setState(() {
+                _isHidden = !_isHidden; //show or hide password
+              });
+            },
+          ),
+          contentPadding: EdgeInsets.fromLTRB(w / 20, w / 30, w / 20, w / 30),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        ),
         onSaved: (String? value) {},
       ),
     );
@@ -76,39 +69,33 @@ class _PasswordPageState extends State<PasswordPage> {
         ),
         onSaved: (String? value) {},
         validator: (String? value) {
-          print("Length of Password is : ");
-          print(value!.length);
-          return (value.length <= 6)
-              ? 'Password should be more than 6 characters'
+          return (value != null && value.contains('@'))
+              ? 'Do not use the @ char.'
               : null;
         },
       ),
     );
     final confirmpass = Padding(
       padding: EdgeInsets.fromLTRB(w / 15, w / 80, w / 15, h / 40),
-      child: TextFormField(
-          obscureText: _isHidden,
-          controller: confirmpassEditingController,
-          decoration: InputDecoration(
-            suffixIcon: IconButton(
-              icon: Icon(
-                _isHidden ? Icons.visibility : Icons.visibility_off,
-              ),
-              onPressed: () {
-                setState(() {
-                  _isHidden = !_isHidden; //show or hide password
-                });
-              },
+      child: TextField(
+        obscureText: _isHidden,
+        controller: confirmpassEditingController,
+        decoration: InputDecoration(
+          suffixIcon: IconButton(
+            icon: Icon(
+              _isHidden ? Icons.visibility : Icons.visibility_off,
             ),
-            contentPadding: EdgeInsets.fromLTRB(w / 20, w / 30, w / 20, w / 30),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+            onPressed: () {
+              setState(() {
+                _isHidden = !_isHidden; //show or hide password
+              });
+            },
           ),
-          textInputAction: TextInputAction.next,
-          validator: (value) {
-            return (newpassEditingController.text != value)
-                ? 'Please check your new Password'
-                : null;
-          }),
+          contentPadding: EdgeInsets.fromLTRB(w / 20, w / 30, w / 20, w / 30),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        ),
+        textInputAction: TextInputAction.next,
+      ),
     );
 
     final saveButton = Material(
@@ -116,19 +103,7 @@ class _PasswordPageState extends State<PasswordPage> {
       borderRadius: BorderRadius.circular(30),
       color: Color(0xFF7FB77E),
       child: MaterialButton(
-          onPressed: () async {
-            _checkCurrentPasswordValid = await checkCurrentPassword(
-                oldpassEditingController.text, newpassEditingController.text);
-            setState(() {});
-            if (_formKey.currentState!.validate() &&
-                _checkCurrentPasswordValid) {
-              updateUserPassword(newpassEditingController.text);
-              Fluttertoast.showToast(msg: "Password Updated successfully!\nLogin with the new Password to continue");
-               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => LoginPage()),
-                  (Route<dynamic> route) => false);
-            }
-          },
+          onPressed: () {},
           child: Text(
             "Save",
             textAlign: TextAlign.center,
@@ -156,87 +131,56 @@ class _PasswordPageState extends State<PasswordPage> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(children: <Widget>[
-            SizedBox(height: h / 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(h / 30, 0, 0, 0),
-                  child: Text(
-                    'Old Password',
-                    style:
-                        GoogleFonts.lato(fontSize: h / 42, color: Colors.black),
-                  ),
+        child: Column(children: <Widget>[
+          SizedBox(height: h / 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(h / 30, 0, 0, 0),
+                child: Text(
+                  'Old Password',
+                  style:
+                      GoogleFonts.lato(fontSize: h / 42, color: Colors.black),
                 ),
-              ],
-            ),
-            oldpass,
-            SizedBox(height: h / 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(h / 30, 0, 0, 0),
-                  child: Text(
-                    'New Password',
-                    style:
-                        GoogleFonts.lato(fontSize: h / 42, color: Colors.black),
-                  ),
+              ),
+            ],
+          ),
+          oldpass,
+          SizedBox(height: h / 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(h / 30, 0, 0, 0),
+                child: Text(
+                  'New Password',
+                  style:
+                      GoogleFonts.lato(fontSize: h / 42, color: Colors.black),
                 ),
-              ],
-            ),
-            newpass,
-            SizedBox(height: h / 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(h / 30, 0, 0, 0),
-                  child: Text(
-                    'Confirm New Password',
-                    style:
-                        GoogleFonts.lato(fontSize: h / 42, color: Colors.black),
-                  ),
+              ),
+            ],
+          ),
+          newpass,
+          SizedBox(height: h / 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(h / 30, 0, 0, 0),
+                child: Text(
+                  'Confirm New Password',
+                  style:
+                      GoogleFonts.lato(fontSize: h / 42, color: Colors.black),
                 ),
-              ],
-            ),
-            confirmpass,
-            SizedBox(height: h / 40),
-            saveButton
-          ]),
-        ),
+              ),
+            ],
+          ),
+          confirmpass,
+          SizedBox(height: h / 40),
+          saveButton
+        ]),
       ),
     );
   }
-
-  void updateUserPassword(String newpassword) async {
-    try {
-      final _firebaseUser = await FirebaseAuth.instance.currentUser;
-      _firebaseUser!.updatePassword(newpassword);
-    } catch (e) {
-      print(e);
-    }
-  }
-}
-
-Future<bool> checkCurrentPassword(
-    String oldpassword, String newpassword) async {
-  final _firebaseUser = FirebaseAuth.instance.currentUser;
-  final _firebaseUserEmail = _firebaseUser!.email;
-
-  var _authCredentials = EmailAuthProvider.credential(
-      email: _firebaseUserEmail!, password: oldpassword);
-
-  try {
-    var authResult =
-        await _firebaseUser.reauthenticateWithCredential(_authCredentials);
-    _firebaseUser.updatePassword(newpassword);
-    return authResult.user != null;
-  } catch (e) {
-    print(e);
-  }
-  return false;
 }
