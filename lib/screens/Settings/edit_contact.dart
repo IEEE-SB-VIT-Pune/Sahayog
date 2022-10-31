@@ -7,14 +7,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ieee_app_project/models/user_model.dart';
 import 'package:ieee_app_project/screens/Settings/Contact_page.dart';
 
-class Contact_Add extends StatefulWidget {
-  const Contact_Add({super.key});
+class Contact_Edit extends StatefulWidget {
+  String contact_Id;
+  Contact_Edit({super.key, required this.contact_Id});
 
   @override
-  State<Contact_Add> createState() => _Contact_AddState();
+  State<Contact_Edit> createState() => _Contact_EditState();
 }
 
-class _Contact_AddState extends State<Contact_Add> {
+class _Contact_EditState extends State<Contact_Edit> {
   final _auth = FirebaseAuth.instance;
   TextEditingController nameEditingController = TextEditingController();
   TextEditingController phoneEditingController = TextEditingController();
@@ -37,7 +38,7 @@ class _Contact_AddState extends State<Contact_Add> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          'Add contact',
+          'Edit contact',
           style: GoogleFonts.montserrat(
               fontSize: w / 17,
               color: Colors.black,
@@ -164,7 +165,7 @@ class _Contact_AddState extends State<Contact_Add> {
                         borderRadius: BorderRadius.circular(10)),
                     child: Center(
                       child: Text(
-                        "Save",
+                        "Edit",
                         style: GoogleFonts.montserrat(
                             fontSize: 20 * w / 360,
                             fontWeight: FontWeight.w700,
@@ -174,23 +175,15 @@ class _Contact_AddState extends State<Contact_Add> {
                 onTap: (() async {
                   FirebaseFirestore firebaseFirestore =
                       FirebaseFirestore.instance;
-                  User? user = _auth.currentUser;
-                  for (int i = 0; i >= 10; i++) {
-                    contactIndex++;
-                  }
-                  UserModel usm = UserModel();
-
-                  usm.emergencyName = nameEditingController.text;
-                  usm.phone = phoneEditingController.text;
-                  usm.contactIndex = contactIndex;
-
-                  await firebaseFirestore
+                  await FirebaseFirestore.instance
                       .collection("users")
                       .doc(FirebaseAuth.instance.currentUser!.uid)
                       .collection("Contacts")
-                      .add(usm.contactMap())
-                      .then((value) {
-                    FirebaseFirestore.instance
+                      .doc(widget.contact_Id).update({
+                    'emergencyName': nameEditingController.text,
+                    'phone': phoneEditingController.text
+                  });
+                  FirebaseFirestore.instance
                         .collection("users")
                         .doc(FirebaseAuth.instance.currentUser!.uid)
                         .collection("Contacts")
@@ -200,9 +193,7 @@ class _Contact_AddState extends State<Contact_Add> {
                             MaterialPageRoute(
                                 builder: (context) =>
                                     ContactsPage(ContactRef: value))));
-                    Fluttertoast.showToast(msg: "Contact added successfully");
-                  }).catchError((error) =>
-                          print("Failed to add a new contact $error"));
+                    Fluttertoast.showToast(msg: "Contact edited successfully");
                 }),
               )
             ]),

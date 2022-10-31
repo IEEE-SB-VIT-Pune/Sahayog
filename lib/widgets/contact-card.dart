@@ -1,7 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../screens/Settings/Contact_page.dart';
+import '../screens/Settings/edit_contact.dart';
 
 class ContactCard extends StatefulWidget {
   final QueryDocumentSnapshot docE;
@@ -57,8 +61,33 @@ class _ContactCardState extends State<ContactCard> {
                   ),
                   Row(
                     children: [
-                      Icon(Icons.edit, color: Color(0XffAC6A2C)),
-                      Icon(Icons.delete, color: Color(0XffA01616)),
+                      IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: (() {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Contact_Edit(
+                                        contact_Id: widget.docE.id)));
+                          })),
+                      IconButton(
+                        icon: Icon(Icons.delete, color: Color(0XffA01616)),
+                        onPressed: () async {
+                          var _contactsData = await FirebaseFirestore.instance
+                              .collection("users")
+                              .doc(FirebaseAuth.instance.currentUser!.uid)
+                              .collection("Contacts");
+                          _contactsData.doc(widget.docE.id).delete();
+                          setState(() {
+                            _contactsData.get().then((value) =>
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ContactsPage(ContactRef: value))));
+                          });
+                        },
+                      ),
                       SizedBox(width: 17 * w / 360),
                     ],
                   ),
