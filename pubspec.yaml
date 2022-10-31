@@ -50,6 +50,7 @@ dependencies:
   shared_preferences: ^2.0.15
   flutter_svg: ^1.1.5
   http: ^0.13.5
+  google_sign_in: ^5.4.2
 
 
 dev_dependencies:
